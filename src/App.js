@@ -1,9 +1,10 @@
 import React from "react";
+import ComplexTable from "./components/ComplexTable"
 
 function App() {
   return (
     <div>
-      ComplexTable
+      <ComplexTable/>
     </div>
   );
 }
