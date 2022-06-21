@@ -1,46 +1,50 @@
 .root {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid rgb(224, 224, 224);
-}
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(224, 224, 224);
 
-.column {
+  .column {
     position: relative;
     display: flex;
     align-items: center;
     min-width: 120px;
     max-width: 120px;
+
+
+    .title {
+      color: rgba(0, 0, 0, 0.87);
+      font-family: Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 0px 10px;
+    }
+
+    .check {
+      span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 10px;
+
+        input {
+          cursor: inherit;
+        }
+      }
+    }
+
+    .separator {
+      display: flex;
+      color: rgb(224, 224, 224);
+      position: absolute;
+      right: 0px;
+
+      svg {
+        width: 1em;
+        fill: currentColor;
+        font-size: 1.5rem;
+      }
+    }
+  }
 }
 
-.column > .title{
-    color: rgba(0, 0, 0, 0.87);
-    font-family: Roboto, Helvetica, Arial, sans-serif;
-    font-weight: 500;
-    cursor: pointer;
-    padding: 0px 10px;
-}
-
-.check > span {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    padding: 10px;
-}
-
-.check > span > input {
-    cursor: inherit;
-}
-
-.separator {
-    display: flex;
-    color: rgb(224, 224, 224);
-    position: absolute;
-    right: 0px;
-}
-
-.separator > svg {
-    width: 1em;
-    fill: currentColor;
-    font-size: 1.5rem;
-}
