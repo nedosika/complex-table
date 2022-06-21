@@ -1,9 +1,11 @@
 import React from 'react';
-import styles from "./TableMain.module.scss";
-import TableHeader from "../TableHeader";
+
+import Check from "../Check";
 import TableRow from "../TableRow";
 import TableCell from "../TableCell";
-import Check from "../Check";
+import TableHeader from "../TableHeader";
+
+import styles from "./TableMain.module.scss";
 
 const TableMain = () => {
     return (

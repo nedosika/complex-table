@@ -1,7 +1,9 @@
 import React from 'react';
+
 import TableMain from "../TableMain";
-import styles from "./ComplexTable.module.scss";
 import TableFooter from "../TableFooter";
+
+import styles from "./ComplexTable.module.scss";
 
 const ComplexTable = () => {
     return (
