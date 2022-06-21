@@ -2,7 +2,6 @@ import React from 'react';
 
 import Check from "../Check";
 import Title from "./Title";
-import Separator from "./Separator";
 import TableColumn from "../Column";
 
 import styles from "./TableHeader.module.scss";
@@ -12,23 +11,18 @@ const TableHeader = () => {
         <div className={styles.root}>
             <TableColumn>
                 <Check/>
-                <Separator/>
             </TableColumn>
             <TableColumn>
-                <Title>ID</Title>
-                <Separator/>
+                ID
             </TableColumn>
             <TableColumn>
-                <Title>First name</Title>
-                <Separator/>
+                First name
             </TableColumn>
             <TableColumn>
-                <Title>Last name</Title>
-                <Separator/>
+                Last name
             </TableColumn>
             <TableColumn>
-                <Title>Age</Title>
-                <Separator/>
+                Age
             </TableColumn>
         </div>
     );
