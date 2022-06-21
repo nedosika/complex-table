@@ -17,6 +17,7 @@
     font-family: Roboto, Helvetica, Arial, sans-serif;
     font-weight: 500;
     cursor: pointer;
+    padding: 0px 10px;
 }
 
 .check > span {
@@ -24,7 +25,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    padding: 9px;
+    padding: 10px;
 }
 
 .check > span > input {
@@ -34,6 +35,8 @@
 .separator {
     display: flex;
     color: rgb(224, 224, 224);
+    position: absolute;
+    right: 0px;
 }
 
 .separator > svg {

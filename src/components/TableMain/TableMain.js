@@ -5,14 +5,26 @@ const TableMain = () => {
     return (
         <div className={styles.root}>
             <div className={styles.row}>
-                <div className={styles.cell}>Test</div>
+                <div className={styles.cell}>
+                    <div className={styles.check}>
+                        <span>
+                            <input type="checkbox"/>
+                        </span>
+                    </div>
+                </div>
                 <div className={styles.cell}>Test</div>
                 <div className={styles.cell}>Test</div>
                 <div className={styles.cell}>Test</div>
                 <div className={styles.cell}>Test</div>
             </div>
             <div className={styles.row}>
-                <div className={styles.cell}>Test</div>
+                <div className={styles.cell}>
+                    <div className={styles.check}>
+                        <span>
+                            <input type="checkbox"/>
+                        </span>
+                    </div>
+                </div>
                 <div className={styles.cell}>Test</div>
                 <div className={styles.cell}>Test</div>
                 <div className={styles.cell}>Test</div>
