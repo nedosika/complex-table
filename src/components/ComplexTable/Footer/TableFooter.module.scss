@@ -11,6 +11,15 @@
    justify-content: space-between;
    align-items: center;
    min-height: 52px;
-   //border-top: 1px solid rgb(224, 224, 224);
+
+   .rowCount{
+     visibility: visible;
+     width: auto;
+     height: auto;
+
+     align-items: center;
+     display: flex;
+     margin: 0px 16px;
+   }
  }
 }

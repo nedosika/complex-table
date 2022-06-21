@@ -1,9 +1,9 @@
 import React from 'react';
 
 import Check from "../Check";
-import Title from "../Title";
-import Separator from "../Separator";
-import TableColumn from "../TableColumn";
+import Title from "./Title";
+import Separator from "./Separator";
+import TableColumn from "../Column";
 
 import styles from "./TableHeader.module.scss";
 

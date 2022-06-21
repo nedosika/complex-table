@@ -1,0 +1,134 @@
+.root {
+  overflow: auto;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 0.875rem;
+
+  .wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    min-height: 52px;
+    padding-right: 2px;
+
+    p {
+      font-family: Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 400;
+      font-size: 0.875rem;
+      line-height: 1.43;
+      letter-spacing: 0.01071em;
+      flex-shrink: 0;
+    }
+
+    .select {
+      font-family: Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 400;
+      line-height: 1.4375em;
+      letter-spacing: 0.00938em;
+      box-sizing: border-box;
+      position: relative;
+      cursor: text;
+      display: inline-flex;
+      align-items: center;
+      color: inherit;
+      font-size: inherit;
+      flex-shrink: 0;
+      margin-right: 32px;
+      margin-left: 8px;
+
+      .rowCount {
+        padding-right: 24px;
+        min-width: 16px;
+
+        padding-left: 8px;
+        text-align: right;
+        text-align-last: right;
+
+        height: auto;
+        min-height: 1.4375em;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
+        user-select: none;
+        border-radius: 0;
+        cursor: pointer;
+        font: inherit;
+        letter-spacing: inherit;
+        color: currentColor;
+        border: 0;
+        box-sizing: content-box;
+        background: none;
+        margin: 0;
+        width: 100%;
+      }
+
+      input {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      svg {
+        user-select: none;
+        width: 1em;
+        height: 1em;
+        display: inline-block;
+        fill: currentColor;
+        flex-shrink: 0;
+        font-size: 1.5rem;
+        position: absolute;
+        right: 0;
+        top: calc(50% - 0.5em);
+        pointer-events: none;
+        color: rgba(0, 0, 0, 0.54);
+      }
+    }
+
+    .actions {
+      flex-shrink: 0;
+      margin-left: 20px;
+
+      button {
+        background-color: transparent;
+        color: rgba(0, 0, 0, 0.26);
+
+        pointer-events: none;
+        cursor: default;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        box-sizing: border-box;
+        outline: 0px;
+        border: 0px;
+        margin: 0px;
+        user-select: none;
+        vertical-align: middle;
+        appearance: none;
+        text-decoration: none;
+        text-align: center;
+        flex: 0 0 auto;
+        font-size: 1.5rem;
+        padding: 8px;
+        border-radius: 50%;
+        overflow: visible;
+
+        svg {
+          user-select: none;
+          width: 1em;
+          height: 1em;
+          display: inline-block;
+          fill: currentColor;
+          flex-shrink: 0;
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}

@@ -1,11 +1,12 @@
 import React from "react";
 import ComplexTable from "./components/ComplexTable"
 import styles from "./App.module.scss";
+import Toolbar from "./components/Toolbar";
 
 function App() {
   return (
     <div className={styles.root}>
-      <ComplexTable/>
+      <ComplexTable components={{Toolbar}}/>
     </div>
   );
 }
