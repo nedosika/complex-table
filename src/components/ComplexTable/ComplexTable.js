@@ -1,13 +1,15 @@
 import React from 'react';
-import TableHeader from "../TableHeader";
 import TableMain from "../TableMain";
-import styles from "./styles.module.css";
+import styles from "./ComplexTable.module.scss";
+import TableFooter from "../TableFooter";
 
 const ComplexTable = () => {
     return (
         <div className={styles.root}>
-           <TableHeader/>
-           <TableMain/>
+            <div className={styles.wrapper}>
+                <TableMain/>
+                <TableFooter/>
+            </div>
         </div>
     );
 };

@@ -1,35 +1,32 @@
 import React from 'react';
-import styles from "./styles.module.scss";
+import styles from "./TableMain.module.scss";
+import TableHeader from "../TableHeader";
+import TableRow from "../TableRow";
+import TableCell from "../TableCell";
+import Check from "../Check";
 
 const TableMain = () => {
     return (
         <div className={styles.root}>
-            <div className={styles.row}>
-                <div className={styles.cell}>
-                    <div className={styles.check}>
-                        <span>
-                            <input type="checkbox"/>
-                        </span>
-                    </div>
-                </div>
-                <div className={styles.cell}>Test</div>
-                <div className={styles.cell}>Test</div>
-                <div className={styles.cell}>Test</div>
-                <div className={styles.cell}>Test</div>
-            </div>
-            <div className={styles.row}>
-                <div className={styles.cell}>
-                    <div className={styles.check}>
-                        <span>
-                            <input type="checkbox"/>
-                        </span>
-                    </div>
-                </div>
-                <div className={styles.cell}>Test</div>
-                <div className={styles.cell}>Test</div>
-                <div className={styles.cell}>Test</div>
-                <div className={styles.cell}>Test</div>
-            </div>
+            <TableHeader/>
+            <TableRow>
+                <TableCell>
+                    <Check/>
+                </TableCell>
+                <TableCell>Test</TableCell>
+                <TableCell>Test</TableCell>
+                <TableCell>Test</TableCell>
+                <TableCell>Test</TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>
+                    <Check/>
+                </TableCell>
+                <TableCell>Test</TableCell>
+                <TableCell>Test</TableCell>
+                <TableCell>Test</TableCell>
+                <TableCell>Test</TableCell>
+            </TableRow>
         </div>
     );
 };

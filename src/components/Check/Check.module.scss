@@ -1,0 +1,13 @@
+.root{
+    span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 10px;
+
+      input {
+        cursor: inherit;
+      }
+    }
+}
