@@ -1,28 +1,28 @@
 import React from 'react';
 
-import Check from "../Check";
-import Title from "./Title";
+import Title from "../Title";
 import TableColumn from "../Column";
+import CheckBoxSelection from "../CheckBoxSelection";
 
 import styles from "./TableHeader.module.scss";
 
 const TableHeader = () => {
     return (
         <div className={styles.root}>
-            <TableColumn>
-                <Check/>
+            <TableColumn separator={false} menu={false}>
+                <CheckBoxSelection/>
             </TableColumn>
-            <TableColumn>
-                ID
+            <TableColumn width={120}>
+                <Title>ID</Title>
             </TableColumn>
-            <TableColumn>
-                First name
+            <TableColumn width={120}>
+                <Title>First name</Title>
             </TableColumn>
-            <TableColumn>
-                Last name
+            <TableColumn width={120}>
+                <Title>Last name</Title>
             </TableColumn>
-            <TableColumn>
-                Age
+            <TableColumn width={120}>
+                <Title>Age</Title>
             </TableColumn>
         </div>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from "./Check.module.scss";
+import styles from "./CheckBoxSelection.module.scss";
 
-const Check = () => {
+const CheckBoxSelection = ({children}) => {
     return (
         <div className={styles.root}>
             <span>
@@ -11,4 +11,4 @@ const Check = () => {
     );
 };
 
-export default Check;
+export default CheckBoxSelection;

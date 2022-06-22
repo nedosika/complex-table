@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Check from "./Check";
+import CheckBoxSelection from "./CheckBoxSelection";
 import TableRow from "./Row";
 import TableCell from "./Cell";
 import TableHeader from "./Header";
@@ -12,18 +12,14 @@ const TableMain = () => {
         <div className={styles.root}>
             <TableHeader/>
             <TableRow>
-                <TableCell>
-                    <Check/>
-                </TableCell>
+                <CheckBoxSelection/>
                 <TableCell>Test</TableCell>
                 <TableCell>Test</TableCell>
                 <TableCell>Test</TableCell>
                 <TableCell>Test</TableCell>
             </TableRow>
             <TableRow>
-                <TableCell>
-                    <Check/>
-                </TableCell>
+                <CheckBoxSelection/>
                 <TableCell>Test</TableCell>
                 <TableCell>Test</TableCell>
                 <TableCell>Test</TableCell>
