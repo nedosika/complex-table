@@ -5,21 +5,17 @@ import TableFooter from "./Footer";
 
 import styles from "./ComplexTable.module.scss";
 
-const ComplexTable = (props) => {
-    const {Toolbar} = Object.assign(
-        {
-            Toolbar: null
-        },
-        props.components
-    );
+const CHECK_WIDTH = 50;
 
-    const toolbar = Toolbar ? <Toolbar/> : null;
+const ComplexTable = ({Toolbar = null, columns = [], rows = []}) => {
+    const width = columns.reduce((previousValue, {width}) =>
+        previousValue + width, 0) + CHECK_WIDTH;
 
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>
-                {toolbar}
-                <TableMain/>
+                {Toolbar && <Toolbar/>}
+                <TableMain columns={columns} rows={rows} width={width}/>
                 <TableFooter/>
             </div>
         </div>

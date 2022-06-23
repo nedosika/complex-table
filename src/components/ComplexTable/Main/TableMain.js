@@ -7,24 +7,22 @@ import TableHeader from "./Header";
 
 import styles from "./TableMain.module.scss";
 
-const TableMain = () => {
+const TableMain = ({columns, rows, width}) => {
     return (
         <div className={styles.root}>
-            <TableHeader/>
-            <TableRow>
-                <CheckBoxSelection/>
-                <TableCell>Test</TableCell>
-                <TableCell>Test</TableCell>
-                <TableCell>Test</TableCell>
-                <TableCell>Test</TableCell>
-            </TableRow>
-            <TableRow>
-                <CheckBoxSelection/>
-                <TableCell>Test</TableCell>
-                <TableCell>Test</TableCell>
-                <TableCell>Test</TableCell>
-                <TableCell>Test</TableCell>
-            </TableRow>
+            <TableHeader columns={columns} width={width}/>
+            {
+                rows.map((row) =>
+                    <TableRow width={width}>
+                        <CheckBoxSelection/>
+                        {
+                            Object.entries(row).map(([field, value], index) =>
+                                <TableCell width={columns[index].width}>{value}</TableCell>
+                            )
+                        }
+                    </TableRow>
+                )
+            }
         </div>
     );
 };

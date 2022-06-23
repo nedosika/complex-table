@@ -6,24 +6,22 @@ import CheckBoxSelection from "../CheckBoxSelection";
 
 import styles from "./TableHeader.module.scss";
 
-const TableHeader = () => {
+const TableHeader = ({columns, width}) => {
     return (
-        <div className={styles.root}>
+        <div className={styles.root} style={{
+            minWidth: width,
+            maxWidth: width
+        }}>
             <TableColumn separator={false} menu={false}>
                 <CheckBoxSelection/>
             </TableColumn>
-            <TableColumn width={120}>
-                <Title>ID</Title>
-            </TableColumn>
-            <TableColumn width={120}>
-                <Title>First name</Title>
-            </TableColumn>
-            <TableColumn width={120}>
-                <Title>Last name</Title>
-            </TableColumn>
-            <TableColumn width={120}>
-                <Title>Age</Title>
-            </TableColumn>
+            {
+                columns.map(({width = 50, headerName}) =>
+                    <TableColumn width={width}>
+                        <Title>{headerName}</Title>
+                    </TableColumn>
+                )
+            }
         </div>
     );
 };

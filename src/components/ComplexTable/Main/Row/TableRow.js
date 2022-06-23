@@ -1,9 +1,15 @@
 import React from 'react';
 import styles from "./TableRow.module.scss";
 
-const TableRow = ({children}) => {
+const TableRow = ({children, width = 50}) => {
     return (
-        <div className={styles.root}>
+        <div
+            className={styles.root}
+            style={{
+                minWidth: width,
+                maxWidth: width
+            }}
+        >
             {children}
         </div>
     );
