@@ -7,17 +7,24 @@ import TableHeader from "./Header";
 
 import styles from "./TableMain.module.scss";
 
-const TableMain = ({columns, rows, width}) => {
+const TableMain = ({columns, rows, checked, setChecked}) => {
+    const updateChecked = (id) => () =>
+        setChecked((prevState) =>
+            prevState.map((isChecked, index) =>
+                id === index ? !isChecked : isChecked
+            )
+        )
+
     return (
         <div className={styles.root}>
-            <TableHeader columns={columns} width={width}/>
+            <TableHeader columns={columns} checked={checked} setChecked={setChecked}/>
             {
-                rows.map((row) =>
-                    <TableRow width={width}>
-                        <CheckBoxSelection/>
+                rows.map((row, index) =>
+                    <TableRow key={index}>
+                        <CheckBoxSelection isChecked={checked[index]} setChecked={updateChecked(index)}/>
                         {
-                            Object.entries(row).map(([field, value], index) =>
-                                <TableCell width={columns[index].width}>{value}</TableCell>
+                            columns.map((column) =>
+                                <TableCell width={column.width} key={column.field}>{row[column.field]}</TableCell>
                             )
                         }
                     </TableRow>

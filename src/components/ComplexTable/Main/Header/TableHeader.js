@@ -6,18 +6,24 @@ import CheckBoxSelection from "../CheckBoxSelection";
 
 import styles from "./TableHeader.module.scss";
 
-const TableHeader = ({columns, width}) => {
+const TableHeader = ({columns, checked, setChecked}) => {
+    const isChecked = checked.find((element) => element === true);
+    const setCheckedAll = () =>
+        isChecked
+            ? setChecked(new Array(checked.length).fill(false))
+            : setChecked(new Array(checked.length).fill(true));
+
     return (
-        <div className={styles.root} style={{
-            minWidth: width,
-            maxWidth: width
-        }}>
+        <div className={styles.root}>
             <TableColumn separator={false} menu={false}>
-                <CheckBoxSelection/>
+                <CheckBoxSelection
+                    isChecked={isChecked}
+                    setChecked={setCheckedAll}
+                />
             </TableColumn>
             {
-                columns.map(({width = 50, headerName}) =>
-                    <TableColumn width={width}>
+                columns.map(({field, width = 50, headerName}) =>
+                    <TableColumn width={width} key={field}>
                         <Title>{headerName}</Title>
                     </TableColumn>
                 )
