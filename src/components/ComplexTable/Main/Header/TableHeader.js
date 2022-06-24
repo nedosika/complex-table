@@ -1,31 +1,17 @@
 import React from 'react';
 
-import Title from "../Title";
-import TableColumn from "../Column";
-import CheckBoxSelection from "../CheckBoxSelection";
-
 import styles from "./TableHeader.module.scss";
+import Title from "../Title";
 
-const TableHeader = ({columns, checked, setChecked}) => {
-    const isChecked = checked.find((element) => element === true);
-    const setCheckedAll = () =>
-        isChecked
-            ? setChecked(new Array(checked.length).fill(false))
-            : setChecked(new Array(checked.length).fill(true));
-
+const TableHeader = ({children, columns, components: {Column}}) => {
     return (
         <div className={styles.root}>
-            <TableColumn separator={false} menu={false}>
-                <CheckBoxSelection
-                    isChecked={isChecked}
-                    setChecked={setCheckedAll}
-                />
-            </TableColumn>
+            {children}
             {
                 columns.map(({field, width = 50, headerName}) =>
-                    <TableColumn width={width} key={field}>
+                    <Column width={width} key={field}>
                         <Title>{headerName}</Title>
-                    </TableColumn>
+                    </Column>
                 )
             }
         </div>
