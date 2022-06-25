@@ -1,7 +1,8 @@
 import React from "react";
+
 import ComplexTable from "./components/ComplexTable"
+
 import styles from "./App.module.scss";
-import Toolbar from "./components/Toolbar";
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
@@ -44,7 +45,10 @@ const rows = [
 function App() {
   return (
     <div className={styles.root}>
-      <ComplexTable components={{Toolbar}} columns={columns} rows={rows}/>
+      <ComplexTable
+          columns={columns}
+          rows={rows}
+      />
     </div>
   );
 }
