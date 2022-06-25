@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import Main from "./Main";
 import Footer from "./Footer";
@@ -12,26 +12,14 @@ import Pagination from "./Footer/Pagination";
 import CheckBoxSelection from "./Main/CheckBoxSelection";
 
 import styles from "./ComplexTable.module.scss";
+import useCheckboxSelection from "../../hooks/useCheckboxSelection";
 
 const ComplexTable = ({
-                          components: {},
                           columns = [],
                           rows = [],
                           checkboxSelection = true
                       }) => {
-    const [checked, setChecked] = useState(new Array(rows.length).fill(false));
-    const checkedCount = checked.filter((element) => element === true).length;
-    const updateChecked = (id) => () =>
-        setChecked((prevState) =>
-            prevState.map((isChecked, index) =>
-                id === index ? !isChecked : isChecked
-            )
-        );
-    const isChecked = checked.find((element) => element === true);
-    const setCheckedAll = () =>
-        isChecked
-            ? setChecked(new Array(checked.length).fill(false))
-            : setChecked(new Array(checked.length).fill(true));
+    const {checked, setAll, updateChecked} = useCheckboxSelection(rows);
 
     return (
         <div className={styles.root}>
@@ -41,15 +29,15 @@ const ComplexTable = ({
                     <Header columns={columns} components={{Column}}>
                         <Column separator={false} menu={false}>
                             <CheckBoxSelection
-                                isChecked={isChecked}
-                                setChecked={setCheckedAll}
+                                isChecked={checked.length}
+                                setChecked={setAll}
                             />
                         </Column>
                     </Header>
                     {
-                        rows.map((row, index) =>
-                            <TableRow>
-                                <CheckBoxSelection isChecked={checked[index]} setChecked={updateChecked(index)}/>
+                        rows.map((row) =>
+                            <TableRow key={row.id}>
+                                <CheckBoxSelection isChecked={checked.includes(row.id)} setChecked={() => updateChecked(row.id)}/>
                                 {
                                     columns.map((column) =>
                                         <Cell width={column.width} key={column.field}>{row[column.field]}</Cell>
@@ -60,7 +48,7 @@ const ComplexTable = ({
                     }
                 </Main>
                 <Footer>
-                    <RowCount count={checkedCount}/>
+                    <RowCount count={checked.length}/>
                     <Pagination/>
                 </Footer>
             </div>
