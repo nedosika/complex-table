@@ -1,25 +1,17 @@
 import React from 'react';
 
-import Title from "../Title";
-import TableColumn from "../Column";
-import CheckBoxSelection from "../CheckBoxSelection";
-
 import styles from "./TableHeader.module.scss";
+import Title from "../Title";
 
-const TableHeader = ({columns, width}) => {
+const TableHeader = ({children, columns, components: {Column}}) => {
     return (
-        <div className={styles.root} style={{
-            minWidth: width,
-            maxWidth: width
-        }}>
-            <TableColumn separator={false} menu={false}>
-                <CheckBoxSelection/>
-            </TableColumn>
+        <div className={styles.root}>
+            {children}
             {
-                columns.map(({width = 50, headerName}) =>
-                    <TableColumn width={width}>
+                columns.map(({field, width = 50, headerName}) =>
+                    <Column width={width} key={field}>
                         <Title>{headerName}</Title>
-                    </TableColumn>
+                    </Column>
                 )
             }
         </div>

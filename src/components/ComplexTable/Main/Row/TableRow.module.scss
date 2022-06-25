@@ -2,6 +2,9 @@
   max-height: 52px;
   min-height: 52px;
 
+  min-width: 100%;
+  width: fit-content;
+
   display: flex;
 
   border-bottom: 1px solid rgb(224, 224, 224);

@@ -1,9 +1,10 @@
 import React from 'react';
+import styles from "./RowCount.module.scss";
 
-const RowCount = () => {
+const RowCount = ({count}) => {
     return (
-        <div>
-
+        <div className={styles.root}>
+            {count} row selected
         </div>
     );
 };
