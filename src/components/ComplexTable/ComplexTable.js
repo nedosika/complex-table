@@ -13,11 +13,13 @@ import CheckBoxSelection from "./Main/CheckBoxSelection";
 
 import styles from "./ComplexTable.module.scss";
 import useCheckboxSelection from "../../hooks/useCheckboxSelection";
+import Title from "./Main/Title";
 
 const ComplexTable = ({
                           columns = [],
                           rows = [],
-                          checkboxSelection = true
+                          checkboxSelection = true,
+                          pagination = true
                       }) => {
     const {checked, setAll, updateChecked} = useCheckboxSelection(rows);
 
@@ -25,31 +27,42 @@ const ComplexTable = ({
         <div className={styles.root}>
             <div className={styles.wrapper}>
                 <Toolbar/>
-                <Main>
-                    <Header columns={columns} components={{Column}}>
-                        <Column separator={false} menu={false}>
-                            <CheckBoxSelection
-                                isChecked={checked.length}
-                                setChecked={setAll}
-                            />
-                        </Column>
-                    </Header>
-                    {
-                        rows.map((row) =>
-                            <TableRow key={row.id}>
-                                <CheckBoxSelection isChecked={checked.includes(row.id)} setChecked={() => updateChecked(row.id)}/>
-                                {
-                                    columns.map((column) =>
-                                        <Cell width={column.width} key={column.field}>{row[column.field]}</Cell>
-                                    )
-                                }
-                            </TableRow>
-                        )
+                <Main
+                    items={rows}
+                    renderItem={(item) =>
+                        <TableRow
+                            items={columns}
+                            renderItem={(cell) =>
+                                <Cell width={cell.width}>{item[cell.field]}</Cell>
+                            }
+                            renderSelection={() => checkboxSelection &&
+                                <CheckBoxSelection isChecked={checked.includes(item.id)}
+                                                   setChecked={() => updateChecked(item.id)}/>
+                            }
+                        />
                     }
-                </Main>
+                    renderHeader={() =>
+                        <Header
+                            columns={columns}
+                            renderColumn={({headerName, width}) =>
+                                <Column width={width}>
+                                    <Title>{headerName}</Title>
+                                </Column>
+                            }
+                            renderSelection={() => checkboxSelection &&
+                                <Column separator={false} menu={false}>
+                                    <CheckBoxSelection
+                                        isChecked={checked.length}
+                                        setChecked={setAll}
+                                    />
+                                </Column>
+                            }
+                        />
+                    }
+                />
                 <Footer>
-                    <RowCount count={checked.length}/>
-                    <Pagination/>
+                    {checkboxSelection && <RowCount count={checked.length}/>}
+                    {pagination && <Pagination/>}
                 </Footer>
             </div>
         </div>

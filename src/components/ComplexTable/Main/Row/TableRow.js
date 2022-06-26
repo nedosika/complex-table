@@ -1,12 +1,13 @@
 import React from 'react';
 import styles from "./TableRow.module.scss";
 
-const TableRow = ({children}) => {
+const TableRow = ({children, items = [], renderItem, renderSelection}) => {
     return (
         <div
             className={styles.root}
         >
-            {children}
+            {renderSelection && renderSelection()}
+            {items.map(renderItem)}
         </div>
     );
 };

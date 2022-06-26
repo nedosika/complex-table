@@ -48,6 +48,7 @@ function App() {
       <ComplexTable
           columns={columns}
           rows={rows}
+          //checkboxSelection={false}
       />
     </div>
   );
