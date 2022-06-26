@@ -2,10 +2,10 @@ import React from 'react';
 
 import styles from "./TableHeader.module.scss";
 
-const TableHeader = ({columns, renderColumn, renderSelection}) => {
+const TableHeader = ({columns, renderColumn, children}) => {
     return (
         <div className={styles.root}>
-            {renderSelection && renderSelection()}
+            {children}
             {columns.map(renderColumn)}
         </div>
     );

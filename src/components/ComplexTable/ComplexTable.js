@@ -18,17 +18,18 @@ import useCheckboxSelection from "../../hooks/useCheckboxSelection";
 const ComplexTable = ({
                           columns = [],
                           rows = [],
-                          checkboxSelection = true,
-                          pagination = true,
+                          checkboxSelection = false,
+                          pagination = false,
                           components,
-                          componentsProps
+                          componentsProps,
+                          getRowId = (row) => row.id
                       }) => {
     const {
         CustomToolbar,
         CustomMain,
         CustomFooter
     } = Object.assign({}, components);
-    const {selected, toggleSelectedAll, toggleSelected} = useCheckboxSelection(rows);
+    const {selected, toggleSelectedAll, toggleSelected} = useCheckboxSelection({rows, getRowId});
 
     return (
         <div className={styles.root}>
@@ -49,11 +50,13 @@ const ComplexTable = ({
                                     renderItem={(cell) =>
                                         <Cell width={cell.width}>{item[cell.field]}</Cell>
                                     }
-                                    renderSelection={() => checkboxSelection &&
-                                        <CheckBoxSelection isChecked={selected.includes(item.id)}
-                                                           toggle={() => toggleSelected(item.id)}/>
+                                >
+                                    {
+                                        checkboxSelection &&
+                                        <CheckBoxSelection isChecked={selected.includes(getRowId(item))}
+                                                           toggle={() => toggleSelected(getRowId(item))}/>
                                     }
-                                />
+                                </TableRow>
                             }
                             renderHeader={() =>
                                 <Header
@@ -63,7 +66,9 @@ const ComplexTable = ({
                                             <Title>{headerName}</Title>
                                         </Column>
                                     }
-                                    renderSelection={() => checkboxSelection &&
+                                >
+                                    {
+                                        checkboxSelection &&
                                         <Column separator={false} menu={false}>
                                             <CheckBoxSelection
                                                 isChecked={selected.length}
@@ -71,7 +76,7 @@ const ComplexTable = ({
                                             />
                                         </Column>
                                     }
-                                />
+                                </Header>
                             }
                         />
                 }

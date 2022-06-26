@@ -48,7 +48,9 @@ function App() {
       <ComplexTable
           columns={columns}
           rows={rows}
-          //checkboxSelection={false}
+          checkboxSelection
+          pagination
+          getRowId={(row) => row.id}
       />
     </div>
   );

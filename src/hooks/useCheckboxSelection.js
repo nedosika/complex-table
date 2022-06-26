@@ -1,7 +1,9 @@
 import {useState} from "react";
 
-const useCheckboxSelection = (rows) => {
+const useCheckboxSelection = ({rows, getRowId}) => {
     const [selected, setSelected] = useState([]);
+
+    console.log(selected)
 
     const toggleSelected = (id) =>
         setSelected((prevState) =>
@@ -14,7 +16,7 @@ const useCheckboxSelection = (rows) => {
     const toggleSelectedAll = () =>
         selected.length
             ? setSelected([])
-            : setSelected(rows.map((row) => row.id));
+            : setSelected(rows.map(getRowId));
 
     return {
         selected, toggleSelectedAll, toggleSelected
