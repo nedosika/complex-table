@@ -1,23 +1,23 @@
 import {useState} from "react";
 
 const useCheckboxSelection = (rows) => {
-    const [checked, setChecked] = useState([]);
+    const [selected, setSelected] = useState([]);
 
-    const updateChecked = (id) =>
-        setChecked((prevState) =>
+    const toggleSelected = (id) =>
+        setSelected((prevState) =>
             prevState.includes(id)
                 ? prevState.filter((checkedId) => checkedId !== id)
                 : [...prevState, id]
         )
 
 
-    const setAll = () =>
-        checked.length
-            ? setChecked([])
-            : setChecked(rows.map((row) => row.id));
+    const toggleSelectedAll = () =>
+        selected.length
+            ? setSelected([])
+            : setSelected(rows.map((row) => row.id));
 
     return {
-        checked, setAll, updateChecked
+        selected, toggleSelectedAll, toggleSelected
     }
 }
 

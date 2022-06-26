@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from "./CheckBoxSelection.module.scss";
 
-const CheckBoxSelection = ({isChecked, setChecked}) => {
+const CheckBoxSelection = ({isChecked, toggle}) => {
     return (
         <div className={styles.root}>
             <span>
-                <input type="checkbox" checked={isChecked} onChange={setChecked}/>
+                <input type="checkbox" checked={isChecked} onChange={toggle}/>
             </span>
         </div>
     );
