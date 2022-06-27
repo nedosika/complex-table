@@ -2,11 +2,11 @@ import React from 'react';
 
 import styles from "./TableHeader.module.scss";
 
-const TableHeader = ({columns, renderColumn, children}) => {
+const TableHeader = ({items, renderItem, children}) => {
     return (
         <div className={styles.root}>
             {children}
-            {columns.map(renderColumn)}
+            {items.map(renderItem)}
         </div>
     );
 };

@@ -5,13 +5,15 @@ const useCheckboxSelection = ({rows, getRowId}) => {
 
     console.log(selected)
 
-    const toggleSelected = (id) =>
+    const toggleSelected = (row) =>
         setSelected((prevState) =>
-            prevState.includes(id)
-                ? prevState.filter((checkedId) => checkedId !== id)
-                : [...prevState, id]
+            prevState.includes(getRowId(row))
+                ? prevState.filter((checkedId) => checkedId !== getRowId(row))
+                : [...prevState, getRowId(row)]
         )
 
+
+    const isSelected = (id) => selected.includes(getRowId(id))
 
     const toggleSelectedAll = () =>
         selected.length
@@ -19,7 +21,7 @@ const useCheckboxSelection = ({rows, getRowId}) => {
             : setSelected(rows.map(getRowId));
 
     return {
-        selected, toggleSelectedAll, toggleSelected
+        selected, toggleSelectedAll, toggleSelected, isSelected
     }
 }
 
