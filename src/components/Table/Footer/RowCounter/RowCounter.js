@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from "./TableRow.module.scss";
+import styles from "./RowCounter.module.scss";
 
-const TableRow = ({children}) => {
+const RowCounter = ({children}) => {
     return (
         <div className={styles.root}>
             {children}
@@ -9,4 +9,4 @@ const TableRow = ({children}) => {
     );
 };
 
-export default TableRow;
+export default RowCounter;
