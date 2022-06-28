@@ -3,8 +3,6 @@ import {useState} from "react";
 const useCheckboxSelection = ({rows, getRowId}) => {
     const [selected, setSelected] = useState([]);
 
-    console.log(selected)
-
     const toggleSelected = (row) =>
         setSelected((prevState) =>
             prevState.includes(getRowId(row))
@@ -12,8 +10,7 @@ const useCheckboxSelection = ({rows, getRowId}) => {
                 : [...prevState, getRowId(row)]
         )
 
-
-    const isSelected = (id) => selected.includes(getRowId(id))
+    const getIsSelected = (id) => selected.includes(getRowId(id));
 
     const toggleSelectedAll = () =>
         selected.length
@@ -21,7 +18,7 @@ const useCheckboxSelection = ({rows, getRowId}) => {
             : setSelected(rows.map(getRowId));
 
     return {
-        selected, toggleSelectedAll, toggleSelected, isSelected
+        selected, toggleSelectedAll, toggleSelected, getIsSelected
     }
 }
 

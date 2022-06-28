@@ -1,56 +1,50 @@
 import React from 'react';
 import Table from "../Table";
-import CheckBoxSelection from "../Table/Main/CheckBoxSelection";
-import Row from "../Table/Main/Row";
-import useCheckboxSelection from "../../hooks/useCheckboxSelection";
-import Header from "../Table/Main/Header/TableHeader";
-import Column from "../Table/Main/Column/TableColumn";
 
-const CheckedRow = ({isChecked, toggle, isShow, row, ...props}) =>
-    <Row {...props}>
+import CheckedRow from "./CheckedRow";
+import CheckedHeader from "./CheckedHeader";
+import useCheckboxSelection from "./useCheckboxSelection";
+import TableFooter from "../Table/Footer";
+import RowCounter from "../Table/Footer/RowCounter";
+
+const CheckedFooter = ({isShow, checked, ...props}) =>
+    <TableFooter {...props}>
         {
             isShow &&
-            <CheckBoxSelection isChecked={isChecked(row)} toggle={() => toggle(row)}/>
+            <RowCounter>
+                {checked.length} row{checked.length > 1 && 's'} selected
+            </RowCounter>
         }
-    </Row>
-
-
-const CheckedHeader = ({isShow, toggle, isChecked, ...props}) =>
-    <Header {...props}>
-        {
-            isShow &&
-            <Column separator={false} menu={false}>
-                <CheckBoxSelection
-                    isChecked={isChecked}
-                    toggle={toggle}
-                />
-            </Column>
-        }
-    </Header>
-
+    </TableFooter>
 
 const CheckedTable = ({rows, getRowId, checkboxSelection, ...props}) => {
-    const {selected, toggleSelectedAll, toggleSelected, isSelected} = useCheckboxSelection({rows, getRowId});
+    const {selected, toggleSelectedAll, toggleSelected, getIsSelected} = useCheckboxSelection({rows, getRowId});
+
     return (
         <Table
-            {...props}
             rows={rows}
             components={{
                 Row: CheckedRow,
-                Header: CheckedHeader
+                Header: CheckedHeader,
+                Footer: CheckedFooter
             }}
             componentsProps={{
                 Row: {
-                    isChecked: isSelected,
-                    toggle: toggleSelected,
-                    isShow: checkboxSelection
+                    isShow: checkboxSelection,
+                    isChecked: getIsSelected,
+                    toggle: toggleSelected
                 },
                 Header: {
+                    isShow: checkboxSelection,
                     isChecked: selected.length,
                     toggle: toggleSelectedAll,
-                    isShow: checkboxSelection
+                },
+                Footer: {
+                    isShow: checkboxSelection,
+                    checked: selected
                 }
             }}
+            {...props}
         />
     );
 };

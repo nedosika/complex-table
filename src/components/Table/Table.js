@@ -6,20 +6,18 @@ import TableCell from "./Main/Cell";
 import TableToolbar from "./Toolbar";
 import Title from "./Main/Title";
 import TableRow from "./Main/Row";
-import Header from "./Main/Header";
+import TableHeader from "./Main/Header";
 import Column from "./Main/Column";
-import Pagination from "./Footer/Pagination";
 
 import styles from "./Table.module.scss";
-import TableHeader from "./Main/Header";
+import RowCounter from "./Footer/RowCounter";
 
 const Table = ({
-                   columns = [],
-                   rows = [],
-                   pagination = false,
-                   components,
-                   componentsProps
-               }) => {
+   columns = [],
+   rows = [],
+   components,
+   componentsProps
+}) => {
 
     const {
         Toolbar,
@@ -66,8 +64,9 @@ const Table = ({
                     />
                 </Main>
                 <Footer {...componentsProps?.Footer}>
-                    {/*{checkboxSelection && <RowCount count={selected.length}/>}*/}
-                    {pagination && <Pagination/>}
+                    <RowCounter>
+                        {rows.length} row{rows.length > 1 && 's'}
+                    </RowCounter>
                 </Footer>
             </div>
         </div>

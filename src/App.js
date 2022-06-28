@@ -47,7 +47,7 @@ function App() {
       <CheckedTable
           columns={columns}
           rows={rows}
-          checkboxSelection
+          checkboxSelection={true}
           pagination
           getRowId={(row) => row.id}
       />
