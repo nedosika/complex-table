@@ -8,38 +8,34 @@ import Title from "./Main/Title";
 import TableRow from "./Main/Row";
 import Header from "./Main/Header";
 import Column from "./Main/Column";
-import RowCount from "./Footer/RowCount";
 import Pagination from "./Footer/Pagination";
-import CheckBoxSelection from "./Main/CheckBoxSelection";
 
 import styles from "./Table.module.scss";
-import useCheckboxSelection from "../../hooks/useCheckboxSelection";
+import TableHeader from "./Main/Header";
 
 const Table = ({
                    columns = [],
                    rows = [],
-                   checkboxSelection = false,
                    pagination = false,
                    components,
-                   componentsProps,
-                   getRowId
+                   componentsProps
                }) => {
 
     const {
         Toolbar,
+        Header,
         Main,
         Footer,
         Row,
         Cell
     } = Object.assign({
         Toolbar: TableToolbar,
+        Header: TableHeader,
         Main: TableMain,
         Footer: TableFooter,
         Row: TableRow,
         Cell: TableCell
     }, components)
-    // const {selected, toggleSelectedAll, toggleSelected} = useCheckboxSelection({rows, getRowId});
-
 
     return (
         <div className={styles.root}>
@@ -47,12 +43,12 @@ const Table = ({
                 <Toolbar {...componentsProps?.Toolbar}/>
                 <Main
                     items={rows}
-                    renderItem={(row) =>
+                    renderItem={(item) =>
                         <Row
-                            row={row}
+                            row={item}
                             items={columns}
                             renderItem={(cell) =>
-                                <Cell width={cell.width} {...componentsProps?.Cell}>{row[cell.field]}</Cell>
+                                <Cell width={cell.width} {...componentsProps?.Cell}>{item[cell.field]}</Cell>
                             }
                             {...componentsProps?.Row}
                         />
@@ -66,17 +62,8 @@ const Table = ({
                                 <Title>{headerName}</Title>
                             </Column>
                         }
-                    >
-                        {/*{*/}
-                        {/*    checkboxSelection &&*/}
-                        {/*    <Column separator={false} menu={false}>*/}
-                        {/*        <CheckBoxSelection*/}
-                        {/*            isChecked={selected.length}*/}
-                        {/*            toggle={toggleSelectedAll}*/}
-                        {/*        />*/}
-                        {/*    </Column>*/}
-                        {/*}*/}
-                    </Header>
+                        {...componentsProps?.Header}
+                    />
                 </Main>
                 <Footer {...componentsProps?.Footer}>
                     {/*{checkboxSelection && <RowCount count={selected.length}/>}*/}
@@ -86,15 +73,5 @@ const Table = ({
         </div>
     )
 }
-
-// Table.defaultProps = {
-//     columns: [],
-//     rows: [],
-//     checkboxSelection: false,
-//     pagination: false,
-//     components: {},
-//     componentsProps: {},
-//     getRowId: (row) => row.id
-// };
 
 export default Table;
