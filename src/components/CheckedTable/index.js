@@ -1,1 +1,1 @@
-export {default} from "./CheckedTable";
+export {default} from "./CheckboxSelectionWrapper";
