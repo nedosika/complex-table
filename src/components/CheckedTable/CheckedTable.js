@@ -4,25 +4,14 @@ import Table from "../Table";
 import CheckedRow from "./CheckedRow";
 import CheckedHeader from "./CheckedHeader";
 import useCheckboxSelection from "./useCheckboxSelection";
-import TableFooter from "../Table/Footer";
-import RowCounter from "../Table/Footer/RowCounter";
+import CheckedFooter from "./CheckBoxSelection/CheckedFooter";
 
-const CheckedFooter = ({isShow, checked, ...props}) =>
-    <TableFooter {...props}>
-        {
-            isShow &&
-            <RowCounter>
-                {checked.length} row{checked.length > 1 && 's'} selected
-            </RowCounter>
-        }
-    </TableFooter>
-
-const CheckedTable = ({rows, getRowId, checkboxSelection, ...props}) => {
+const CheckedTable = (props) => {
+    const {rows, getRowId, checkboxSelection} = props;
     const {selected, toggleSelectedAll, toggleSelected, getIsSelected} = useCheckboxSelection({rows, getRowId});
 
     return (
         <Table
-            rows={rows}
             components={{
                 Row: CheckedRow,
                 Header: CheckedHeader,
