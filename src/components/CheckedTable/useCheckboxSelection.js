@@ -17,8 +17,11 @@ const useCheckboxSelection = ({rows, getRowId}) => {
             ? setSelected([])
             : setSelected(rows.map(getRowId));
 
+    const selectOne = (row) =>
+        setSelected([getRowId(row)]);
+
     return {
-        selected, toggleSelectedAll, toggleSelected, getIsSelected
+        selected, toggleSelectedAll, toggleSelected, getIsSelected, selectOne
     }
 }
 
