@@ -7,12 +7,10 @@ const CheckedHeader = ({isShow, toggle, isChecked, ...props}) =>
     <Header {...props}>
         {
             isShow &&
-            <Column separator={false} menu={false} width={40}>
                 <CheckBoxSelection
                     isChecked={isChecked}
                     toggle={toggle}
                 />
-            </Column>
         }
     </Header>
 
