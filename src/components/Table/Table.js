@@ -11,6 +11,8 @@ import Column from "./Main/Column";
 
 import styles from "./Table.module.scss";
 import RowCounter from "./Footer/RowCounter";
+import CheckboxSelectionWrapper from "../CheckedTable";
+import compose from "../../helpers/compose";
 
 const Table = ({
    columns = [],
@@ -73,4 +75,4 @@ const Table = ({
     )
 }
 
-export default Table;
+export default compose(CheckboxSelectionWrapper)(Table);
