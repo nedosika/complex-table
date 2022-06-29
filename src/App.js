@@ -1,10 +1,11 @@
 import React from "react";
 
 import styles from "./App.module.scss";
-import CheckedTable from "./components/CheckedTable/CheckedTable";
+
+import Table from "./components/Table";
 
 const columns = [
-    { field: 'id', headerName: 'ID', width: 90 },
+    {field: 'id', headerName: 'ID', width: 90},
     {
         field: 'firstName',
         headerName: 'First name',
@@ -30,29 +31,29 @@ const columns = [
 ];
 
 const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35, fullName: 'test' },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42, fullName: 'test' },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45, fullName: 'test' },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16, fullName: 'test' },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null, fullName: 'test' },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150, fullName: 'test' },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44, fullName: 'test' },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36, fullName: 'test' },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65, fullName: 'test' },
+    {id: 1, lastName: 'Snow', firstName: 'Jon', age: 35, fullName: 'test'},
+    {id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42, fullName: 'test'},
+    {id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45, fullName: 'test'},
+    {id: 4, lastName: 'Stark', firstName: 'Arya', age: 16, fullName: 'test'},
+    {id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null, fullName: 'test'},
+    {id: 6, lastName: 'Melisandre', firstName: null, age: 150, fullName: 'test'},
+    {id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44, fullName: 'test'},
+    {id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36, fullName: 'test'},
+    {id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65, fullName: 'test'},
 ];
 
 function App() {
-  return (
-    <div className={styles.root}>
-      <CheckedTable
-          columns={columns}
-          rows={rows}
-          checkboxSelection={true}
-          pagination
-          getRowId={(row) => row.id}
-      />
-    </div>
-  );
+    return (
+        <div className={styles.root}>
+            <Table
+                columns={columns}
+                rows={rows}
+                checkboxSelection={true}
+                pagination
+                getRowId={(row) => row.id}
+            />
+        </div>
+    );
 }
 
 export default App;
