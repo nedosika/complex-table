@@ -3,9 +3,9 @@ import styles from "./CheckBoxSelection.module.scss";
 
 const CheckBoxSelection = ({isChecked, toggle}) => {
     return (
-        <div className={styles.root}>
+        <div className={styles.root} onClick={toggle}>
             <span>
-                <input type="checkbox" checked={isChecked} onChange={toggle}/>
+                <input type="checkbox" checked={isChecked}/>
             </span>
         </div>
     );

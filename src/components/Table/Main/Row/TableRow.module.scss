@@ -8,7 +8,9 @@
   display: flex;
 
   border-bottom: 1px solid rgb(224, 224, 224);
-
-  padding: 0 10px;
   box-sizing: border-box;
+
+  &:hover{
+    background-color: rgba(0, 0, 0, 0.04);
+  }
 }

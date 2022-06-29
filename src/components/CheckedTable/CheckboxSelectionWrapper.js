@@ -6,7 +6,7 @@ import useCheckboxSelection from "./useCheckboxSelection";
 
 const CheckboxSelectionWrapper = (WrappedComponent) => (props) => {
     const {rows, getRowId, checkboxSelection} = props;
-    const {selected, toggleSelectedAll, toggleSelected, getIsSelected} =
+    const {selected, toggleSelectedAll, toggleSelected, getIsSelected, selectOne} =
         useCheckboxSelection({rows, getRowId});
 
     return <WrappedComponent
@@ -20,7 +20,8 @@ const CheckboxSelectionWrapper = (WrappedComponent) => (props) => {
             Row: {
                 isShow: checkboxSelection,
                 isChecked: getIsSelected,
-                toggle: toggleSelected
+                toggle: toggleSelected,
+                selectOne
             },
             Header: {
                 isShow: checkboxSelection,
