@@ -4,15 +4,16 @@ import TableMain from "./Main";
 import TableFooter from "./Footer";
 import TableCell from "./Main/Cell";
 import TableToolbar from "./Toolbar";
-import Title from "./Main/Title";
 import TableRow from "./Main/Row";
 import TableHeader from "./Main/Header";
-import Column from "./Main/Column";
+import TableColumn from "./Main/Column";
 
 import styles from "./Table.module.scss";
 import RowCounter from "./Footer/RowCounter";
 import CheckboxSelectionWrapper from "../CheckedTable";
 import compose from "../../helpers/compose";
+import SortedWrapper from "../SortedTable/SortedWrapper";
+import Title from "./Main/Column/Title";
 
 const Table = ({
    columns = [],
@@ -27,14 +28,16 @@ const Table = ({
         Main,
         Footer,
         Row,
-        Cell
+        Cell,
+        Column
     } = Object.assign({
         Toolbar: TableToolbar,
         Header: TableHeader,
         Main: TableMain,
         Footer: TableFooter,
         Row: TableRow,
-        Cell: TableCell
+        Cell: TableCell,
+        Column: TableColumn,
     }, components)
 
     return (
@@ -59,7 +62,7 @@ const Table = ({
                         items={columns}
                         renderItem={({headerName, width}) =>
                             <Column width={width}>
-                                <Title>{headerName}</Title>
+                                <Title content={headerName}/>
                             </Column>
                         }
                         {...componentsProps?.Header}
@@ -75,4 +78,4 @@ const Table = ({
     )
 }
 
-export default compose(CheckboxSelectionWrapper)(Table);
+export default compose(CheckboxSelectionWrapper, SortedWrapper)(Table);

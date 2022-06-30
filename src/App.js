@@ -5,7 +5,7 @@ import styles from "./App.module.scss";
 import Table from "./components/Table";
 
 const columns = [
-    {field: 'id', headerName: 'ID', width: 105},
+    {field: 'id', headerName: 'ID', width: 105, sortable: false},
     {
         field: 'firstName',
         headerName: 'First name',
