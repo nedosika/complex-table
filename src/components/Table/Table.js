@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import TableMain from "./Main";
 import TableFooter from "./Footer";

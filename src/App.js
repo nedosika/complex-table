@@ -1,11 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 
 import styles from "./App.module.scss";
 
 import Table from "./components/Table";
 
 const columns = [
-    {field: 'id', headerName: 'ID', width: 105, sortable: false},
+    {field: 'id', headerName: 'ID', width: 105},
     {
         field: 'firstName',
         headerName: 'First name',
@@ -43,11 +43,16 @@ const rows = [
 ];
 
 function App() {
+    const [tableRows, setRows] = useState(rows);
+    const [tableColumns, setColumns] = useState(columns)
+
     return (
         <div className={styles.root}>
             <Table
-                columns={columns}
-                rows={rows}
+                columns={tableColumns}
+                rows={tableRows}
+                setRows={setRows}
+                setColumns={setColumns}
                 checkboxSelection={true}
                 pagination
                 getRowId={(row) => row.id}
