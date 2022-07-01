@@ -43,16 +43,11 @@ const rows = [
 ];
 
 function App() {
-    const [tableRows, setRows] = useState(rows);
-    const [tableColumns, setColumns] = useState(columns)
-
     return (
         <div className={styles.root}>
             <Table
-                columns={tableColumns}
-                rows={tableRows}
-                setRows={setRows}
-                setColumns={setColumns}
+                columns={columns}
+                rows={rows}
                 checkboxSelection={true}
                 pagination
                 getRowId={(row) => row.id}
