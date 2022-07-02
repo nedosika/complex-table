@@ -49,7 +49,7 @@ const SortedWrapper = (Table) => ({componentsProps, ...props}) => {
                 renderItem: ({field, headerName, width, sortable = true}) =>
                     <TableColumn width={width}>
                         <SortTitle content={headerName} sortable={sortable} toggle={toggle(field)}
-                                   direction={sort.field === field ? sort.direction : SORT_DIRECTIONS.DOWN}/>
+                                   direction={sort.field === field ? sort.direction : SORT_DIRECTIONS.NONE}/>
                     </TableColumn>
             },
             Main: {
