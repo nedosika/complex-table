@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./Sort.module.scss";
-import {SORT_DIRECTIONS} from "../SortedWrapper";
+import {SORT_DIRECTIONS} from "../useSorting";
 
 const Sort = ({direction}) =>
         <div className={styles.root}>

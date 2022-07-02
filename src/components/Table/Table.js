@@ -7,13 +7,11 @@ import TableToolbar from "./Toolbar";
 import TableRow from "./Main/Row";
 import TableHeader from "./Main/Header";
 import TableColumn from "./Main/Column";
+import RowCounter from "./Footer/RowCounter";
+import Title from "./Main/Column/Title";
 
 import styles from "./Table.module.scss";
-import RowCounter from "./Footer/RowCounter";
-import CheckboxSelectionWrapper from "../CheckedTable";
-import compose from "../../helpers/compose";
-import SortedWrapper from "../SortedTable/SortedWrapper";
-import Title from "./Main/Column/Title";
+
 
 const Table = ({
    columns = [],
@@ -78,4 +76,4 @@ const Table = ({
     )
 }
 
-export default compose(CheckboxSelectionWrapper, SortedWrapper)(Table);
+export default Table;
