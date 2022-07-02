@@ -26,7 +26,8 @@ const columns = [
         field: 'fullName',
         headerName: 'Full name',
         description: 'This column has a value getter and is not sortable.',
-        width: 160
+        width: 160,
+        sortable: false
     },
 ];
 

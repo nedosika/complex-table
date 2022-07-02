@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import SortTitle from "./SortTitle";
 import TableColumn from "../Table/Main/Column";
+import Title from "../Table/Main/Column/Title";
 
 export const SORT_DIRECTIONS = {
     UP: 'up',
@@ -8,15 +9,17 @@ export const SORT_DIRECTIONS = {
     NONE: 'none'
 }
 
-const compare = (field) => (a, b) => {
-    if (a[field] < b[field]) {
-        return -1;
-    }
-    if (a[field] > b[field]) {
-        return 1;
-    }
-    return 0;
-}
+// const compare = (field) => (a, b) => {
+//     if (a[field] < b[field]) {
+//         return -1;
+//     }
+//     if (a[field] > b[field]) {
+//         return 1;
+//     }
+//     return 0;
+// }
+
+const compare = (field) => (a, b) => a[field] - b[field]
 
 const getDirection = (direction) => {
     switch (direction) {
@@ -48,8 +51,13 @@ const SortedWrapper = (Table) => ({componentsProps, ...props}) => {
                 ...componentsProps.Header,
                 renderItem: ({field, headerName, width, sortable = true}) =>
                     <TableColumn width={width}>
-                        <SortTitle content={headerName} sortable={sortable} toggle={toggle(field)}
-                                   direction={sort.field === field ? sort.direction : SORT_DIRECTIONS.NONE}/>
+                        {
+                            sortable
+                            ? <SortTitle content={headerName} toggle={toggle(field)}
+                            direction={sort.field === field ? sort.direction : SORT_DIRECTIONS.NONE}/>
+                            : <Title content={headerName}/>
+                        }
+
                     </TableColumn>
             },
             Main: {
