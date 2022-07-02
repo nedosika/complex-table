@@ -1,6 +1,10 @@
-import {useState} from "react";
+import React, {useState} from "react";
+import CheckedRow from "./CheckedRow";
+import CheckedHeader from "./CheckedHeader";
+import CheckedFooter from "./CheckedFooter";
 
-const useCheckboxSelection = ({rows, getRowId}) => {
+const useCheckboxSelection = (props) => {
+    const {rows, getRowId, checkboxSelection} = props;
     const [selected, setSelected] = useState([]);
 
     const toggleSelected = (row) =>
@@ -20,8 +24,44 @@ const useCheckboxSelection = ({rows, getRowId}) => {
     const selectOne = (row) =>
         setSelected([getRowId(row)]);
 
+    const components = {
+        ...props.components,
+        Row: CheckedRow,
+        Header: CheckedHeader,
+        Footer: CheckedFooter
+    };
+
+    const componentsProps = {
+        ...props.componentsProps,
+        Row: {
+            ...props.componentsProps?.Row,
+            isShow: checkboxSelection,
+            isChecked: getIsSelected,
+            toggle: toggleSelected,
+            selectOne
+        },
+        Header: {
+            ...props.componentsProps?.Header,
+            isShow: checkboxSelection,
+            isChecked: selected.length,
+            toggle: toggleSelectedAll,
+        },
+        Footer: {
+            ...props.componentsProps?.Footer,
+            isShow: checkboxSelection,
+            checked: selected
+        }
+    }
+
     return {
-        selected, toggleSelectedAll, toggleSelected, getIsSelected, selectOne
+        ...props,
+        selected,
+        toggleSelectedAll,
+        toggleSelected,
+        getIsSelected,
+        selectOne,
+        components,
+        componentsProps
     }
 }
 
