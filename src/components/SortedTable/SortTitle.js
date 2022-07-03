@@ -3,11 +3,11 @@ import Title from "../Table/Main/Column/Title";
 import Sort from "./Sort";
 
 const SortTitle = (props) => {
-    const {direction, toggle} = props;
+    const {direction, sortable} = props;
 
     return (
-        <Title {...props} onClick={toggle}>
-            <Sort direction={direction}/>
+        <Title {...props}>
+            {sortable && <Sort direction={direction}/>}
         </Title>
     );
 };

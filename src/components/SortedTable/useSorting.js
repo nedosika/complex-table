@@ -3,11 +3,12 @@ import {compare, getDirection, SORT_DIRECTIONS} from "../../helpers";
 
 import SortTitle from "./SortTitle";
 import TableColumn from "../Table/Main/Column";
-import Title from "../Table/Main/Column/Title";
-import Separator from "../Table/Main/Separator";
 
 const useSorting = (props) => {
-    const {rows} = props;
+    const {rows, components} = props;
+
+    const {Column} = Object.assign({Column: TableColumn}, components)
+
     const [sort, setSort] = useState({})
 
     const toggle = (sortedField) => () =>
@@ -19,15 +20,17 @@ const useSorting = (props) => {
     const componentsProps = {
         Header: {
             renderItem: ({field, headerName, width, sortable = true}) =>
-                <TableColumn width={width}>
-                    {
-                        sortable
-                            ? <SortTitle content={headerName} toggle={toggle(field)}
-                                         direction={sort.field === field ? sort.direction : SORT_DIRECTIONS.NONE}/>
-                            : <Title content={headerName}/>
+                <Column
+                    width={width}
+                    title={
+                        <SortTitle
+                            sortable={sortable}
+                            content={headerName}
+                            onClick={toggle(field)}
+                            direction={sort.field === field ? sort.direction : SORT_DIRECTIONS.NONE}
+                        />
                     }
-                    <Separator/>
-                </TableColumn>
+                />
         },
         Main: {
             items: sort.direction === SORT_DIRECTIONS.UP

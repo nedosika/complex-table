@@ -8,12 +8,11 @@ import TableRow from "./Main/Row";
 import TableHeader from "./Main/Header";
 import TableColumn from "./Main/Column";
 import RowCounter from "./Footer/RowCounter";
-import Title from "./Main/Column/Title";
+import ColumnTitle from "./Main/Column/Title";
 
 import styles from "./Table.module.scss";
-import Menu from "./Main/Menu";
-import Separator from "./Main/Separator";
-
+import TableColumnSeparator from "./Main/Separator";
+import TableHeaderMenu from "./Main/MenuButton";
 
 const Table = ({
    columns = [],
@@ -29,7 +28,10 @@ const Table = ({
         Footer,
         Row,
         Cell,
-        Column
+        Column,
+        Menu,
+        Separator,
+        Title
     } = Object.assign({
         Toolbar: TableToolbar,
         Header: TableHeader,
@@ -38,6 +40,9 @@ const Table = ({
         Row: TableRow,
         Cell: TableCell,
         Column: TableColumn,
+        Title: ColumnTitle,
+        Menu: TableHeaderMenu,
+        Separator: TableColumnSeparator
     }, components)
 
     return (
@@ -61,10 +66,13 @@ const Table = ({
                     <Header
                         items={columns}
                         renderItem={({headerName, width}) =>
-                            <Column width={width}>
-                                <Title content={headerName}/>
-                                <Separator/>
-                            </Column>
+                            <Column
+                                width={width}
+                                title={
+                                    <Title content={headerName} {...componentsProps?.Title}/>
+                                }
+                                {...componentsProps?.Column}
+                            />
                         }
                         {...componentsProps?.Header}
                     />
