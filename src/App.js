@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./App.module.scss";
 
-import Table from "./components/Table";
+import ComplexTable from "./components/ComplexTable";
 
 const columns = [
     {field: 'id', headerName: 'ID', width: 105},
@@ -26,7 +26,8 @@ const columns = [
         field: 'fullName',
         headerName: 'Full name',
         description: 'This column has a value getter and is not sortable.',
-        width: 160
+        width: 160,
+        sortable: false
     },
 ];
 
@@ -45,11 +46,10 @@ const rows = [
 function App() {
     return (
         <div className={styles.root}>
-            <Table
+            <ComplexTable
                 columns={columns}
                 rows={rows}
                 checkboxSelection={true}
-                pagination
                 getRowId={(row) => row.id}
             />
         </div>

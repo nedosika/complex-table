@@ -1,1 +1,1 @@
-export {default} from "./CheckboxSelectionWrapper";
+export {default} from "./useCheckboxSelection";
