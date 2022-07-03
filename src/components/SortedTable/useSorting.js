@@ -1,7 +1,10 @@
 import React, {useState} from "react";
-import TableColumn from "../Table/Main/Column";
+import _ from "lodash";
+
 import SortTitle from "./SortTitle";
+import TableColumn from "../Table/Main/Column";
 import Title from "../Table/Main/Column/Title";
+import Separator from "../Table/Main/Separator";
 
 export const SORT_DIRECTIONS = {
     UP: 'up',
@@ -40,32 +43,31 @@ const useSorting = (props) => {
             field: sortedField
         }));
 
-    const componentsProps = {
-        ...props.componentsProps,
-        Header: {
-            ...props.componentsProps?.Header,
-            renderItem: ({field, headerName, width, sortable = true}) =>
-                <TableColumn width={width}>
-                    {
-                        sortable
-                            ? <SortTitle content={headerName} toggle={toggle(field)}
-                                         direction={sort.field === field ? sort.direction : SORT_DIRECTIONS.NONE}/>
-                            : <Title content={headerName}/>
-                    }
-                </TableColumn>
-        },
-        Main: {
-            ...props.componentsProps?.Main,
-            items: sort.direction === SORT_DIRECTIONS.UP
-                ? [...rows].sort(compare(sort?.field)).reverse()
-                : [...rows].sort(compare(sort?.field))
+    const overriddenProps = _.defaultsDeep({
+        componentsProps: {
+            Header: {
+                renderItem: ({field, headerName, width, sortable = true}) =>
+                    <TableColumn width={width}>
+                        {
+                            sortable
+                                ? <SortTitle content={headerName} toggle={toggle(field)}
+                                             direction={sort.field === field ? sort.direction : SORT_DIRECTIONS.NONE}/>
+                                : <Title content={headerName}/>
+                        }
+                        <Separator/>
+                    </TableColumn>
+            },
+            Main: {
+                items: sort.direction === SORT_DIRECTIONS.UP
+                    ? [...rows].sort(compare(sort?.field)).reverse()
+                    : [...rows].sort(compare(sort?.field))
+            }
         }
-    }
+    }, props);
 
     return {
-        ...props,
+        ...overriddenProps,
         toggle,
-        componentsProps,
     }
 }
 

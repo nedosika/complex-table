@@ -11,6 +11,8 @@ import RowCounter from "./Footer/RowCounter";
 import Title from "./Main/Column/Title";
 
 import styles from "./Table.module.scss";
+import Menu from "./Main/Menu";
+import Separator from "./Main/Separator";
 
 
 const Table = ({
@@ -61,6 +63,7 @@ const Table = ({
                         renderItem={({headerName, width}) =>
                             <Column width={width}>
                                 <Title content={headerName}/>
+                                <Separator/>
                             </Column>
                         }
                         {...componentsProps?.Header}

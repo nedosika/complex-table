@@ -1,11 +1,8 @@
 import React from 'react';
 
-import Menu from "../Menu";
-import Separator from "../Separator";
-
 import styles from "./TableColumn.module.scss";
 
-const TableColumn = ({children, menu = true, separator = true, width = 50}) => {
+const TableColumn = ({children, width = 50}) => {
     return (
         <div
             className={styles.root}
@@ -15,8 +12,6 @@ const TableColumn = ({children, menu = true, separator = true, width = 50}) => {
             }}
         >
             {children}
-            {menu && <Menu/>}
-            {separator && <Separator/>}
         </div>
     );
 };
