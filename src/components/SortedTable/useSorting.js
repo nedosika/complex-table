@@ -3,11 +3,19 @@ import {compare, getDirection, SORT_DIRECTIONS} from "../../helpers";
 
 import SortTitle from "./SortTitle";
 import TableColumn from "../Table/Main/Column";
+import TableHeader from "../Table/Main/Header";
+import TableMain from "../Table/Main";
+import TableRow from "../Table/Main/Row";
 
 const useSorting = (props) => {
-    const {rows, components} = props;
+    const {rows} = props;
 
-    const {Column} = Object.assign({Column: TableColumn}, components)
+    const {Column, Header, Main} = Object.assign({
+        Column: TableColumn,
+        Header: TableHeader,
+        Main: TableMain,
+        Row: TableRow
+    }, props.components)
 
     const [sort, setSort] = useState({})
 
@@ -17,30 +25,35 @@ const useSorting = (props) => {
             field: sortedField
         }));
 
-    const componentsProps = {
-        Header: {
-            renderItem: ({field, headerName, width, sortable = true}) =>
-                <Column
-                    width={width}
-                    title={
-                        <SortTitle
-                            sortable={sortable}
-                            content={headerName}
-                            onClick={toggle(field)}
-                            direction={sort.field === field ? sort.direction : SORT_DIRECTIONS.NONE}
-                        />
-                    }
-                />
-        },
-        Main: {
-            items: sort.direction === SORT_DIRECTIONS.UP
-                ? [...rows].sort(compare(sort?.field)).reverse()
-                : [...rows].sort(compare(sort?.field))
-        }
+    const components = {
+        Header: (props) =>
+            <Header
+                {...props}
+                renderItem={({field, headerName, width, sortable = true}) =>
+                    <Column
+                        width={width}
+                        title={
+                            <SortTitle
+                                sortable={sortable}
+                                content={headerName}
+                                onClick={toggle(field)}
+                                direction={sort.field === field ? sort.direction : SORT_DIRECTIONS.NONE}
+                            />
+                        }
+                    />
+                }
+            />,
+        Main: (props) =>
+            <Main
+                {...props}
+                items={sort.direction === SORT_DIRECTIONS.UP
+                    ? [...rows].sort(compare(sort?.field)).reverse()
+                    : [...rows].sort(compare(sort?.field))}
+            />
     }
 
     return {
-        componentsProps,
+        components,
         toggle,
     }
 }

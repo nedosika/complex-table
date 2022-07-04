@@ -2,10 +2,10 @@ import React from 'react';
 import Header from "../Table/Main/Header/TableHeader";
 import CheckBoxSelection from "./CheckBoxSelection";
 
-const CheckedHeader = ({isShow, toggle, isChecked, ...props}) =>
+const CheckedHeader = ({checkboxSelection, toggle, isChecked, ...props}) =>
     <Header {...props}>
         {
-            isShow &&
+            checkboxSelection &&
                 <CheckBoxSelection
                     isChecked={isChecked}
                     toggle={toggle}

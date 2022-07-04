@@ -1,54 +1,14 @@
 import React from 'react';
 
-import TableMain from "./Main";
-import TableFooter from "./Footer";
-import TableCell from "./Main/Cell";
-import TableToolbar from "./Toolbar";
-import TableRow from "./Main/Row";
-import TableHeader from "./Main/Header";
-import TableColumn from "./Main/Column";
-import RowCounter from "./Footer/RowCounter";
-import ColumnTitle from "./Main/Column/Title";
-
 import styles from "./Table.module.scss";
-import TableColumnSeparator from "./Main/Separator";
-import TableHeaderMenu from "./Main/MenuButton";
+import Title from "./Main/Column/Title";
 
-const Table = ({
-   columns = [],
-   rows = [],
-   components,
-   componentsProps
-}) => {
-
-    const {
-        Toolbar,
-        Header,
-        Main,
-        Footer,
-        Row,
-        Cell,
-        Column,
-        Menu,
-        Separator,
-        Title
-    } = Object.assign({
-        Toolbar: TableToolbar,
-        Header: TableHeader,
-        Main: TableMain,
-        Footer: TableFooter,
-        Row: TableRow,
-        Cell: TableCell,
-        Column: TableColumn,
-        Title: ColumnTitle,
-        Menu: TableHeaderMenu,
-        Separator: TableColumnSeparator
-    }, components)
+const Table = ({rows, columns, components: {Toolbar, Main, Footer, Row, Cell, Header, Column, RowCounter}}) => {
 
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>
-                <Toolbar {...componentsProps?.Toolbar}/>
+                <Toolbar/>
                 <Main
                     items={rows}
                     renderItem={(item) =>
@@ -56,28 +16,23 @@ const Table = ({
                             row={item}
                             items={columns}
                             renderItem={(cell) =>
-                                <Cell width={cell.width} {...componentsProps?.Cell}>{item[cell.field]}</Cell>
+                                <Cell width={cell.width}>{item[cell.field]}</Cell>
                             }
-                            {...componentsProps?.Row}
                         />
                     }
-                    {...componentsProps?.Main}
-                >
-                    <Header
-                        items={columns}
-                        renderItem={({headerName, width}) =>
-                            <Column
-                                width={width}
-                                title={
-                                    <Title content={headerName} {...componentsProps?.Title}/>
-                                }
-                                {...componentsProps?.Column}
-                            />
-                        }
-                        {...componentsProps?.Header}
-                    />
-                </Main>
-                <Footer {...componentsProps?.Footer}>
+                    header={
+                        <Header
+                            renderItem={({headerName, width}) =>
+                                <Column
+                                    width={width}
+                                    title={<Title content={headerName}/>}
+                                />
+                            }
+                            items={columns}
+                        />
+                    }
+                />,
+                <Footer>
                     <RowCounter>
                         {rows.length} row{rows.length > 1 && 's'}
                     </RowCounter>
