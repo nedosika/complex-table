@@ -1,11 +1,10 @@
 import React, {useState} from "react";
 
-import CheckedRow from "./CheckedRow";
-import CheckedHeader from "./CheckedHeader";
-import CheckedFooter from "./CheckedFooter";
+import CheckBoxSelection from "./CheckBoxSelection";
 
 const useCheckboxSelection = (props) => {
-    const {rows, columns, getRowId, checkboxSelection} = props;
+    console.log('checkbox')
+    const {rows, getRowId, checkboxSelection, components: {Header, Footer, Row, RowCounter}} = props;
     const [selected, setSelected] = useState([]);
 
     const toggleSelected = (row) =>
@@ -25,33 +24,36 @@ const useCheckboxSelection = (props) => {
     const selectOne = (row) =>
         setSelected([getRowId(row)]);
 
-    const components = {
-        Row: (props) =>
-            <CheckedRow
-                {...props}
-                toggle={toggleSelected}
-                isChecked={getIsSelected}
-                isShow={checkboxSelection}
-                selectOne={selectOne}
-            />,
-        Header: (props) =>
-            <CheckedHeader
-                {...props}
-                checkboxSelection={checkboxSelection}
-                isChecked={selected.length}
-                toggle={toggleSelectedAll}
-            />,
-        Footer: CheckedFooter
-    }
-
-    return {
-        components,
-        selected,
-        toggleSelectedAll,
-        toggleSelected,
-        getIsSelected,
-        selectOne,
-    }
+    return checkboxSelection ? {
+        components: {
+            Row: (props) =>
+                <Row
+                    {...props}
+                    sx={{
+                        backgroundColor: getIsSelected(props.row) && 'rgba(25, 118, 210, 0.08)'
+                    }}
+                    onClick={() => selectOne(props.row)}
+                >
+                    <CheckBoxSelection isChecked={getIsSelected(props.row)} toggle={(event) => {
+                        event.stopPropagation()
+                        toggleSelected(props.row)
+                    }}/>
+                </Row>,
+            Header: (props) =>
+                <Header {...props}>
+                    <CheckBoxSelection
+                        isChecked={selected.length}
+                        toggle={toggleSelectedAll}
+                    />
+                </Header>,
+            Footer: () =>
+                <Footer>
+                    <RowCounter>
+                        {selected.length} row{selected.length > 1 && 's'} selected
+                    </RowCounter>
+                </Footer>
+        }
+    } : {}
 }
 
 export default useCheckboxSelection;

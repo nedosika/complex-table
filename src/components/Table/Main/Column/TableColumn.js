@@ -1,22 +1,19 @@
 import React from 'react';
 
 import styles from "./TableColumn.module.scss";
-import Separator from "../Separator";
-import Menu from "../MenuButton";
 
-const TableColumn = ({children, width = 50, title, separator = <Separator/>, menu = <Menu/>}) => {
+const TableColumn = ({children, column, renderTitle, renderSeparator}) => {
     return (
         <div
             className={styles.root}
             style={{
-                minWidth: width,
-                maxWidth: width
+                minWidth: column.width,
+                maxWidth: column.width
             }}
         >
-            {title}
+            {renderTitle(column.headerName)}
             {children}
-            {menu}
-            {separator}
+            {renderSeparator()}
         </div>
     );
 };

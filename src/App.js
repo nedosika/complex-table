@@ -9,7 +9,8 @@ const columns = [
     {
         field: 'firstName',
         headerName: 'First name',
-        width: 200
+        width: 200,
+        sortable: false
     },
     {
         field: 'lastName',

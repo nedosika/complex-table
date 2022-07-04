@@ -1,9 +1,23 @@
 import React from 'react';
 
 import styles from "./Table.module.scss";
-import Title from "./Main/Column/Title";
 
-const Table = ({rows, columns, components: {Toolbar, Main, Footer, Row, Cell, Header, Column, RowCounter}}) => {
+const Table = ({
+                   rows,
+                   columns,
+                   components: {
+                       Toolbar,
+                       Main,
+                       Footer,
+                       Row,
+                       Cell,
+                       Header,
+                       Column,
+                       ColumnTitle,
+                       ColumnSeparator,
+                       RowCounter
+                   }
+               }) => {
 
     return (
         <div className={styles.root}>
@@ -22,16 +36,17 @@ const Table = ({rows, columns, components: {Toolbar, Main, Footer, Row, Cell, He
                     }
                     header={
                         <Header
-                            renderItem={({headerName, width}) =>
+                            renderItem={(item) =>
                                 <Column
-                                    width={width}
-                                    title={<Title content={headerName}/>}
+                                    column={item}
+                                    renderTitle={(title) => <ColumnTitle renderContent={title}/>}
+                                    renderSeparator={ColumnSeparator}
                                 />
                             }
                             items={columns}
                         />
                     }
-                />,
+                />
                 <Footer>
                     <RowCounter>
                         {rows.length} row{rows.length > 1 && 's'}

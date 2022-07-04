@@ -4,8 +4,7 @@ import CheckBoxSelection from "./CheckBoxSelection";
 import TableCell from "../Table/Main/Cell";
 
 const CheckedRow = ({isChecked, toggle, selectOne, isShow, row, ...props}) =>
-        <Row
-            {...props}
+        <Row {...props}
             sx={
                 isChecked(row) &&
                 {
@@ -17,13 +16,10 @@ const CheckedRow = ({isChecked, toggle, selectOne, isShow, row, ...props}) =>
             }
             onClick={() => selectOne(row)}
         >
-            {
-                isShow &&
                 <CheckBoxSelection isChecked={isChecked(row)} toggle={(event) => {
                     event.stopPropagation()
                     toggle(row)
                 }}/>
-            }
         </Row>
 
 export default CheckedRow;
