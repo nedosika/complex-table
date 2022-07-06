@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 
-import CheckBoxSelection from "./CheckBoxSelection";
+import CheckBox from "./CheckBox";
 
-const useCheckboxSelection = (props) => {
+const CheckBoxSelection = (props) => {
     console.log('checkbox')
     const {rows, getRowId, checkboxSelection, components: {Header, Footer, Row, RowCounter}} = props;
     const [selected, setSelected] = useState([]);
@@ -24,10 +24,9 @@ const useCheckboxSelection = (props) => {
     const selectOne = (row) =>
         setSelected([getRowId(row)]);
 
-
     const CheckBoxHeader = (props) =>
         <Header {...props}>
-            <CheckBoxSelection
+            <CheckBox
                 isChecked={selected.length}
                 toggle={toggleSelectedAll}
             />
@@ -41,7 +40,7 @@ const useCheckboxSelection = (props) => {
             }}
             onClick={() => selectOne(props.row)}
         >
-            <CheckBoxSelection isChecked={getIsSelected(props.row)} toggle={(event) => {
+            <CheckBox isChecked={getIsSelected(props.row)} toggle={(event) => {
                 event.stopPropagation()
                 toggleSelected(props.row)
             }}/>
@@ -64,4 +63,4 @@ const useCheckboxSelection = (props) => {
     } : {}
 }
 
-export default useCheckboxSelection;
+export default CheckBoxSelection;

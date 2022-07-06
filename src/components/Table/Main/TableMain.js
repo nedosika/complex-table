@@ -1,26 +1,25 @@
 import React from 'react';
 
 import styles from "./TableMain.module.scss";
+import {useTableProps} from "../../../contexts/ComplexTable/ComplexTable";
 
-const TableMain = ({rows = [], columns = [], getRowId, components, componentsProps = {}}) => {
-    const {Header, Row, Cell, ColumnTitle, ColumnMenu, Column, ColumnResizeIcon} = components;
-    const {Header: headerProps, Row: rowProps, Cell: cellProps, ColumnTitle: titleProps, Column: columnProps} = componentsProps;
+const TableMain = () => {
+    const {
+        rows,
+        getRowId,
+        components: {
+            Row,
+            Header,
+        }
+    } = useTableProps();
+
     return (
         <div className={styles.root}>
-            <Header
-                {...headerProps}
-                columns={columns}
-                components={{ColumnTitle, ColumnMenu, Column, ColumnResizeIcon}}
-                componentsProps={{ColumnTitle: titleProps, Column: columnProps}}
-            />
+            <Header/>
             {
                 rows.map((row) =>
                     <Row
-                        {...rowProps}
-                        columns={columns}
                         row={row}
-                        components={{Cell}}
-                        componentsProps={{Cell: cellProps}}
                         key={getRowId(row)}
                     />
                 )

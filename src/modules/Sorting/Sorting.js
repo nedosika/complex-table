@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import {compare, getDirection, SORT_DIRECTIONS} from "../../helpers";
-import SortBtn from "./Sort";
+import Button from "./Button";
 
-const useSorting = (props) => {
+const Sorting = (props) => {
     console.log('sorting')
-    const {rows, components: {Column, Main}} = props;
+    const {rows, components: {Column}} = props;
 
     const [sort, setSort] = useState({})
 
@@ -19,25 +19,19 @@ const useSorting = (props) => {
 
         return sortable
             ? <Column {...props} onClick={toggle(field)}>
-                <SortBtn direction={sort.field === field ? sort.direction : SORT_DIRECTIONS.NONE}/>
+                <Button direction={sort.field === field ? sort.direction : SORT_DIRECTIONS.NONE}/>
             </Column>
             : <Column {...props}/>
     }
 
-    const SortMain = (props) =>
-        <Main
-            {...props}
-            rows={sort.direction === SORT_DIRECTIONS.UP
-                ? [...rows].sort(compare(sort?.field)).reverse()
-                : [...rows].sort(compare(sort?.field))}
-        />
-
     return {
+        rows: sort.direction === SORT_DIRECTIONS.UP
+            ? [...rows].sort(compare(sort?.field)).reverse()
+            : [...rows].sort(compare(sort?.field)),
         components: {
             Column: SortColumn,
-            Main: SortMain
         }
     }
 }
 
-export default useSorting;
+export default Sorting;

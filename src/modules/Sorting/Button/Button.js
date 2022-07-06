@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from "./Sort.module.scss";
+import styles from "./Button.module.scss";
 import {SORT_DIRECTIONS} from "../../../helpers";
 
-const Sort = ({direction}) =>
+const Button = ({direction}) =>
         <div className={styles.root}>
             <button type="button" title="SortedWrapper">
                 <svg focusable="false" viewBox="0 0 24 24" style={{opacity: direction !== SORT_DIRECTIONS.NONE && 1}}>
@@ -16,4 +16,4 @@ const Sort = ({direction}) =>
             </button>
         </div>
 
-export default Sort;
+export default Button;

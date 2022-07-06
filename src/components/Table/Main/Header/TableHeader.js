@@ -1,24 +1,23 @@
 import React from 'react';
 
 import styles from "./TableHeader.module.scss";
+import {useTableProps} from "../../../../contexts/ComplexTable/ComplexTable";
 
-const TableHeader = ({children, columns = [], components, componentsProps}) => {
-    const {ColumnTitle, ColumnMenu, Column, ColumnResizeIcon} = components;
-    const {ColumnTitle: titleProps, Column: columnProps} = componentsProps;
+const TableHeader = ({children}) => {
+    const {
+        columns,
+        components: {
+            Column
+        }
+    } = useTableProps();
 
     return (
         <div className={styles.root}>
             {children}
             {
                 columns.map((column) =>
-                    <Column
-                        {...columnProps}
-                        column={column}
-                        components={{ColumnTitle, ColumnMenu, ColumnResizeIcon}}
-                        componentsProps={{ColumnTitle: titleProps}}
-                        key={column.field}
-                    />
-                )
+                    <Column column={column} key={column.field}/>
+                    )
             }
         </div>
     );

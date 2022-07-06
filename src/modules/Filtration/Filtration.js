@@ -2,7 +2,7 @@ import React from 'react';
 
 import filterIcon from "./filterIcon.svg";
 
-const useFiltering = (props) => {
+const Filtration = (props) => {
     console.log('filter')
     const {components: {ColumnMenu}} = props;
 
@@ -16,4 +16,4 @@ const useFiltering = (props) => {
     }
 };
 
-export default useFiltering;
+export default Filtration;

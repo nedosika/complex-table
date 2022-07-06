@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./App.module.scss";
 
-import ComplexTable from "./components/ComplexTable";
+import ComplexTable from "./contexts/ComplexTable";
 
 const columns = [
     {field: 'id', headerName: 'ID', width: 105},
