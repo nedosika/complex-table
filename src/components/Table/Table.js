@@ -5,6 +5,7 @@ import styles from "./Table.module.scss";
 const Table = ({
                    rows,
                    columns,
+                   getRowId,
                    components: {
                        Toolbar,
                        Main,
@@ -14,7 +15,8 @@ const Table = ({
                        Header,
                        Column,
                        ColumnTitle,
-                       ColumnSeparator,
+                       ColumnMenu,
+                       ColumnResizeIcon,
                        RowCounter
                    }
                }) => {
@@ -24,28 +26,18 @@ const Table = ({
             <div className={styles.wrapper}>
                 <Toolbar/>
                 <Main
-                    items={rows}
-                    renderItem={(item) =>
-                        <Row
-                            row={item}
-                            items={columns}
-                            renderItem={(cell) =>
-                                <Cell width={cell.width}>{item[cell.field]}</Cell>
-                            }
-                        />
-                    }
-                    header={
-                        <Header
-                            renderItem={(item) =>
-                                <Column
-                                    column={item}
-                                    renderTitle={(title) => <ColumnTitle renderContent={title}/>}
-                                    renderSeparator={ColumnSeparator}
-                                />
-                            }
-                            items={columns}
-                        />
-                    }
+                    rows={rows}
+                    columns={columns}
+                    getRowId={getRowId}
+                    components={{
+                        Header,
+                        Column,
+                        ColumnTitle,
+                        ColumnMenu,
+                        ColumnResizeIcon,
+                        Row,
+                        Cell
+                    }}
                 />
                 <Footer>
                     <RowCounter>

@@ -24,34 +24,42 @@ const useCheckboxSelection = (props) => {
     const selectOne = (row) =>
         setSelected([getRowId(row)]);
 
+
+    const CheckBoxHeader = (props) =>
+        <Header {...props}>
+            <CheckBoxSelection
+                isChecked={selected.length}
+                toggle={toggleSelectedAll}
+            />
+        </Header>
+
+    const CheckBoxRow = (props) =>
+        <Row
+            {...props}
+            sx={{
+                backgroundColor: getIsSelected(props.row) && 'rgba(25, 118, 210, 0.08)'
+            }}
+            onClick={() => selectOne(props.row)}
+        >
+            <CheckBoxSelection isChecked={getIsSelected(props.row)} toggle={(event) => {
+                event.stopPropagation()
+                toggleSelected(props.row)
+            }}/>
+        </Row>
+
+
+    const CheckBoxFooter = (props) =>
+        <Footer {...props}>
+            <RowCounter>
+                {selected.length} row{selected.length > 1 && 's'} selected
+            </RowCounter>
+        </Footer>
+
     return checkboxSelection ? {
         components: {
-            Row: (props) =>
-                <Row
-                    {...props}
-                    sx={{
-                        backgroundColor: getIsSelected(props.row) && 'rgba(25, 118, 210, 0.08)'
-                    }}
-                    onClick={() => selectOne(props.row)}
-                >
-                    <CheckBoxSelection isChecked={getIsSelected(props.row)} toggle={(event) => {
-                        event.stopPropagation()
-                        toggleSelected(props.row)
-                    }}/>
-                </Row>,
-            Header: (props) =>
-                <Header {...props}>
-                    <CheckBoxSelection
-                        isChecked={selected.length}
-                        toggle={toggleSelectedAll}
-                    />
-                </Header>,
-            Footer: () =>
-                <Footer>
-                    <RowCounter>
-                        {selected.length} row{selected.length > 1 && 's'} selected
-                    </RowCounter>
-                </Footer>
+            Header: CheckBoxHeader,
+            Row: CheckBoxRow,
+            Footer: CheckBoxFooter
         }
     } : {}
 }

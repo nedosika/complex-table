@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from "./Separator.module.scss";
+import styles from "./ColumnResizeIcon.module.scss";
 
-const Separator = () => {
+const ColumnResizeIcon = () => {
     return (
         <div className={styles.root}>
             <svg focusable="false" viewBox="0 0 24 24">
@@ -11,4 +11,4 @@ const Separator = () => {
     );
 };
 
-export default Separator;
+export default ColumnResizeIcon;

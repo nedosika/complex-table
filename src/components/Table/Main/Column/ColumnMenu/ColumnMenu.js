@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from "./MenuButton.module.scss";
+import styles from "./ColumnMenu.module.scss";
 import menuIcon from "./menu.svg"
 
-const Menu = ({icon}) => {
+const ColumnMenu = ({icon}) => {
     return (
         <div className={styles.root}>
             <button type="button" title="Filter">
@@ -13,4 +13,4 @@ const Menu = ({icon}) => {
     );
 };
 
-export default Menu;
+export default ColumnMenu;

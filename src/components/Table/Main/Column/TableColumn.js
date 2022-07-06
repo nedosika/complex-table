@@ -2,18 +2,27 @@ import React from 'react';
 
 import styles from "./TableColumn.module.scss";
 
-const TableColumn = ({children, column, renderTitle, renderSeparator}) => {
+const TableColumn = ({children, column: {width, headerName}, components, componentsProps, ...props}) => {
+    const {ColumnTitle, ColumnMenu, ColumnResizeIcon} = components;
+    const {ColumnTitle: titleProps} = componentsProps;
+
     return (
         <div
+            {...props}
             className={styles.root}
             style={{
-                minWidth: column.width,
-                maxWidth: column.width
+                minWidth: width,
+                maxWidth: width
             }}
         >
-            {renderTitle(column.headerName)}
-            {children}
-            {renderSeparator()}
+            <ColumnTitle {...titleProps}>
+                <div className={styles.columnName}>
+                    {headerName}
+                </div>
+                {children}
+            </ColumnTitle>
+            <ColumnMenu/>
+            <ColumnResizeIcon/>
         </div>
     );
 };

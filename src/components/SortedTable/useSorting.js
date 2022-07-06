@@ -4,7 +4,7 @@ import SortBtn from "./Sort";
 
 const useSorting = (props) => {
     console.log('sorting')
-    const {rows, components: {Column, Header, Main, ColumnSeparator, ColumnTitle}} = props;
+    const {rows, components: {Column, Main}} = props;
 
     const [sort, setSort] = useState({})
 
@@ -14,37 +14,28 @@ const useSorting = (props) => {
             field: sortedField
         }));
 
+    const SortColumn = (props) => {
+        const {column: {field, sortable = true}} = props;
+
+        return sortable
+            ? <Column {...props} onClick={toggle(field)}>
+                <SortBtn direction={sort.field === field ? sort.direction : SORT_DIRECTIONS.NONE}/>
+            </Column>
+            : <Column {...props}/>
+    }
+
+    const SortMain = (props) =>
+        <Main
+            {...props}
+            rows={sort.direction === SORT_DIRECTIONS.UP
+                ? [...rows].sort(compare(sort?.field)).reverse()
+                : [...rows].sort(compare(sort?.field))}
+        />
+
     return {
         components: {
-            Header: (props) =>
-                <Header
-                    {...props}
-                    renderItem={(item) => {
-                        const {field, sortable = true} = item;
-
-                        return <Column
-                            column={item}
-                            renderTitle={(title) => sortable
-                                ?
-                                <ColumnTitle onClick={toggle(field)} renderContent={title}>
-                                    <SortBtn
-                                        direction={sort.field === item.field ? sort.direction : SORT_DIRECTIONS.NONE}
-                                    />
-                                </ColumnTitle>
-                                :
-                                <ColumnTitle renderContent={title}/>
-                            }
-                            renderSeparator={ColumnSeparator}
-                        />
-                    }}
-                />,
-            Main: (props) =>
-                <Main
-                    {...props}
-                    items={sort.direction === SORT_DIRECTIONS.UP
-                        ? [...rows].sort(compare(sort?.field)).reverse()
-                        : [...rows].sort(compare(sort?.field))}
-                />
+            Column: SortColumn,
+            Main: SortMain
         }
     }
 }
