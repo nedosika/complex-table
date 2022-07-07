@@ -1,4 +1,4 @@
-import {defaultsDeep as overrideProps} from "lodash";
+import {merge, extend, defaultsDeep} from "lodash";
 
 export const SORT_DIRECTIONS = {
     UP: 'up',
@@ -6,7 +6,8 @@ export const SORT_DIRECTIONS = {
     NONE: 'none'
 }
 
-export const compose = (...hooks) => (props) => hooks.reduce((arg, hook) => overrideProps(hook(arg), arg), props);
+export const compose = (...builders) => (...props) =>
+    builders.reduce((arg, builder) => defaultsDeep(builder(arg), arg), merge(...props));
 
 export const compare = (field) => (a, b) => {
     if (a[field] < b[field]) {

@@ -21,8 +21,9 @@ const CheckBoxSelection = (props) => {
             ? setSelected([])
             : setSelected(rows.map(getRowId));
 
-    const selectOne = (row) =>
+    const selectOne = (row) => {
         setSelected([getRowId(row)]);
+    }
 
     const CheckBoxHeader = (props) =>
         <Header {...props}>

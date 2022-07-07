@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from "./ColumnMenu.module.scss";
 
 const ColumnMenu = () => {
     return (

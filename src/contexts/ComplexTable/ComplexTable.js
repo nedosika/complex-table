@@ -1,4 +1,5 @@
 import React, {createContext, useContext} from 'react';
+import {merge, extend, defaultsDeep, defaults} from "lodash";
 
 import Table from "../../components/Table/Table";
 import Column from "../../components/Table/Main/Column";
@@ -11,15 +12,18 @@ import Cell from "../../components/Table/Main/Cell";
 import ColumnTitle from "../../components/Table/Main/Column/ColumnTitle";
 import ColumnResizeIcon from "../../components/Table/Main/Column/ColumnResizeIcon";
 import RowCounter from "../../components/Table/Footer/RowCounter";
-import ColumnMenuIcon from "../../components/Table/Main/Column/ColumnMenuIcon";
+import ColumnMenuIcon from "../../modules/ColumnMenuBuilder/ColumnMenuIcon";
 
 import {compose} from "../../helpers";
 import Sorting from "../../modules/Sorting/Sorting";
 import CheckBoxSelection from "../../modules/CheckBoxSelection/CheckBoxSelection";
 import Filtration from "../../modules/Filtration";
-import ColumnMenu from "../../modules/ColumnMenu";
+import ColumnMenuBuilder from "../../modules/ColumnMenuBuilder";
+import ColumnMenu from "../../modules/ColumnMenuBuilder/ColumnMenu";
+import ColumnFilterIcon from "../../modules/Filtration/ColumnFilterIcon";
 
-const MODULES = [ColumnMenu]
+const composeProps = (...props) =>
+    compose( CheckBoxSelection, Sorting, ColumnMenuBuilder)(...props)
 
 const TableContext = createContext({
     components: {
@@ -30,26 +34,26 @@ const TableContext = createContext({
         Row,
         Cell,
         Column,
-        ColumnMenu,
         ColumnTitle,
+        ColumnMenu,
         ColumnMenuIcon,
         ColumnResizeIcon,
         RowCounter
     }
 });
 
+export const useTableProps = () =>
+    useContext(TableContext);
+
 const ComplexTable = (props) => {
     const defaultProps = useTableProps();
 
     return (
-        <TableContext.Provider value={compose(...MODULES)({...props, ...defaultProps})}>
+        <TableContext.Provider value={composeProps(defaultProps, props)}>
             <Table/>
         </TableContext.Provider>
     )
 }
-
-export const useTableProps = () =>
-    useContext(TableContext);
 
 
 export default ComplexTable;

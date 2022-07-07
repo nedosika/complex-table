@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./App.module.scss";
 
 import ComplexTable from "./contexts/ComplexTable";
+import ColumnFilterIcon from "./modules/Filtration/ColumnFilterIcon";
 
 const columns = [
     {field: 'id', headerName: 'ID', width: 105},
@@ -52,6 +53,11 @@ function App() {
                 rows={rows}
                 checkboxSelection
                 getRowId={(row) => row.id}
+                disableColumnMenu={false}
+                disableColumnFilter={false}
+                // components={{
+                //     ColumnMenuIcon: ColumnFilterIcon
+                // }}
                 //:Todo
                 // onMenuClose={() => {console.log('Close')}}
                 // onMenuOpen={() => {console.log('Open')}}
@@ -59,8 +65,6 @@ function App() {
                 // hideFooterPagination={false}
                 // hideFooterSelectedRowCount={false}
                 // headerHeight={56}
-                // disableColumnMenu={false}
-                // disableColumnFilter={false}
                 // disableSelectionOnClick={false}
             />
         </div>
