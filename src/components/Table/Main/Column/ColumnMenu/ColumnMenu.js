@@ -1,14 +1,23 @@
 import React from 'react';
-import styles from "./ColumnMenu.module.scss";
-import menuIcon from "./menu.svg"
 
-const ColumnMenu = ({icon}) => {
+const ColumnMenu = () => {
     return (
-        <div className={styles.root}>
-            <button type="button" title="Filter">
-                <img src={icon ? icon : menuIcon} alt='menuIcon'/>
-                <span/>
-            </button>
+        <div>
+            <div>
+                <ul>
+                    <li>Unsort</li>
+                    <li>Sort by ASC<span/></li>
+                    <li>Sort by DESC<span/></li>
+                    <li>Filter<span/></li>
+                    <li>Hide<span/></li>
+                    <li>Show columns<span/></li>
+                </ul>
+                <hr/>
+                <div>
+                    <button>Apply</button>
+                    <button>Clear</button>
+                </div>
+            </div>
         </div>
     );
 };

@@ -1,13 +1,12 @@
 import React from 'react';
 
-import styles from "./TableColumn.module.scss";
+import styles from "./Column.module.scss";
 import {useTableProps} from "../../../../contexts/ComplexTable/ComplexTable";
 
-const TableColumn = ({children, column: {width, headerName}, ...props}) => {
+const Column = ({children, column: {width, headerName}, ...props}) => {
     const {
         components: {
             ColumnTitle,
-            ColumnMenu,
             ColumnResizeIcon,
         }
     } = useTableProps();
@@ -21,16 +20,11 @@ const TableColumn = ({children, column: {width, headerName}, ...props}) => {
                 maxWidth: width
             }}
         >
-            <ColumnTitle>
-                <div className={styles.columnName}>
-                    {headerName}
-                </div>
-                {children}
-            </ColumnTitle>
-            <ColumnMenu/>
+            <ColumnTitle text={headerName}/>
+            {children}
             <ColumnResizeIcon/>
         </div>
     );
 };
 
-export default TableColumn;
+export default Column;

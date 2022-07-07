@@ -14,11 +14,9 @@ const TableHeader = ({children}) => {
     return (
         <div className={styles.root}>
             {children}
-            {
-                columns.map((column) =>
-                    <Column column={column} key={column.field}/>
-                    )
-            }
+            {columns.map((column) =>
+                <Column column={column} key={column.field}/>
+            )}
         </div>
     );
 };

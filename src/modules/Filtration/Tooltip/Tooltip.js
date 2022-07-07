@@ -1,7 +1,8 @@
 import React from 'react';
 
-const Tooltip = () => {
+const Tooltip = ({isOpen}) => {
     return (
+        isOpen &&
         <div>
             <div>
                 <ul>

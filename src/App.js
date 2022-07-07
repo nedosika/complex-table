@@ -50,8 +50,18 @@ function App() {
             <ComplexTable
                 columns={columns}
                 rows={rows}
-                checkboxSelection={true}
+                checkboxSelection
                 getRowId={(row) => row.id}
+                //:Todo
+                // onMenuClose={() => {console.log('Close')}}
+                // onMenuOpen={() => {console.log('Open')}}
+                // hideFooter={false}
+                // hideFooterPagination={false}
+                // hideFooterSelectedRowCount={false}
+                // headerHeight={56}
+                // disableColumnMenu={false}
+                // disableColumnFilter={false}
+                // disableSelectionOnClick={false}
             />
         </div>
     );

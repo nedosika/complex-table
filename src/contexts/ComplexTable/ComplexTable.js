@@ -8,30 +8,32 @@ import Footer from "../../components/Table/Footer";
 import Row from "../../components/Table/Main/Row";
 import Main from "../../components/Table/Main";
 import Cell from "../../components/Table/Main/Cell";
-import ColumnTitle from "../../components/Table/Main/Column/Title";
+import ColumnTitle from "../../components/Table/Main/Column/ColumnTitle";
 import ColumnResizeIcon from "../../components/Table/Main/Column/ColumnResizeIcon";
 import RowCounter from "../../components/Table/Footer/RowCounter";
-import ColumnMenu from "../../components/Table/Main/Column/ColumnMenu";
+import ColumnMenuIcon from "../../components/Table/Main/Column/ColumnMenuIcon";
 
 import {compose} from "../../helpers";
 import Sorting from "../../modules/Sorting/Sorting";
 import CheckBoxSelection from "../../modules/CheckBoxSelection/CheckBoxSelection";
 import Filtration from "../../modules/Filtration";
+import ColumnMenu from "../../modules/ColumnMenu";
 
-const MODULES = [CheckBoxSelection, Sorting, Filtration]
+const MODULES = [ColumnMenu]
 
 const TableContext = createContext({
     components: {
+        Main,
         Toolbar,
         Header,
         Footer,
         Row,
         Cell,
         Column,
-        ColumnTitle,
         ColumnMenu,
+        ColumnTitle,
+        ColumnMenuIcon,
         ColumnResizeIcon,
-        Main,
         RowCounter
     }
 });
