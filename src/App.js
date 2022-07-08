@@ -6,7 +6,7 @@ import ComplexTable from "./contexts/ComplexTable";
 import ColumnFilterIcon from "./modules/Filtration/ColumnFilterIcon";
 
 const columns = [
-    {field: 'id', headerName: 'ID', width: 105},
+    {field: 'id', headerName: 'ID', width: 105, sortable: true},
     {
         field: 'firstName',
         headerName: 'First name',
@@ -51,7 +51,7 @@ function App() {
             <ComplexTable
                 columns={columns}
                 rows={rows}
-                checkboxSelection
+                checkboxSelection={true}
                 getRowId={(row) => row.id}
                 disableColumnMenu={false}
                 disableColumnFilter={false}
