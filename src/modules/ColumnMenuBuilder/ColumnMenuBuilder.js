@@ -3,6 +3,7 @@ import Button from "../Sorting/Button";
 import {SORT_DIRECTIONS} from "../../helpers";
 import ColumnMenuIcon from "./ColumnMenuIcon";
 import {useTableProps} from "../../contexts/ComplexTable/ComplexTable";
+import Portal from "../../components/Portal";
 
 const ColumnMenuBuilder = (props) => {
     console.log('column menu')
