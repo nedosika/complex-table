@@ -2,16 +2,18 @@ import React, {useState} from 'react';
 
 import ColumnMenu from "./ColumnMenu";
 import Modal from "../../components/Modal";
+import {getUniq} from "../../helpers";
 
 const ColumnMenuBuilder = (props) => {
     console.log('column menu')
 
-    const {components: {Column, ColumnMenu, ColumnMenuIcon, Header}, disableColumnMenu} = props;
+    const {rows, components: {Column, ColumnMenu, ColumnMenuIcon, Header}, disableColumnMenu} = props;
     const [anchorEl, setAnchorEl] = useState();
 
-    const handleToggle = (event) => {
+    const handleToggle = (event, field) => {
         event.stopPropagation();
-        setAnchorEl((prevState) => prevState ? null : {x: event.pageX, y: event.pageY});
+        setAnchorEl((prevState) =>
+            prevState ? null : {items: getUniq(rows.map((row) => row[field])), x: event.pageX, y: event.pageY});
     }
 
     const ColumnWithMenu = (props) => {
@@ -20,7 +22,7 @@ const ColumnMenuBuilder = (props) => {
         return (
             <Column {...props}>
                 {children}
-                <ColumnMenuIcon onClick={handleToggle}/>
+                <ColumnMenuIcon onClick={(event) => handleToggle(event, field)}/>
             </Column>
         )
     }
@@ -29,9 +31,12 @@ const ColumnMenuBuilder = (props) => {
         <Header {...props}>
             {props.children}
             {anchorEl &&
-            <Modal onClose={handleToggle}>
-                <ColumnMenu anchorEl={anchorEl}/>
-            </Modal>
+            <ColumnMenu
+                anchorEl={anchorEl}
+                items={anchorEl.items}
+                onClose={handleToggle}
+                renderItem={(item) => <label htmlFor='menuItem'><input id='menuItem' type='checkbox'/>{item}</label> }
+            />
             }
         </Header>
 

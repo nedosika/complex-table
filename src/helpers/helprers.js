@@ -1,4 +1,4 @@
-import {merge, extend, defaultsDeep} from "lodash";
+import {merge, uniq, defaultsDeep} from "lodash";
 
 export const SORT_DIRECTIONS = {
     UP: 'up',
@@ -29,3 +29,5 @@ export const getDirection = (direction) => {
             return SORT_DIRECTIONS.NONE
     }
 }
+
+export const getUniq = uniq;
