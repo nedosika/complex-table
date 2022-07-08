@@ -1,5 +1,4 @@
 import React, {createContext, useContext} from 'react';
-import {merge, extend, defaultsDeep, defaults} from "lodash";
 
 import Table from "../../components/Table/Table";
 import Column from "../../components/Table/Main/Column";
@@ -20,10 +19,9 @@ import CheckBoxSelection from "../../modules/CheckBoxSelection/CheckBoxSelection
 import Filtration from "../../modules/Filtration";
 import ColumnMenuBuilder from "../../modules/ColumnMenuBuilder";
 import ColumnMenu from "../../modules/ColumnMenuBuilder/ColumnMenu";
-import ColumnFilterIcon from "../../modules/Filtration/ColumnFilterIcon";
 
 const composeProps = (...props) =>
-    compose( CheckBoxSelection, Sorting, ColumnMenuBuilder)(...props)
+    compose(ColumnMenuBuilder, CheckBoxSelection, Sorting)(...props)
 
 const TableContext = createContext({
     components: {

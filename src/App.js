@@ -55,9 +55,9 @@ function App() {
                 getRowId={(row) => row.id}
                 disableColumnMenu={false}
                 disableColumnFilter={false}
-                // components={{
-                //     ColumnMenuIcon: ColumnFilterIcon
-                // }}
+                components={{
+                    //ColumnMenuIcon: ColumnFilterIcon
+                }}
                 //:Todo
                 // onMenuClose={() => {console.log('Close')}}
                 // onMenuOpen={() => {console.log('Open')}}

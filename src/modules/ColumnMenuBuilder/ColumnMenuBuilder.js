@@ -1,35 +1,44 @@
 import React, {useState} from 'react';
-import Button from "../Sorting/Button";
-import {SORT_DIRECTIONS} from "../../helpers";
-import ColumnMenuIcon from "./ColumnMenuIcon";
-import {useTableProps} from "../../contexts/ComplexTable/ComplexTable";
-import Portal from "../../components/Portal";
+
+import ColumnMenu from "./ColumnMenu";
+import Modal from "../../components/Modal";
 
 const ColumnMenuBuilder = (props) => {
     console.log('column menu')
 
-    const {components: {Column, ColumnMenuIcon}, disableColumnMenu} = props;
-    const [isOpen, setIsOpen] = useState(false);
+    const {components: {Column, ColumnMenu, ColumnMenuIcon, Header}, disableColumnMenu} = props;
+    const [anchorEl, setAnchorEl] = useState();
 
-    const MenuColumn = (props) => {
+    const handleToggle = (event) => {
+        event.stopPropagation();
+        setAnchorEl((prevState) => prevState ? null : {x: event.pageX, y: event.pageY});
+    }
+
+    const ColumnWithMenu = (props) => {
         const {children, column: {field, headerName}} = props;
-
-        const handleClick = (event) => {
-            event.stopPropagation();
-            setIsOpen(!isOpen);
-            console.log('click')
-        }
 
         return (
             <Column {...props}>
-                <ColumnMenuIcon onClick={handleClick}/>
+                {children}
+                <ColumnMenuIcon onClick={handleToggle}/>
             </Column>
         )
     }
 
+    const HeadersMenu = (props) =>
+        <Header {...props}>
+            {props.children}
+            {anchorEl &&
+            <Modal onClose={handleToggle}>
+                <ColumnMenu anchorEl={anchorEl}/>
+            </Modal>
+            }
+        </Header>
+
     return {
         components: {
-            Column: disableColumnMenu ? Column : MenuColumn,
+            Column: disableColumnMenu ? Column : ColumnWithMenu,
+            Header: HeadersMenu
         }
     }
 };

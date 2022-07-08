@@ -31,6 +31,7 @@ const CheckBoxSelection = (props) => {
                 isChecked={selected.length}
                 toggle={toggleSelectedAll}
             />
+            {props.children}
         </Header>
 
     const CheckBoxRow = (props) =>

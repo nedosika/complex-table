@@ -27,7 +27,6 @@ const Sorting = (props) => {
         )
     }
 
-
     return {
         rows: sort.direction === SORT_DIRECTIONS.UP
             ? [...rows].sort(compare(sort?.field)).reverse()

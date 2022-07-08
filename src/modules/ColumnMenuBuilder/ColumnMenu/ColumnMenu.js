@@ -1,25 +1,20 @@
 import React from 'react';
 import styles from "./ColumnMenu.module.scss";
+import Portal from "../../../components/Portal";
 
-const ColumnMenu = () => {
+const ColumnMenu = ({anchorEl}) => {
     return (
-        <div>
-            <div>
+        <Portal className={styles.root} inset={`${anchorEl.y}px auto auto ${anchorEl.x}px`}>
+            <div className={styles.wrapper}>
                 <ul>
                     <li>Unsort</li>
                     <li>Sort by ASC<span/></li>
                     <li>Sort by DESC<span/></li>
-                    <li>Filter<span/></li>
                     <li>Hide<span/></li>
                     <li>Show columns<span/></li>
                 </ul>
-                <hr/>
-                <div>
-                    <button>Apply</button>
-                    <button>Clear</button>
-                </div>
             </div>
-        </div>
+        </Portal>
     );
 };
 
