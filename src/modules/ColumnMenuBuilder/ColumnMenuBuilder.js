@@ -4,26 +4,24 @@ import ColumnMenu from "./ColumnMenu";
 import Modal from "../../components/Modal";
 import {getUniq} from "../../helpers";
 import ColumnMenuItem from "./ColumnMenuItem";
+import useMenu from "./useMenu";
+import useFilter from "./useFilter";
 
 const ColumnMenuBuilder = (props) => {
     console.log('column menu')
 
     const {rows, components: {Column, ColumnMenu, ColumnMenuIcon, Header}, disableColumnMenu} = props;
-    const [anchorEl, setAnchorEl] = useState();
 
-    const handleToggle = (event, field) => {
-        event.stopPropagation();
-        setAnchorEl((prevState) =>
-            prevState ? null : {items: getUniq(rows.map((row) => row[field])), x: event.pageX, y: event.pageY});
-    }
+    const {anchorEl, handleToggleMenu} = useMenu(rows);
+    const {filteredRows, handleChangeFilter} = useFilter(rows, anchorEl?.field);
 
     const ColumnWithMenu = (props) => {
-        const {children, column: {field, headerName}} = props;
+        const {children, column: {field}} = props;
 
         return (
             <Column {...props}>
                 {children}
-                <ColumnMenuIcon onClick={(event) => handleToggle(event, field)}/>
+                <ColumnMenuIcon onClick={(event) => handleToggleMenu(event, field)}/>
             </Column>
         )
     }
@@ -35,13 +33,14 @@ const ColumnMenuBuilder = (props) => {
             <ColumnMenu
                 anchorEl={anchorEl}
                 items={anchorEl.items}
-                onClose={handleToggle}
-                renderItem={(item) => <ColumnMenuItem toggle={() => {}}>{item}</ColumnMenuItem> }
+                onClose={handleToggleMenu}
+                renderItem={(item) => <ColumnMenuItem toggle={() => handleChangeFilter(item)}>{item}</ColumnMenuItem> }
             />
             }
         </Header>
 
     return {
+        rows: filteredRows,
         components: {
             Column: disableColumnMenu ? Column : ColumnWithMenu,
             Header: HeadersMenu
