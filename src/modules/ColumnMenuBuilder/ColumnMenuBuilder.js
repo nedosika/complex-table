@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import ColumnMenu from "./ColumnMenu";
 import Modal from "../../components/Modal";
 import {getUniq} from "../../helpers";
+import ColumnMenuItem from "./ColumnMenuItem";
 
 const ColumnMenuBuilder = (props) => {
     console.log('column menu')
@@ -35,7 +36,7 @@ const ColumnMenuBuilder = (props) => {
                 anchorEl={anchorEl}
                 items={anchorEl.items}
                 onClose={handleToggle}
-                renderItem={(item) => <label htmlFor='menuItem'><input id='menuItem' type='checkbox'/>{item}</label> }
+                renderItem={(item) => <ColumnMenuItem toggle={() => {}}>{item}</ColumnMenuItem> }
             />
             }
         </Header>
