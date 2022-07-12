@@ -56,7 +56,7 @@ function App() {
                 disableColumnMenu={false}
                 disableColumnFilter={false}
                 components={{
-                    //ColumnMenuIcon: ColumnFilterIcon
+                    ColumnMenuIcon: ColumnFilterIcon
                 }}
                 //:Todo
                 // onMenuClose={() => {console.log('Close')}}

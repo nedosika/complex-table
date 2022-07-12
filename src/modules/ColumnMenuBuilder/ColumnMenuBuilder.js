@@ -5,6 +5,7 @@ import ColumnMenu from "./ColumnMenu";
 import ColumnMenuItem from "./ColumnMenuItem";
 import useMenu from "./useMenu";
 import useFilter from "./useFilter";
+import Button from "../../components/Button";
 
 const ColumnMenuBuilder = (props) => {
     console.log('column menu')
@@ -12,11 +13,11 @@ const ColumnMenuBuilder = (props) => {
     const {rows, columns, components: {Column, ColumnMenu, ColumnMenuIcon, Header}, disableColumnMenu} = props;
 
     const {isOpen, anchorEl, toggleMenu} = useMenu(rows);
-    const {filtered, setFilter, setActiveField, activeMenuItems} = useFilter(rows, columns);
+    const {filtered, toggleFilter, updateActiveField, menuItems, applyFilter, clearFilter} = useFilter(rows, columns);
 
     const handleToggleMenu = (event, field) => {
         toggleMenu(event);
-        setActiveField(field);
+        updateActiveField(field);
     }
 
     const ColumnWithMenu = (props) => {
@@ -36,17 +37,23 @@ const ColumnMenuBuilder = (props) => {
             <ColumnMenu
                 isOpen={isOpen}
                 anchorEl={anchorEl}
-                items={activeMenuItems}
+                getKey={([key]) => key}
+                items={menuItems}
                 onClose={handleToggleMenu}
-                renderItem={({item, isChecked}) =>
+                renderItem={([item, isChecked]) =>
                     <ColumnMenuItem
                         isChecked={isChecked}
-                        toggle={() => setFilter(item)}
+                        toggle={() => toggleFilter(item)}
                     >
                         {item}
                     </ColumnMenuItem>
                 }
-            />
+            >
+                <div>
+                    <Button onClick={applyFilter}>APPLY</Button>
+                    <Button onClick={clearFilter}>CLEAR</Button>
+                </div>
+            </ColumnMenu>
         </Header>
 
     return {

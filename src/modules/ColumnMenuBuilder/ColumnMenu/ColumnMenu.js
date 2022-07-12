@@ -3,15 +3,19 @@ import styles from "./ColumnMenu.module.scss";
 import Portal from "../../../components/Portal";
 import Modal from "../../../components/Modal";
 
-const ColumnMenu = ({isOpen, anchorEl, items = [], onClose, renderItem}) => isOpen &&
+const ColumnMenu = ({children, isOpen, anchorEl, items = [], onClose, renderItem, getKey = (item) => item.id}) => isOpen &&
         <Modal onClose={onClose}>
             <Portal className={styles.root} inset={`${anchorEl.y}px auto auto ${anchorEl.x}px`}>
                 <div className={styles.wrapper}>
                     <ul>
                         {
-                            items.map(([key, value]) => <li key={key}>{renderItem({item: key, isChecked: value})}</li>)
+                            items.map((item) => <li key={getKey(item)}>{renderItem(item)}</li>)
                         }
                     </ul>
+                    <hr/>
+                    <div className={styles.children}>
+                        {children}
+                    </div>
                 </div>
             </Portal>
         </Modal>
