@@ -6,8 +6,8 @@ export const SORT_DIRECTIONS = {
     NONE: 'none'
 }
 
-export const compose = (...builders) => (...props) =>
-    builders.reduce((arg, builder) => defaultsDeep(builder(arg), arg), merge(...props));
+export const compose = (...builders) => (props) =>
+    builders.reduce((arg, builder) => ({...arg, ...builder(arg)}), props);
 
 export const compare = (field) => (a, b) => {
     if (a[field] < b[field]) {

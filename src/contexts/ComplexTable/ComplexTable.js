@@ -20,8 +20,8 @@ import Filtration from "../../modules/Filtration";
 import ColumnMenuBuilder from "../../modules/ColumnMenuBuilder";
 import ColumnMenu from "../../modules/ColumnMenuBuilder/ColumnMenu";
 
-const composeProps = (...props) =>
-    compose(ColumnMenuBuilder, CheckBoxSelection, Sorting)(...props)
+const composeProps = (props) =>
+    compose(ColumnMenuBuilder, Sorting, CheckBoxSelection)(props)
 
 const TableContext = createContext({
     components: {
@@ -44,10 +44,11 @@ export const useTableProps = () =>
     useContext(TableContext);
 
 const ComplexTable = (props) => {
-    const defaultProps = useTableProps();
+    const {components} = useTableProps();
+    const composedProps = composeProps({...props, components: {...components, ...props.components}});
 
     return (
-        <TableContext.Provider value={composeProps(defaultProps, props)}>
+        <TableContext.Provider value={composedProps}>
             <Table/>
         </TableContext.Provider>
     )

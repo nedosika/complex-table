@@ -32,6 +32,7 @@ const Sorting = (props) => {
             ? [...rows].sort(compare(sort?.field)).reverse()
             : [...rows].sort(compare(sort?.field)),
         components: {
+            ...props.components,
             Column: SortColumn,
         }
     }

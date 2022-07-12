@@ -1,16 +1,15 @@
 import {useState} from "react";
-import {getUniq} from "../../helpers";
 
-const useMenu = (rows) => {
+const useMenu = () => {
     const [anchorEl, setAnchorEl] = useState();
 
-    const handleToggleMenu = (event, field) => {
+    const toggleMenu = (event) => {
         event.stopPropagation();
         setAnchorEl((prevState) =>
-            prevState ? null : {items: getUniq(rows.map((row) => row[field])), x: event.pageX, y: event.pageY, field});
+            prevState ? null : {x: event.pageX, y: event.pageY});
     }
 
-    return {anchorEl, handleToggleMenu}
+    return {isOpen: Boolean(anchorEl), anchorEl, toggleMenu}
 }
 
 export default useMenu;

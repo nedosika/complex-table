@@ -1,21 +1,37 @@
 import {useState} from "react";
+import {getUniq} from "../../helpers";
 
-const useFilter = (rows, field) => {
-    const [filteredRows, setFilteredRows] = useState([...rows]);
-    //console.log(filteredRows)
+const useFilter = (rows, columns) => {
+    const [filter, setFilter] = useState(Object.assign(
+        {},
+        ...columns.map((column) =>
+            ({[column.field]: Object.assign(
+                {},
+                        ...getUniq(rows.map(row => row[column.field])).map((row) =>
+                        ({[row]: false}))
+                )})
+        )
+    ));
 
-    const handleChangeFilter = (filter) => {
-        //console.log(rows, filter)
-        // setFilteredRows((prevState) => {
-        //     console.log('log', prevState.filter((item) => {
-        //         return item[field] === filter
-        //     }));
-        //
-        //     return prevState.filter((item) => item[field] === filter)
-        // })
+    console.log(filter)
+
+    const [activeField, setActiveField] = useState();
+
+    const filtered = rows.filter((row) => columns.map(({field}) => filter[field][row[field]]).includes(true));
+
+    const activeMenuItems = filter[activeField] && Object.entries(filter[activeField])
+
+    const handleChangeFilter = (item) => {
+        setFilter((prevState) => ({
+            ...prevState,
+            [activeField]: {
+                ...prevState[activeField],
+                [item]: !prevState[activeField][item]
+            }
+        }))
     }
 
-    return {filteredRows, handleChangeFilter}
+    return {filtered, setFilter: handleChangeFilter, activeMenuItems, setActiveField}
 }
 
 export default useFilter;

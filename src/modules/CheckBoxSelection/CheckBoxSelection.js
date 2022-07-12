@@ -58,6 +58,7 @@ const CheckBoxSelection = (props) => {
 
     return checkboxSelection ? {
         components: {
+            ...props.components,
             Header: CheckBoxHeader,
             Row: CheckBoxRow,
             Footer: CheckBoxFooter

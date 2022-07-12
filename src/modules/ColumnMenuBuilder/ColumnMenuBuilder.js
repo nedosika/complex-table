@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {merge, uniq, defaultsDeep, findKey, find} from "lodash";
 
 import ColumnMenu from "./ColumnMenu";
-import Modal from "../../components/Modal";
-import {getUniq} from "../../helpers";
 import ColumnMenuItem from "./ColumnMenuItem";
 import useMenu from "./useMenu";
 import useFilter from "./useFilter";
@@ -10,10 +9,15 @@ import useFilter from "./useFilter";
 const ColumnMenuBuilder = (props) => {
     console.log('column menu')
 
-    const {rows, components: {Column, ColumnMenu, ColumnMenuIcon, Header}, disableColumnMenu} = props;
+    const {rows, columns, components: {Column, ColumnMenu, ColumnMenuIcon, Header}, disableColumnMenu} = props;
 
-    const {anchorEl, handleToggleMenu} = useMenu(rows);
-    const {filteredRows, handleChangeFilter} = useFilter(rows, anchorEl?.field);
+    const {isOpen, anchorEl, toggleMenu} = useMenu(rows);
+    const {filtered, setFilter, setActiveField, activeMenuItems} = useFilter(rows, columns);
+
+    const handleToggleMenu = (event, field) => {
+        toggleMenu(event);
+        setActiveField(field);
+    }
 
     const ColumnWithMenu = (props) => {
         const {children, column: {field}} = props;
@@ -26,24 +30,31 @@ const ColumnMenuBuilder = (props) => {
         )
     }
 
-    const HeadersMenu = (props) =>
+    const HeaderWithMenu = (props) =>
         <Header {...props}>
             {props.children}
-            {anchorEl &&
             <ColumnMenu
+                isOpen={isOpen}
                 anchorEl={anchorEl}
-                items={anchorEl.items}
+                items={activeMenuItems}
                 onClose={handleToggleMenu}
-                renderItem={(item) => <ColumnMenuItem toggle={() => handleChangeFilter(item)}>{item}</ColumnMenuItem> }
+                renderItem={({item, isChecked}) =>
+                    <ColumnMenuItem
+                        isChecked={isChecked}
+                        toggle={() => setFilter(item)}
+                    >
+                        {item}
+                    </ColumnMenuItem>
+                }
             />
-            }
         </Header>
 
     return {
-        rows: filteredRows,
+        rows: filtered,
         components: {
+            ...props.components,
             Column: disableColumnMenu ? Column : ColumnWithMenu,
-            Header: HeadersMenu
+            Header: HeaderWithMenu
         }
     }
 };
