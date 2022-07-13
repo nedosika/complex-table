@@ -3,21 +3,39 @@ import styles from "./ColumnMenu.module.scss";
 import Portal from "../../../components/Portal";
 import Modal from "../../../components/Modal";
 
-const ColumnMenu = ({children, isOpen, anchorEl, items = [], onClose, renderItem, getKey = (item) => item.id}) => isOpen &&
-        <Modal onClose={onClose}>
-            <Portal className={styles.root} inset={`${anchorEl.y}px auto auto ${anchorEl.x}px`}>
-                <div className={styles.wrapper}>
-                    <ul>
-                        {
-                            items.map((item) => <li key={getKey(item)}>{renderItem(item)}</li>)
-                        }
-                    </ul>
-                    <hr/>
-                    <div className={styles.children}>
-                        {children}
-                    </div>
+const ColumnMenu = ({
+                        children,
+                        onColumnClick,
+                        isOpen,
+                        anchorEl,
+                        items = [],
+                        onClose,
+                        renderItem,
+                        getKey = (item) => item.id
+                    }) => isOpen &&
+    <Modal onClose={onClose}>
+        <Portal className={styles.root} inset={`${anchorEl.y}px auto auto ${anchorEl.x}px`}>
+            <div className={styles.wrapper}>
+                <ul>
+                    {
+                        items.map((item) =>
+                            <li
+                                key={getKey(item)}
+                                onClick={(event) => {
+                                    onColumnClick(item, event);
+                                }}
+                            >
+                                {renderItem(item)}
+                            </li>
+                        )
+                    }
+                </ul>
+                <hr/>
+                <div className={styles.children}>
+                    {children}
                 </div>
-            </Portal>
-        </Modal>
+            </div>
+        </Portal>
+    </Modal>
 
 export default ColumnMenu;

@@ -24,12 +24,14 @@ const useFilter = (rows, columns) => {
         })
     }
 
-    const toggleFilter = (item) =>
+    const toggleFilter = ([item], event) => {
+        event.stopPropagation();
         setFilter((prevState) => ({
                 ...prevState,
                 [item]: !prevState[item]
             }
         ))
+    }
 
     const applyFilter = () =>
         setFilters((prevState) => ({
@@ -51,8 +53,7 @@ const useFilter = (rows, columns) => {
         }));
 
     const filtered = rows.filter((row) =>
-        !columns.map(({field}) =>
-            filters[field][row[field]]).includes(false)
+        !columns.map(({field}) => filters[field][row[field]]).includes(false)
     );
 
     const menuItems = Object.entries(filter);

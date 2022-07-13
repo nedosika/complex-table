@@ -1,16 +1,16 @@
 import React from 'react';
-import {merge, uniq, defaultsDeep, findKey, find} from "lodash";
 
 import ColumnMenu from "./ColumnMenu";
 import ColumnMenuItem from "./ColumnMenuItem";
 import useMenu from "./useMenu";
 import useFilter from "./useFilter";
 import Button from "../../components/Button";
+import ColumnFilterIcon from "../Filtration/ColumnFilterIcon";
 
 const ColumnMenuBuilder = (props) => {
     console.log('column menu')
 
-    const {rows, columns, components: {Column, ColumnMenu, ColumnMenuIcon, Header}, disableColumnMenu} = props;
+    const {rows, columns, components: {Column, ColumnMenu, Header}, disableColumnMenu} = props;
 
     const {isOpen, anchorEl, toggleMenu} = useMenu(rows);
     const {filtered, toggleFilter, updateActiveField, menuItems, applyFilter, clearFilter} = useFilter(rows, columns);
@@ -26,7 +26,7 @@ const ColumnMenuBuilder = (props) => {
         return (
             <Column {...props}>
                 {children}
-                <ColumnMenuIcon onClick={(event) => handleToggleMenu(event, field)}/>
+                <ColumnFilterIcon onClick={(event) => handleToggleMenu(event, field)}/>
             </Column>
         )
     }
@@ -40,11 +40,9 @@ const ColumnMenuBuilder = (props) => {
                 getKey={([key]) => key}
                 items={menuItems}
                 onClose={handleToggleMenu}
+                onColumnClick={toggleFilter}
                 renderItem={([item, isChecked]) =>
-                    <ColumnMenuItem
-                        isChecked={isChecked}
-                        toggle={() => toggleFilter(item)}
-                    >
+                    <ColumnMenuItem isChecked={isChecked}>
                         {item}
                     </ColumnMenuItem>
                 }
@@ -60,6 +58,7 @@ const ColumnMenuBuilder = (props) => {
         rows: filtered,
         components: {
             ...props.components,
+            ColumnMenuIcon: ColumnFilterIcon,
             Column: disableColumnMenu ? Column : ColumnWithMenu,
             Header: HeaderWithMenu
         }
