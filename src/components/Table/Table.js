@@ -5,12 +5,10 @@ import {useTableProps} from "../../contexts/ComplexTable/ComplexTable";
 
 const Table = () => {
     const {
-        rows,
         components: {
             Toolbar,
             Main,
-            Footer,
-            RowCounter
+            Footer
         }
     } = useTableProps();
 
@@ -19,11 +17,7 @@ const Table = () => {
             <div className={styles.wrapper}>
                 <Toolbar/>
                 <Main/>
-                <Footer>
-                    <RowCounter>
-                        {rows.length} row{rows.length > 1 && 's'}
-                    </RowCounter>
-                </Footer>
+                <Footer/>
             </div>
         </div>
     )
