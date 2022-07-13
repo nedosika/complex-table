@@ -2,14 +2,16 @@ import React from "react";
 
 import styles from "./App.module.scss";
 
-import ComplexTable from "./components/ComplexTable";
+import ComplexTable from "./contexts/ComplexTable";
+import ColumnFilterIcon from "./modules/Filtration/ColumnFilterIcon";
 
 const columns = [
-    {field: 'id', headerName: 'ID', width: 105},
+    {field: 'id', headerName: 'ID', width: 105, sortable: true},
     {
         field: 'firstName',
         headerName: 'First name',
-        width: 200
+        width: 200,
+        sortable: true
     },
     {
         field: 'lastName',
@@ -36,8 +38,8 @@ const rows = [
     {id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42, fullName: 'test'},
     {id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45, fullName: 'test'},
     {id: 4, lastName: 'Stark', firstName: 'Arya', age: 16, fullName: 'test'},
-    {id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null, fullName: 'test'},
-    {id: 6, lastName: 'Melisandre', firstName: null, age: 150, fullName: 'test'},
+    {id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: '', fullName: 'test'},
+    {id: 6, lastName: 'Melisandre', firstName: '', age: 150, fullName: 'test'},
     {id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44, fullName: 'test'},
     {id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36, fullName: 'test'},
     {id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65, fullName: 'test'},
@@ -51,6 +53,19 @@ function App() {
                 rows={rows}
                 checkboxSelection={true}
                 getRowId={(row) => row.id}
+                disableColumnMenu={false}
+                disableColumnFilter={false}
+                components={{
+                    //ColumnMenuIcon: ColumnFilterIcon
+                }}
+                //:Todo
+                // onMenuClose={() => {console.log('Close')}}
+                // onMenuOpen={() => {console.log('Open')}}
+                // hideFooter={false}
+                // hideFooterPagination={false}
+                // hideFooterSelectedRowCount={false}
+                // headerHeight={56}
+                // disableSelectionOnClick={false}
             />
         </div>
     );
