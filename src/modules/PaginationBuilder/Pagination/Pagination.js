@@ -1,26 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Pagination.module.scss";
 import { useTableProps } from "../../../contexts/ComplexTable/ComplexTable";
+import ModalMenu from "../../../components/ModalMenu";
+import useMenu from "../../../components/ModalMenu/useMenu";
 
-const Pagination = ({ rowCount, currentPage, onNext, onPrev, pagesCount }) => {
+const Pagination = ({
+  onNext,
+  onPrev,
+  fromRow,
+  rowCount,
+}) => {
   const { rows } = useTableProps();
   const rowsCount = rows.length;
-  const fromRow = currentPage * rowCount - rowCount + 1;
-  const toRow = currentPage * rowCount > rowsCount ? rowsCount :  currentPage * rowCount;
+  // const {isOpen, anchorEl, toggleMenu} = useMenu(rows);
 
   return (
     <div className={styles.root}>
       <div className={styles.wrapper}>
-        <p>Rows per page:</p>
-        <div className={styles.select}>
-          <div className={styles.rowCount}>{rowCount}</div>
-          <input value={rowCount} />
-          <svg focusable="false" viewBox="0 0 24 24">
-            <path d="M7 10l5 5 5-5z" />
-          </svg>
-        </div>
+        {/*<p>Rows per page:</p>*/}
+        {/*<div className={styles.select} onClick={toggleMenu}>*/}
+        {/*  <div className={styles.rowCount}>{rowCount}</div>*/}
+        {/*  <input value={rowCount} />*/}
+        {/*  <svg focusable="false" viewBox="0 0 24 24">*/}
+        {/*    <path d="M7 10l5 5 5-5z" />*/}
+        {/*  </svg>*/}
+        {/*</div>*/}
+        {/*<ModalMenu*/}
+        {/*  isOpen={isOpen}*/}
+        {/*  onClose={toggleMenu}*/}
+        {/*  items={[1, 2, 4, 5, 10]}*/}
+        {/*  anchorEl={anchorEl}*/}
+        {/*/>*/}
         <p>
-          {fromRow}–{toRow} of {rowsCount}
+          {fromRow}–{fromRow + rowCount} of {rowsCount}
         </p>
         <div className={styles.actions}>
           <button title="Go to previous page" onClick={onPrev}>

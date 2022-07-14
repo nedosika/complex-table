@@ -2,7 +2,7 @@ import React from 'react';
 
 import ColumnMenu from "./ColumnMenu";
 import ColumnMenuItem from "./ColumnMenuItem";
-import useMenu from "./useMenu";
+import useMenu from "../../components/ModalMenu/useMenu";
 import useFilter from "./useFilter";
 import Button from "../../components/Button";
 import ColumnFilterIcon from "../Filtration/ColumnFilterIcon";
@@ -12,7 +12,7 @@ const ColumnMenuBuilder = (props) => {
 
     const {rows, columns, components: {Column, ColumnMenu, Header}, disableColumnMenu} = props;
 
-    const {isOpen, anchorEl, toggleMenu} = useMenu(rows);
+    const {isOpen, anchorEl, toggleMenu} = useMenu();
     const {filtered, toggleFilter, updateActiveField, menuItems, applyFilter, clearFilter} = useFilter(rows, columns);
 
     const handleToggleMenu = (event, field) => {

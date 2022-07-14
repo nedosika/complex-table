@@ -7,26 +7,25 @@ const PaginationBuilder = (props) => {
 
   const {
     rows,
-    columns,
-    components: { Column, ColumnMenu, Footer },
+    components: { Footer },
   } = props;
-  const { rowCount, nextPage, prevPage, currentPage, pagesCount } =
+  const { rowCount, nextPage, prevPage, fromRow, toRow } =
     usePagination(rows);
 
   const FooterWithPagination = (props) => (
     <Footer {...props}>
       {props.children}
       <Pagination
-        rowCount={rowCount}
-        pagesCount={pagesCount}
-        currentPage={currentPage}
         onNext={nextPage}
         onPrev={prevPage}
+        fromRow={fromRow}
+        rowCount={rowCount}
       />
     </Footer>
   );
 
   return {
+    rows: [...rows].splice(fromRow - 1, rowCount),
     components: {
       ...props.components,
       Footer: FooterWithPagination,
