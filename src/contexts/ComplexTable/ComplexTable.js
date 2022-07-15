@@ -19,9 +19,10 @@ import CheckBoxSelection from "../../modules/CheckBoxSelection/CheckBoxSelection
 import Filtration from "../../modules/Filtration";
 import ColumnMenuBuilder from "../../modules/ColumnMenuBuilder";
 import ColumnMenu from "../../modules/ColumnMenuBuilder/ColumnMenu";
+import PaginationBuilder from "../../modules/PaginationBuilder/PaginationBuilder";
 
 const composeProps = (props) =>
-    compose(ColumnMenuBuilder, Sorting, CheckBoxSelection)(props)
+    compose(ColumnMenuBuilder, Sorting, CheckBoxSelection, PaginationBuilder)(props)
 
 const TableContext = createContext({
     components: {

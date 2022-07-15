@@ -54,6 +54,7 @@ const CheckBoxSelection = (props) => {
             <RowCounter>
                 {selected.length} row{selected.length > 1 && 's'} selected
             </RowCounter>
+            {props.children}
         </Footer>
 
     return checkboxSelection ? {

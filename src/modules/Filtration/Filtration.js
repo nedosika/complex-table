@@ -22,7 +22,7 @@ const Filtration = (props) => {
     return {
         components: {
             //ColumnMenuIcon: FilterColumnMenu
-            //ColumnMenu: FilterColumnMenu
+            //ModalMenu: FilterColumnMenu
             //Column: FilteredColumn,
             ColumnMenuIcon: disableColumnFilter ? ColumnMenuIcon : ColumnFilterIcon
         }
