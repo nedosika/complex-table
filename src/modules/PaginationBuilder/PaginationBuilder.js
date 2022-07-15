@@ -9,7 +9,7 @@ const PaginationBuilder = (props) => {
     rows,
     components: { Footer },
   } = props;
-  const { rowCount, nextPage, prevPage, fromRow, toRow } =
+  const { rowCount, nextPage, prevPage, fromRow, changeRowCount } =
     usePagination(rows);
 
   const FooterWithPagination = (props) => (
@@ -20,6 +20,8 @@ const PaginationBuilder = (props) => {
         onPrev={prevPage}
         fromRow={fromRow}
         rowCount={rowCount}
+        rowsCount={rows.length}
+        changeRowCount={changeRowCount}
       />
     </Footer>
   );

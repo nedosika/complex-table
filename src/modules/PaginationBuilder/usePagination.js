@@ -6,8 +6,6 @@ const usePagination = (rows) => {
   const pagesCount = Math.ceil(rows.length / rowCount);
   const rowsCount = rows.length;
   const fromRow = currentPage * rowCount - rowCount + 1;
-  // const toRow =
-  //     currentPage * rowCount > rowsCount ? rowsCount : currentPage * rowCount;
 
   const nextPage = () =>
     currentPage < rowsCount / rowCount && setCurrentPage((prevState) => prevState + 1);
@@ -15,7 +13,12 @@ const usePagination = (rows) => {
   const prevPage = () =>
     currentPage > 1 && setCurrentPage((prevState) => prevState - 1);
 
-  return { rowCount, nextPage, prevPage, currentPage, pagesCount, setRowCount, fromRow};
+  const changeRowCount = (rowCount, event) => {
+    setCurrentPage(1)
+    setRowCount(rowCount);
+  }
+
+  return { rowCount, rowsCount, nextPage, prevPage, currentPage, pagesCount, changeRowCount, fromRow};
 };
 
 export default usePagination;
