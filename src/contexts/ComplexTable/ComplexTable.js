@@ -1,4 +1,4 @@
-import React, {createContext, useContext} from 'react';
+import React, {createContext, useContext, useState} from "react";
 
 import Table from "../../components/Table/Table";
 import Column from "../../components/Table/Main/Column";
@@ -13,7 +13,7 @@ import ColumnResizeIcon from "../../components/Table/Main/Column/ColumnResizeIco
 import RowCounter from "../../components/Table/Footer/RowCounter";
 import ColumnMenuIcon from "../../modules/ColumnMenuBuilder/ColumnMenuIcon";
 
-import {compose} from "../../helpers";
+import { compose } from "../../helpers";
 import Sorting from "../../modules/Sorting/Sorting";
 import CheckBoxSelection from "../../modules/CheckBoxSelection/CheckBoxSelection";
 import Filtration from "../../modules/Filtration";
@@ -22,38 +22,44 @@ import ColumnMenu from "../../modules/ColumnMenuBuilder/ColumnMenu";
 import PaginationBuilder from "../../modules/PaginationBuilder/PaginationBuilder";
 
 const composeProps = (props) =>
-    compose(ColumnMenuBuilder, Sorting, CheckBoxSelection, PaginationBuilder)(props)
+  compose(
+    ColumnMenuBuilder,
+    Sorting,
+    CheckBoxSelection,
+    PaginationBuilder
+  )(props);
 
 const TableContext = createContext({
-    components: {
-        Main,
-        Toolbar,
-        Header,
-        Footer,
-        Row,
-        Cell,
-        Column,
-        ColumnTitle,
-        ColumnMenu,
-        ColumnMenuIcon,
-        ColumnResizeIcon,
-        RowCounter
-    }
+  components: {
+    Main,
+    Header,
+    Footer,
+    Row,
+    Cell,
+    Column,
+    ColumnTitle,
+    ColumnMenu,
+    ColumnMenuIcon,
+    ColumnResizeIcon,
+    RowCounter,
+  },
 });
 
-export const useTableProps = () =>
-    useContext(TableContext);
+export const useTableProps = () => useContext(TableContext);
 
 const ComplexTable = (props) => {
-    const {components} = useTableProps();
-    const composedProps = composeProps({...props, components: {...components, ...props.components}});
+  const { components } = useTableProps();
 
-    return (
-        <TableContext.Provider value={composedProps}>
-            <Table/>
-        </TableContext.Provider>
-    )
-}
+  const composedProps = composeProps({
+    ...props,
+    components: { ...components, ...props.components },
+  });
 
+  return (
+    <TableContext.Provider value={composedProps}>
+      <Table />
+    </TableContext.Provider>
+  );
+};
 
 export default ComplexTable;
