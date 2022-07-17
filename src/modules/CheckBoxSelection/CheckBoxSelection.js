@@ -4,7 +4,7 @@ import CheckBox from "./CheckBox";
 
 const CheckBoxSelection = (props) => {
     console.log('checkbox')
-    const {rows, getRowId, checkboxSelection, components: {Header, Footer, Row, RowCounter}} = props;
+    const {rowsToShow: rows, getRowId, checkboxSelection, components: {Header, Footer, Row, RowCounter}} = props;
     const [selected, setSelected] = useState([]);
 
     const toggleSelected = (row) =>
@@ -58,6 +58,7 @@ const CheckBoxSelection = (props) => {
         </Footer>
 
     return checkboxSelection ? {
+        rowsToShow: rows,
         components: {
             ...props.components,
             Header: CheckBoxHeader,
