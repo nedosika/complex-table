@@ -5,7 +5,7 @@ import {useTableProps} from "../../../../contexts/ComplexTable/ComplexTable";
 
 const TableHeader = ({children}) => {
     const {
-        columns,
+        columnsToShow,
         components: {
             Column
         }
@@ -14,7 +14,7 @@ const TableHeader = ({children}) => {
     return (
         <div className={styles.root}>
             {children}
-            {columns.map((column) =>
+            {columnsToShow.map((column) =>
                 <Column column={column} key={column.field}/>
             )}
         </div>

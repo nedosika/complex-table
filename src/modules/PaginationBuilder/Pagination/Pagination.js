@@ -21,7 +21,7 @@ const Pagination = ({
         <p>Rows per page:</p>
         <div className={styles.select} onClick={toggleMenu}>
           <div className={styles.rowCount}>{rowCount}</div>
-          <input value={rowCount} />
+          <input defaultValue={rowCount} />
           <svg focusable="false" viewBox="0 0 24 24">
             <path d="M7 10l5 5 5-5z" />
           </svg>
@@ -32,6 +32,7 @@ const Pagination = ({
           items={[1, 5, 10]}
           anchorEl={anchorEl}
           onColumnClick={changeRowCount}
+          getKey={(item) => item}
         />
         <p>
           {fromRow}–{toRow} of {rowsCount}

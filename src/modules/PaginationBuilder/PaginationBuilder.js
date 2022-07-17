@@ -6,7 +6,7 @@ const PaginationBuilder = (props) => {
   console.log("pagination");
 
   const {
-    rows,
+    rowsToShow: rows,
     components: { Footer },
   } = props;
   const { rowCount, nextPage, prevPage, fromRow, changeRowCount } =
@@ -27,7 +27,7 @@ const PaginationBuilder = (props) => {
   );
 
   return {
-    rows: [...rows].splice(fromRow - 1, rowCount),
+    rowsToShow: [...rows].splice(fromRow - 1, rowCount),
     components: {
       ...props.components,
       Footer: FooterWithPagination,
