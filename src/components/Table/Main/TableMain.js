@@ -5,7 +5,7 @@ import {useTableProps} from "../../../contexts/ComplexTable/ComplexTable";
 
 const TableMain = () => {
     const {
-        rows,
+        rowsToShow: rows,
         getRowId,
         components: {
             Row,

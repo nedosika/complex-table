@@ -4,7 +4,7 @@ import Button from "./Button";
 
 const Sorting = (props) => {
     console.log('sorting')
-    const {rows, components: {Column}} = props;
+    const {rowsToShow: rows, components: {Column}} = props;
 
     const [sort, setSort] = useState({})
 
@@ -28,7 +28,7 @@ const Sorting = (props) => {
     }
 
     return {
-        rows: sort.direction === SORT_DIRECTIONS.UP
+        rowsToShow: sort.direction === SORT_DIRECTIONS.UP
             ? [...rows].sort(compare(sort?.field)).reverse()
             : [...rows].sort(compare(sort?.field)),
         components: {

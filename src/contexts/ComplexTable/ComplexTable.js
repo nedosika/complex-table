@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useState} from "react";
+import React, { createContext, useContext, useState } from "react";
 
 import Table from "../../components/Table/Table";
 import Column from "../../components/Table/Main/Column";
@@ -42,18 +42,28 @@ const TableContext = createContext({
     ColumnMenuIcon,
     ColumnResizeIcon,
     RowCounter,
-  },
+  }
 });
 
 export const useTableProps = () => useContext(TableContext);
 
 const ComplexTable = (props) => {
   const { components } = useTableProps();
+  const {columns, rows} = props;
+  const [columnsToShow, setColumnsToShow] = useState(columns);
+  const [rowsToShow, setRowsToShow] = useState(rows);
 
   const composedProps = composeProps({
     ...props,
+    columnsToShow,
+    setColumnsToShow,
+    rowsToShow,
+    setRowsToShow,
+    getRowId: (row) => row.id,
     components: { ...components, ...props.components },
   });
+
+  console.log(columnsToShow)
 
   return (
     <TableContext.Provider value={composedProps}>

@@ -80,27 +80,18 @@ const rows = [
 ];
 
 function App() {
-  const [showedColumns, setColumns] = useState(columns);
-
-  console.log(showedColumns)
   return (
     <div className={styles.root}>
       <ComplexTable
-        columns={showedColumns}
+        columns={columns}
         rows={rows}
-        checkboxSelection={true}
-        getRowId={(row) => row.id}
-        disableColumnMenu={false}
-        disableColumnFilter={false}
+        checkboxSelection
+        //getRowId={(row) => row.id}
+        //disableColumnMenu={false}
+        //disableColumnFilter={false}
         components={{
           //ColumnMenuIcon: ColumnFilterIcon
           Toolbar: GridToolbar,
-        }}
-        componentsProps={{
-          toolbar: {
-            columns,
-            setColumns,
-          },
         }}
         //:Todo
         // pageSize={pageSize}
