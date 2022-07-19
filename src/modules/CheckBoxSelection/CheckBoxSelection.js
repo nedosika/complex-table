@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import CheckBox from "./CheckBox";
+import CheckBox from "../../components/CheckBox";
 
 const CheckBoxSelection = (props) => {
     console.log('checkbox')

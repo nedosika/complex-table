@@ -9,13 +9,13 @@ const Table = () => {
   } = useTableProps();
 
   return (
-    <div className={styles.root}>
-      <div className={styles.wrapper}>
-        {Toolbar && <Toolbar />}
+    <table className={styles.root}>
+      {/*<div className={styles.wrapper}>*/}
+        {/*{Toolbar && <Toolbar />}*/}
         {Main && <Main />}
-        {Footer && <Footer />}
-      </div>
-    </div>
+        {/*{Footer && <Footer />}*/}
+      {/*</div>*/}
+    </table>
   );
 };
 

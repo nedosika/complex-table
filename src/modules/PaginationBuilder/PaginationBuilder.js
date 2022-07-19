@@ -1,6 +1,6 @@
 import React from "react";
-import Pagination from "./Pagination";
-import usePagination from "./usePagination";
+import Pagination from "../../components/Pagination";
+import usePagination from "../../components/Pagination/usePagination";
 
 const PaginationBuilder = (props) => {
   console.log("pagination");

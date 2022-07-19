@@ -86,6 +86,7 @@ function App() {
         columns={columns}
         rows={rows}
         checkboxSelection
+        getRowHeight={() => 52}
         //getRowId={(row) => row.id}
         //disableColumnMenu={false}
         //disableColumnFilter={false}

@@ -23,10 +23,10 @@ import PaginationBuilder from "../../modules/PaginationBuilder/PaginationBuilder
 
 const composeProps = (props) =>
   compose(
-    ColumnMenuBuilder,
-    Sorting,
-    CheckBoxSelection,
-    PaginationBuilder
+    // ColumnMenuBuilder,
+    // Sorting,
+    // CheckBoxSelection,
+    // PaginationBuilder
   )(props);
 
 const TableContext = createContext({
@@ -54,16 +54,15 @@ const ComplexTable = (props) => {
   const [rowsToShow, setRowsToShow] = useState(rows);
 
   const composedProps = composeProps({
+    getRowId: (row) => row.id,
+    getRowHeight: () => 'auto',
     ...props,
     columnsToShow,
     setColumnsToShow,
     rowsToShow,
     setRowsToShow,
-    getRowId: (row) => row.id,
     components: { ...components, ...props.components },
   });
-
-  console.log(columnsToShow)
 
   return (
     <TableContext.Provider value={composedProps}>

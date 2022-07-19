@@ -1,18 +1,12 @@
 import React from 'react';
 import styles from "./TableCell.module.scss";
 
-const TableCell = ({children, width}) => {
+const TableCell = ({children, sx}) => {
     return (
-        <div
-            className={styles.root}
-            style={{
-                minWidth: width,
-                maxWidth: width
-            }}
-        >
+        <td className={styles.root} style={sx}>
             {children}
-        </div>
-    );
+        </td>
+    )
 };
 
 export default TableCell;
