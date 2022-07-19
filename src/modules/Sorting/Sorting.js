@@ -15,12 +15,12 @@ const Sorting = (props) => {
         }));
 
     const SortColumn = (props) => {
-        const {children, column: {field, sortable = true}} = props;
+        const {children, column} = props;
 
         return (
-            sortable
-                ? <Column {...props} onClick={toggle(field)}>
-                    <Button direction={sort.field === field ? sort.direction : SORT_DIRECTIONS.NONE}/>
+            column?.sortable
+                ? <Column {...props} onClick={toggle(column.field)} >
+                    <Button direction={sort.field === column.field ? sort.direction : SORT_DIRECTIONS.NONE}/>
                     {children}
                 </Column>
                 : <Column {...props}/>

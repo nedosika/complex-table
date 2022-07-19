@@ -11,8 +11,12 @@ const TableHeader = ({ children }) => {
   return (
     <tr>
       {children}
-      {columnsToShow.map(({headerName, field, width}) => (
-        <Column headerName={headerName} key={field} sx={{width}}/>
+      {columnsToShow.map((column) => (
+        <Column
+          column={column}
+          key={column.field}
+          sx={{ width: column.width }}
+        />
       ))}
     </tr>
   );

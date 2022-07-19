@@ -24,7 +24,7 @@ import PaginationBuilder from "../../modules/PaginationBuilder/PaginationBuilder
 const composeProps = (props) =>
   compose(
     // ColumnMenuBuilder,
-    // Sorting,
+    Sorting,
     CheckBoxSelection,
     // PaginationBuilder
   )(props);
