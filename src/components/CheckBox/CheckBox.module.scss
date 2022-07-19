@@ -1,10 +1,4 @@
 .root {
-  display: flex;
-  align-items: center;
-  position: relative;
-  box-sizing: border-box;
-  padding: 10px;
-
   cursor: pointer;
 
   span {
@@ -15,7 +9,6 @@
 
     input {
       cursor: inherit;
-
     }
   }
 }

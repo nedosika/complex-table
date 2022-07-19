@@ -25,7 +25,7 @@ const composeProps = (props) =>
   compose(
     // ColumnMenuBuilder,
     // Sorting,
-    // CheckBoxSelection,
+    CheckBoxSelection,
     // PaginationBuilder
   )(props);
 

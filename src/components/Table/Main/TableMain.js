@@ -5,10 +5,8 @@ import { useTableProps } from "../../../contexts/ComplexTable/ComplexTable";
 
 const TableMain = () => {
   const {
-    columnsToShow: columns,
     rowsToShow: rows,
     getRowId,
-    getRowHeight,
     components: { Row, Header },
   } = useTableProps();
 
@@ -16,24 +14,10 @@ const TableMain = () => {
     <tbody className={styles.root}>
       <Header />
       {rows.map((row) => (
-        <Row row={row} key={getRowId(row)} sx={{ height: getRowHeight(row) }} />
+        <Row row={row} key={getRowId(row)} />
       ))}
     </tbody>
   );
-
-  // return (
-  //     <div className={styles.root}>
-  //         {/*<Header/>*/}
-  //         {
-  //             rows.map((row) =>
-  //                 <Row
-  //                     row={row}
-  //                     key={getRowId(row)}
-  //                 />
-  //             )
-  //         }
-  //     </div>
-  // );
 };
 
 export default TableMain;
