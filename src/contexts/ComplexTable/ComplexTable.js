@@ -2,8 +2,8 @@ import React, { createContext, useContext, useState } from "react";
 
 import Table from "../../components/Table/Table";
 import Column from "../../components/Table/Main/Column";
-import Toolbar from "../../components/Table/Toolbar/Toolbar";
-import Header from "../../components/Table/Main/Header";
+import Toolbar from "../../components/Toolbar/Toolbar";
+import Header from "../../components/Table/Header";
 import Footer from "../../components/Table/Footer";
 import Row from "../../components/Table/Main/Row";
 import Main from "../../components/Table/Main";
@@ -20,20 +20,25 @@ import Filtration from "../../modules/Filtration";
 import ColumnMenuBuilder from "../../modules/ColumnMenuBuilder";
 import ColumnMenu from "../../modules/ColumnMenuBuilder/ColumnMenu";
 import PaginationBuilder from "../../modules/PaginationBuilder/PaginationBuilder";
+import ToolbarBuilder from "../../modules/ToolbarBuilder";
 
 const composeProps = (props) =>
   compose(
-    // ColumnMenuBuilder,
+      CheckBoxSelection,
+    ColumnMenuBuilder,
     Sorting,
-    CheckBoxSelection,
-    // PaginationBuilder
+
+    ToolbarBuilder,
+    PaginationBuilder
   )(props);
 
 const TableContext = createContext({
   components: {
+    Table,
     Main,
     Header,
     Footer,
+    Toolbar,
     Row,
     Cell,
     Column,
@@ -42,31 +47,32 @@ const TableContext = createContext({
     ColumnMenuIcon,
     ColumnResizeIcon,
     RowCounter,
-  }
+  },
 });
 
 export const useTableProps = () => useContext(TableContext);
 
 const ComplexTable = (props) => {
   const { components } = useTableProps();
-  const {columns, rows} = props;
-  const [columnsToShow, setColumnsToShow] = useState(columns);
-  const [rowsToShow, setRowsToShow] = useState(rows);
 
   const composedProps = composeProps({
     getRowId: (row) => row.id,
-    getRowHeight: () => 'auto',
+    getRowHeight: () => "auto",
     ...props,
-    columnsToShow,
-    setColumnsToShow,
-    rowsToShow,
-    setRowsToShow,
     components: { ...components, ...props.components },
   });
 
+  const {
+    components: { Table, Main, Footer, Header },
+  } = composedProps;
+
   return (
     <TableContext.Provider value={composedProps}>
-      <Table />
+      <Table>
+        <Header />
+        <Main />
+        <Footer/>
+      </Table>
     </TableContext.Provider>
   );
 };

@@ -10,11 +10,11 @@ const Column = ({ children, column, sx, ...props }) => {
 
   return (
     <th className={styles.root} style={sx} {...props}>
-        <div className={styles.wrapper}>
-            <ColumnTitle text={column?.headerName} />
-            {children}
-            <ColumnResizeIcon />
-        </div>
+      <div className={styles.wrapper}>
+        {column?.headerName && <ColumnTitle text={column?.headerName} />}
+        {children}
+          <ColumnResizeIcon />
+      </div>
     </th>
   );
 

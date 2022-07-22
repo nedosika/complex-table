@@ -5,10 +5,11 @@ import CheckBox from "../../components/CheckBox";
 const CheckBoxSelection = (props) => {
   console.log("checkbox");
   const {
-    rowsToShow: rows,
+    rows,
+    columns,
     getRowId,
     checkboxSelection,
-    components: { Header, Column, Footer, Row, Cell, RowCounter },
+    components: { Header, Column, Footer, Row, Cell, RowCounter, Pagination },
   } = props;
   const [selected, setSelected] = useState([]);
 
@@ -29,11 +30,11 @@ const CheckBoxSelection = (props) => {
   };
 
   const CheckBoxHeader = (props) => (
-    <Header {...props}>
-      <Column>
+    <Header>
+      {props.children}
+      <Column sx={{ width: 20 }}>
         <CheckBox isChecked={selected.length} toggle={toggleSelectedAll} />
       </Column>
-      {props.children}
     </Header>
   );
 
@@ -58,17 +59,17 @@ const CheckBoxSelection = (props) => {
   );
 
   const CheckBoxFooter = (props) => (
-    <Footer {...props}>
-      <RowCounter>
-        {selected.length} row{selected.length > 1 && "s"} selected
-      </RowCounter>
-      {props.children}
+    <Footer colSpan={columns.length + 1} {...props}>
+        <RowCounter>
+            {selected.length} row{selected.length > 1 && "s"} selected
+        </RowCounter>
+        {props.children}
     </Footer>
   );
 
   return checkboxSelection
     ? {
-        rowsToShow: rows,
+        rows,
         components: {
           ...props.components,
           Header: CheckBoxHeader,

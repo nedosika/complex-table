@@ -4,7 +4,7 @@ import { useTableProps } from "../../../../contexts/ComplexTable/ComplexTable";
 
 const TableRow = ({ children, row, sx, ...props }) => {
   const {
-    columnsToShow: columns,
+    columns,
     getRowHeight,
     components: { Cell },
   } = useTableProps();

@@ -1,13 +1,13 @@
 .root {
-  padding: 10px;
   border-bottom: solid 1px rgb(224, 224, 224);
   text-align: left;
   box-sizing: border-box;
+  padding: 10px;
 
   .wrapper {
-    position: relative;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     box-sizing: border-box;
   }
