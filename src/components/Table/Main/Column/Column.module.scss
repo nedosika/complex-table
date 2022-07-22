@@ -1,15 +1,21 @@
-.root{
-  position: relative;
-  display: flex;
-  align-items: center;
-
+.root {
+  border-bottom: solid 1px rgb(224, 224, 224);
+  text-align: left;
   box-sizing: border-box;
   padding: 10px;
 
-  .columnName{
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    font-weight: 500;
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
   }
+  //
+  //.columnName{
+  //  text-overflow: ellipsis;
+  //  overflow: hidden;
+  //  white-space: nowrap;
+  //  font-weight: 500;
+  //}
 }

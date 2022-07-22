@@ -4,10 +4,6 @@ import styles from "./App.module.scss";
 
 import ComplexTable from "./contexts/ComplexTable";
 import ColumnFilterIcon from "./modules/Filtration/ColumnFilterIcon";
-import Toolbar from "./components/Table/Toolbar";
-import Button from "./components/Button";
-import { useTableProps } from "./contexts/ComplexTable/ComplexTable";
-import GridToolbar from "./components/GtidToolbar/GridToolbar";
 
 const columns = [
   { field: "id", headerName: "ID", width: 105, sortable: true },
@@ -86,12 +82,12 @@ function App() {
         columns={columns}
         rows={rows}
         checkboxSelection
+        getRowHeight={() => 52}
         //getRowId={(row) => row.id}
         //disableColumnMenu={false}
         //disableColumnFilter={false}
         components={{
           //ColumnMenuIcon: ColumnFilterIcon
-          Toolbar: GridToolbar,
         }}
         //:Todo
         // pageSize={pageSize}
