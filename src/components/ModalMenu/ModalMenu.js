@@ -24,9 +24,7 @@ const ModalMenu = ({
             {items.map((item) => (
               <li
                 key={getKey(item)}
-                onClick={(event) => {
-                  onColumnClick(item, event);
-                }}
+                onClick={(event) => onColumnClick(item, event)}
               >
                 {renderItem(item)}
               </li>

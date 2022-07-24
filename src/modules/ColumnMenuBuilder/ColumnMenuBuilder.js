@@ -11,9 +11,9 @@ const ColumnMenuBuilder = (props) => {
   console.log("column menu");
 
   const {
-    rowsToShow: rows,
-    columnsToShow: columns,
-    components: { Column, ColumnMenu, Header },
+    rows,
+    columns,
+    components: { Column, ColumnMenu, Table },
     disableColumnMenu,
   } = props;
 
@@ -33,6 +33,7 @@ const ColumnMenuBuilder = (props) => {
   };
 
   const ColumnWithMenu = (props) => {
+    console.log(props)
     const {
       children,
       column: { field },
@@ -46,8 +47,8 @@ const ColumnMenuBuilder = (props) => {
     );
   };
 
-  const HeaderWithMenu = (props) => (
-    <Header {...props}>
+  const TableWithMenu = (props) => (
+    <Table {...props}>
       {props.children}
       <ColumnMenu
         isOpen={isOpen}
@@ -65,16 +66,16 @@ const ColumnMenuBuilder = (props) => {
           <Button onClick={clearFilter}>CLEAR</Button>
         </div>
       </ColumnMenu>
-    </Header>
+    </Table>
   );
 
   return {
-    rowsToShow: filtered,
+    rows: filtered,
     components: {
       ...props.components,
       ColumnMenuIcon: ColumnFilterIcon,
       Column: disableColumnMenu ? Column : ColumnWithMenu,
-      Header: HeaderWithMenu,
+      Table: TableWithMenu,
     },
   };
 };

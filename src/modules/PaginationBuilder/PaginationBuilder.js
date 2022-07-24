@@ -1,13 +1,14 @@
 import React from "react";
-import Pagination from "./Pagination";
-import usePagination from "./usePagination";
+import Pagination from "../../components/Pagination";
+import usePagination from "../../components/Pagination/usePagination";
 
 const PaginationBuilder = (props) => {
   console.log("pagination");
 
   const {
-    rowsToShow: rows,
-    components: { Footer },
+    rows,
+      columns,
+    components: { Footer, RowCounter },
   } = props;
   const { rowCount, nextPage, prevPage, fromRow, changeRowCount } =
     usePagination(rows);
@@ -27,11 +28,10 @@ const PaginationBuilder = (props) => {
   );
 
   return {
-    rowsToShow: [...rows].splice(fromRow - 1, rowCount),
+    rows: [...rows].splice(fromRow - 1, rowCount),
     components: {
       ...props.components,
       Footer: FooterWithPagination,
-      Pagination,
     },
   };
 };

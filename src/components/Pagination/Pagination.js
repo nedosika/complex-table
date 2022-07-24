@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styles from "./Pagination.module.scss";
-import { useTableProps } from "../../../contexts/ComplexTable/ComplexTable";
-import ModalMenu from "../../../components/ModalMenu";
-import useMenu from "../../../components/ModalMenu/useMenu";
+import { useTableProps } from "../../contexts/ComplexTable/ComplexTable";
+import ModalMenu from "../ModalMenu";
+import useMenu from "../ModalMenu/useMenu";
 
 const Pagination = ({
   onNext,

@@ -4,7 +4,7 @@ import Button from "./Button";
 
 const Sorting = (props) => {
     console.log('sorting')
-    const {rowsToShow: rows, components: {Column}} = props;
+    const {rows, components: {Column}} = props;
 
     const [sort, setSort] = useState({})
 
@@ -15,12 +15,12 @@ const Sorting = (props) => {
         }));
 
     const SortColumn = (props) => {
-        const {children, column: {field, sortable = true}} = props;
+        const {children, column} = props;
 
         return (
-            sortable
-                ? <Column {...props} onClick={toggle(field)}>
-                    <Button direction={sort.field === field ? sort.direction : SORT_DIRECTIONS.NONE}/>
+            column?.sortable
+                ? <Column {...props} onClick={toggle(column.field)} >
+                    <Button direction={sort.field === column.field ? sort.direction : SORT_DIRECTIONS.NONE}/>
                     {children}
                 </Column>
                 : <Column {...props}/>
@@ -28,7 +28,7 @@ const Sorting = (props) => {
     }
 
     return {
-        rowsToShow: sort.direction === SORT_DIRECTIONS.UP
+        rows: sort.direction === SORT_DIRECTIONS.UP
             ? [...rows].sort(compare(sort?.field)).reverse()
             : [...rows].sort(compare(sort?.field)),
         components: {
