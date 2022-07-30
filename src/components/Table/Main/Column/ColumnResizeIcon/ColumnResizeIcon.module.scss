@@ -1,6 +1,8 @@
 .root {
   display: flex;
   color: rgb(224, 224, 224);
+  position: relative;
+  left: 22px;
 
   svg {
     width: 1em;
