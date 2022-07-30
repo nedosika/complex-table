@@ -24,12 +24,11 @@ import ToolbarBuilder from "../../modules/ToolbarBuilder";
 
 const composeProps = (props) =>
   compose(
-      CheckBoxSelection,
-    ColumnMenuBuilder,
-    Sorting,
-
-    ToolbarBuilder,
-    PaginationBuilder
+    //   CheckBoxSelection,
+    // ColumnMenuBuilder,
+    // Sorting,
+    // ToolbarBuilder,
+    // PaginationBuilder
   )(props);
 
 const TableContext = createContext({
