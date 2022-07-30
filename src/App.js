@@ -37,10 +37,10 @@ const rows = [
   { id: 1, lastName: "Snow", firstName: "Jon", age: 35, fullName: "test" },
   {
     id: 2,
-    lastName: "Lannister",
+    //lastName: "Lannister",
     firstName: "Cersei",
-    age: 42,
     fullName: "test",
+    colspan: ["firstName", 3],
   },
   {
     id: 3,
@@ -49,7 +49,13 @@ const rows = [
     age: 45,
     fullName: "test",
   },
-  { id: 4, lastName: "Stark", firstName: "Arya", age: 16, fullName: "test" },
+  {
+    id: 4,
+    lastName: "Stark",
+    firstName: "Arya",
+    age: 16,
+    fullName: "test"
+  },
   {
     id: 5,
     lastName: "Targaryen",
@@ -57,7 +63,13 @@ const rows = [
     age: "",
     fullName: "test",
   },
-  { id: 6, lastName: "Melisandre", firstName: "", age: 150, fullName: "test" },
+  {
+    id: 6,
+    lastName: "Melisandre",
+    firstName: "",
+    age: 150,
+    fullName: "test"
+  },
   {
     id: 7,
     lastName: "Clifford",
@@ -86,9 +98,11 @@ function App() {
         //getRowId={(row) => row.id}
         //disableColumnMenu={false}
         //disableColumnFilter={false}
-        components={{
-          //ColumnMenuIcon: ColumnFilterIcon
-        }}
+        components={
+          {
+            //ColumnMenuIcon: ColumnFilterIcon
+          }
+        }
         //:Todo
         // pageSize={pageSize}
         // onPageSizeChange={(newPage) => setPageSize(newPage)}
