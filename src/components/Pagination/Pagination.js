@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Pagination.module.scss";
-import { useTableProps } from "../../contexts/ComplexTable/ComplexTable";
 import ModalMenu from "../ModalMenu";
 import useMenu from "../ModalMenu/useMenu";
+import PaginationButton from "./PaginationButton";
 
 const Pagination = ({
   onNext,
@@ -13,7 +13,8 @@ const Pagination = ({
   rowsCount,
 }) => {
   const { isOpen, anchorEl, toggleMenu } = useMenu();
-  const toRow = fromRow + rowCount <= rowsCount ? fromRow + rowCount -1: rowsCount;
+  const toRow =
+    fromRow + rowCount <= rowsCount ? fromRow + rowCount - 1 : rowsCount;
 
   return (
     <div className={styles.root}>
@@ -38,16 +39,17 @@ const Pagination = ({
           {fromRow}–{toRow} of {rowsCount}
         </p>
         <div className={styles.actions}>
-          <button title="Go to previous page" onClick={onPrev}>
-            <svg focusable="false" viewBox="0 0 24 24">
-              <path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z" />
-            </svg>
-          </button>
-          <button title="Go to next page" onClick={onNext}>
-            <svg focusable="false" viewBox="0 0 24 24">
-              <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" />
-            </svg>
-          </button>
+          <PaginationButton
+            title="Go to previous page"
+            onClick={onPrev}
+            left
+            disabled={fromRow === 1}
+          />
+          <PaginationButton
+            title="Go to next page"
+            onClick={onNext}
+            disabled={fromRow === toRow}
+          />
         </div>
       </div>
     </div>

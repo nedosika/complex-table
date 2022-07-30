@@ -7,7 +7,7 @@ const TableMain = () => {
   const {
     rows,
     getRowId,
-    components: { Row, Header },
+    components: { Row },
   } = useTableProps();
 
   return (

@@ -19,7 +19,7 @@ const Sorting = (props) => {
 
         return (
             column?.sortable
-                ? <Column {...props} onClick={toggle(column.field)} >
+                ? <Column {...props} onClick={toggle(column.field)} style={{  cursor: 'pointer'}}>
                     <Button direction={sort.field === column.field ? sort.direction : SORT_DIRECTIONS.NONE}/>
                     {children}
                 </Column>

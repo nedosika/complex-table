@@ -3,13 +3,13 @@ import React from "react";
 import styles from "./Column.module.scss";
 import { useTableProps } from "../../../../contexts/ComplexTable/ComplexTable";
 
-const Column = ({ children, column, sx, ...props }) => {
+const Column = ({ children, column, ...props }) => {
   const {
     components: { ColumnTitle, ColumnResizeIcon },
   } = useTableProps();
 
   return (
-    <th className={styles.root} style={sx} {...props}>
+    <th className={styles.root} {...props}>
       <div className={styles.wrapper}>
         {column?.headerName && <ColumnTitle text={column?.headerName} />}
         {children}
@@ -17,21 +17,6 @@ const Column = ({ children, column, sx, ...props }) => {
       </div>
     </th>
   );
-
-  // return (
-  //     <div
-  //         {...props}
-  //         className={styles.root}
-  //         style={{
-  //             minWidth: width,
-  //             maxWidth: width
-  //         }}
-  //     >
-  //         <ColumnTitle text={headerName}/>
-  //         {children}
-  //         <ColumnResizeIcon/>
-  //     </div>
-  // );
 };
 
 export default Column;

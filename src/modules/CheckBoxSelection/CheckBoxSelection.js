@@ -32,8 +32,8 @@ const CheckBoxSelection = (props) => {
   const CheckBoxHeader = (props) => (
     <Header>
       {props.children}
-      <Column sx={{ width: 20 }}>
-        <CheckBox isChecked={selected.length} toggle={toggleSelectedAll} />
+      <Column style={{ width: 20, cursor: "pointer" }} onClick={toggleSelectedAll}>
+        <CheckBox isChecked={selected.length} />
       </Column>
     </Header>
   );
@@ -46,24 +46,24 @@ const CheckBoxSelection = (props) => {
       }}
       onClick={() => selectOne(props.row)}
     >
-      <Cell>
-        <CheckBox
-          isChecked={getIsSelected(props.row)}
-          toggle={(event) => {
-            event.stopPropagation();
-            toggleSelected(props.row);
-          }}
-        />
+      <Cell
+        onClick={(event) => {
+          event.stopPropagation();
+          toggleSelected(props.row);
+        }}
+        sx={{ cursor: "pointer" }}
+      >
+        <CheckBox isChecked={getIsSelected(props.row)} />
       </Cell>
     </Row>
   );
 
   const CheckBoxFooter = (props) => (
     <Footer colSpan={columns.length + 1} {...props}>
-        <RowCounter>
-            {selected.length} row{selected.length > 1 && "s"} selected
-        </RowCounter>
-        {props.children}
+      <RowCounter>
+        {selected.length} row{selected.length > 1 && "s"} selected
+      </RowCounter>
+      {props.children}
     </Footer>
   );
 
