@@ -45,7 +45,11 @@ const Pagination = ({
             left
             disabled={fromRow === 1}
           />
-          <PaginationButton title="Go to next page" onClick={onNext} disabled={fromRow === toRow}/>
+          <PaginationButton
+            title="Go to next page"
+            onClick={onNext}
+            disabled={fromRow === toRow}
+          />
         </div>
       </div>
     </div>
