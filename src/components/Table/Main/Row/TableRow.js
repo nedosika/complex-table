@@ -10,13 +10,25 @@ const TableRow = ({ children, row, sx, ...props }) => {
   } = useTableProps();
 
   return (
-    <tr className={styles.root} style={{ height: getRowHeight(row), ...sx }} {...props}>
+    <tr
+      className={styles.root}
+      style={{ height: getRowHeight(row), ...sx }}
+      {...props}
+    >
       {children}
-      {columns.map(({ field }) => (
-        <Cell key={field}>
-          {row[field]}
-        </Cell>
-      ))}
+      {columns.map(
+        ({ field }) =>
+          row[field] !== undefined && (
+            <Cell
+              key={field}
+              colSpan={
+                row.colspan && row.colspan[0] === field && row.colspan[1]
+              }
+            >
+              {row[field]}
+            </Cell>
+          )
+      )}
     </tr>
   );
 };
