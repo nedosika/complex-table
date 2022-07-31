@@ -11,7 +11,7 @@ const TableHeader = ({ children }) => {
   return (
     <thead>
       <tr>
-        <th colSpan={2}>
+        <th colSpan={columns.length}>
           <Toolbar/>
         </th>
       </tr>

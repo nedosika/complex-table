@@ -101,7 +101,6 @@ function App() {
         //disableColumnFilter={false}
         components={
           {
-            //ColumnMenuIcon: ColumnFilterIcon
             Toolbar
           }
         }
