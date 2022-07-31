@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./TableRow.module.scss";
-import { useTableProps } from "../../../../contexts/ComplexTable/ComplexTable";
+import { useTableProps } from "../../../ComplexTable/ComplexTable";
 
 const TableRow = ({ children, row, sx, ...props }) => {
   const {
