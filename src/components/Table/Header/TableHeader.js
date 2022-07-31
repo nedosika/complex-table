@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useTableProps } from "../../../contexts/ComplexTable/ComplexTable";
+import { useTableProps } from "../../ComplexTable/ComplexTable";
 
 const TableHeader = ({ children }) => {
   const {
@@ -12,7 +12,7 @@ const TableHeader = ({ children }) => {
     <thead>
       <tr>
         <th colSpan={2}>
-          <Toolbar />
+          <Toolbar/>
         </th>
       </tr>
       <tr>
