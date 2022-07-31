@@ -32,7 +32,10 @@ const CheckBoxSelection = (props) => {
   const CheckBoxHeader = (props) => (
     <Header>
       {props.children}
-      <Column style={{ width: 20, cursor: "pointer" }} onClick={toggleSelectedAll}>
+      <Column
+        style={{ width: 20, cursor: "pointer" }}
+        onClick={toggleSelectedAll}
+      >
         <CheckBox isChecked={selected.length} />
       </Column>
     </Header>
@@ -70,6 +73,7 @@ const CheckBoxSelection = (props) => {
   return checkboxSelection
     ? {
         rows,
+        selectedRows: selected,
         components: {
           ...props.components,
           Header: CheckBoxHeader,

@@ -1,7 +1,7 @@
 import React from "react";
 
 import styles from "./Column.module.scss";
-import { useTableProps } from "../../../../contexts/ComplexTable/ComplexTable";
+import { useTableProps } from "../../../ComplexTable/ComplexTable";
 
 const Column = ({ children, column, ...props }) => {
   const {

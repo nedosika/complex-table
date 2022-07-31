@@ -2,8 +2,9 @@ import React, { useState } from "react";
 
 import styles from "./App.module.scss";
 
-import ComplexTable from "./contexts/ComplexTable";
+import ComplexTable from "./components/ComplexTable";
 import ColumnFilterIcon from "./modules/Filtration/ColumnFilterIcon";
+import Toolbar from "./components/Toolbar";
 
 const columns = [
   { field: "id", headerName: "ID", width: 105, sortable: true },
@@ -101,6 +102,7 @@ function App() {
         components={
           {
             //ColumnMenuIcon: ColumnFilterIcon
+            Toolbar
           }
         }
         //:Todo

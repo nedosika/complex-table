@@ -33,7 +33,7 @@ const ColumnMenuBuilder = (props) => {
   };
 
   const ColumnWithMenu = (props) => {
-    console.log(props)
+    //console.log(props)
     const {
       children,
       column: { field },
