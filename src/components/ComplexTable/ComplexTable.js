@@ -22,10 +22,10 @@ import PaginationBuilder from "../../modules/PaginationBuilder/PaginationBuilder
 
 const composeProps = (props) =>
   compose(
-      CheckBoxSelection,
-    ColumnMenuBuilder,
-    Sorting,
-    PaginationBuilder
+    CheckBoxSelection,
+    // ColumnMenuBuilder,
+    //Sorting,
+    //PaginationBuilder
   )(props);
 
 const TableContext = createContext({
@@ -50,11 +50,14 @@ export const useTableProps = () => useContext(TableContext);
 
 const ComplexTable = (props) => {
   const { components } = useTableProps();
+  const [showedRows, setRows] = useState(props.rows)
 
   const composedProps = composeProps({
     getRowId: (row) => row.id,
     getRowHeight: () => "auto",
     ...props,
+    showedRows,
+    setRows,
     components: { ...components, ...props.components },
   });
 

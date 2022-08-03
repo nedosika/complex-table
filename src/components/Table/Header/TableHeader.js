@@ -21,7 +21,7 @@ const TableHeader = ({ children }) => {
           <Column
             column={column}
             key={column.field}
-            sx={{ width: column.width }}
+            style={{ width: column.width }}
           />
         ))}
       </tr>

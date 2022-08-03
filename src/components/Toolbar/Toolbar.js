@@ -25,8 +25,8 @@ const Toolbar = () => {
         }
         disabled={({ selectedRows }) => !selectedRows.length}
       />
-      <SearchInput label="Search" placeholder="Please type to search..." />
-      <Button title="Search" icon={SearchIcon} hint="Search" />
+      <SearchInput label="Search" placeholder="Please type to search..."/>
+      {/*<Button title="Search" icon={SearchIcon} hint="Search" />*/}
     </GridToolbar>
   );
 };
