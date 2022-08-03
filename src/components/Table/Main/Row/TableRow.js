@@ -16,18 +16,13 @@ const TableRow = ({ children, row, sx, ...props }) => {
       {...props}
     >
       {children}
-      {columns.map(
-        ({ field }) =>
-          row[field] !== undefined && (
-            <Cell
-              key={field}
-              colSpan={
-                row.colspan && row.colspan[0] === field && row.colspan[1]
-              }
-            >
-              {row[field]}
-            </Cell>
-          )
+      {columns.map(({ field }) =>
+          row[field] !== undefined && <Cell
+          key={field}
+          colSpan={row.colspan && row.colspan[field]}
+        >
+          {row[field]}
+        </Cell>
       )}
     </tr>
   );
