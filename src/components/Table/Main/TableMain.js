@@ -5,14 +5,14 @@ import { useTableProps } from "../../ComplexTable/ComplexTable";
 
 const TableMain = () => {
   const {
-    rows,
+    showedRows,
     getRowId,
     components: { Row },
   } = useTableProps();
 
   return (
     <tbody className={styles.root}>
-      {rows.map((row) => (
+      {showedRows.map((row) => (
         <Row row={row} key={getRowId(row)} />
       ))}
     </tbody>

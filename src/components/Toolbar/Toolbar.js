@@ -3,6 +3,8 @@ import GridToolbar from "../Table/Toolbar";
 import Button from "../Button";
 import DeleteIcon from "./DeleteIcon";
 import EditIcon from "./EditIcon";
+import SearchInput from "../SearchInput";
+import SearchIcon from "./SearchIcon";
 
 const Toolbar = () => {
   return (
@@ -11,9 +13,7 @@ const Toolbar = () => {
         title="Edit"
         icon={EditIcon}
         hint={({ selectedRows }) =>
-          selectedRows.length === 1
-            ? "Edit"
-            : "Please select one row"
+          selectedRows.length === 1 ? "Edit" : "Please select one row"
         }
         disabled={({ selectedRows }) => selectedRows.length !== 1}
       />
@@ -21,12 +21,12 @@ const Toolbar = () => {
         title="Delete"
         icon={DeleteIcon}
         hint={({ selectedRows }) =>
-            selectedRows.length
-                ? "Delete"
-                : "Please select at least one rows"
+          selectedRows.length ? "Delete" : "Please select at least one rows"
         }
         disabled={({ selectedRows }) => !selectedRows.length}
       />
+      <SearchInput label="Search" placeholder="Please type to search..."/>
+      {/*<Button title="Search" icon={SearchIcon} hint="Search" />*/}
     </GridToolbar>
   );
 };

@@ -11,7 +11,7 @@ const TableHeader = ({ children }) => {
   return (
     <thead>
       <tr>
-        <th colSpan={2}>
+        <th colSpan={columns.length}>
           <Toolbar/>
         </th>
       </tr>
@@ -21,7 +21,7 @@ const TableHeader = ({ children }) => {
           <Column
             column={column}
             key={column.field}
-            sx={{ width: column.width }}
+            style={{ width: column.width }}
           />
         ))}
       </tr>
