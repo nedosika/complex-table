@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import styles from "./SearchInput.module.scss";
-import { useTableProps } from "../ComplexTable/ComplexTable";
+import {useTableProps} from "../../../useComplexTableContext";
+import {useSearch} from "../../SearchProvider";
 
 const SearchInput = ({ label, placeholder = "" }) => {
-  const { rows, setRows, columns } = useTableProps();
+  const { rows, columns, setTableRows } = useTableProps();
+  //const {setSearchedRows} = useSearch();
   const [searchValue, setSearchValue] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setRows(rows.filter((row) =>
+    setTableRows(rows.filter((row) =>
         columns.some(({ field }) => String(row[field]).toLowerCase().includes(searchValue.toLowerCase()))
       ))
   };

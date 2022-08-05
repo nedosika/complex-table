@@ -1,0 +1,31 @@
+import React from "react";
+import { useTableProps } from "../TableProvider";
+import ColumnTitle from "../Main/Column/ColumnTitle";
+import ColumnResizeIcon from "../Main/Column/ColumnResizeIcon";
+
+const Header = () => {
+  const {
+    columns,
+    components: { Toolbar, Column },
+  } = useTableProps();
+
+  return (
+    <thead>
+      <tr>
+        <th colSpan={columns.length}>
+          <Toolbar />
+        </th>
+      </tr>
+      <tr>
+        {columns.map(({ headerName, field }) => (
+          <Column headerName={headerName} key={field}>
+            <ColumnTitle text={headerName} />
+            <ColumnResizeIcon />
+          </Column>
+        ))}
+      </tr>
+    </thead>
+  );
+};
+
+export default Header;

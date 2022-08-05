@@ -1,19 +1,12 @@
 import React from "react";
 
 import styles from "./Column.module.scss";
-import { useTableProps } from "../../../ComplexTable/ComplexTable";
 
-const Column = ({ children, column, ...props }) => {
-  const {
-    components: { ColumnTitle, ColumnResizeIcon },
-  } = useTableProps();
-
+const Column = ({children, ...props}) => {
   return (
     <th className={styles.root} {...props}>
-      <div className={styles.wrapper}>
-        {column?.headerName && <ColumnTitle text={column?.headerName} />}
-        {children}
-          <ColumnResizeIcon />
+      <div className={styles.wrapper} >
+          {children}
       </div>
     </th>
   );

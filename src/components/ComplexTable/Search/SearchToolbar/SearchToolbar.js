@@ -1,14 +1,13 @@
 import React from "react";
-import GridToolbar from "../Table/Toolbar";
-import Button from "../Button";
+import Toolbar from "../../../Table/Toolbar";
+import Button from "../../../Button";
 import DeleteIcon from "./DeleteIcon";
 import EditIcon from "./EditIcon";
-import SearchInput from "../SearchInput";
-import SearchIcon from "./SearchIcon";
+import SearchInput from "./SearchInput";
 
-const Toolbar = () => {
+const SearchToolbar = () => {
   return (
-    <GridToolbar>
+    <Toolbar>
       <Button
         title="Edit"
         icon={EditIcon}
@@ -26,9 +25,8 @@ const Toolbar = () => {
         disabled={({ selectedRows }) => !selectedRows.length}
       />
       <SearchInput label="Search" placeholder="Please type to search..."/>
-      {/*<Button title="Search" icon={SearchIcon} hint="Search" />*/}
-    </GridToolbar>
+    </Toolbar>
   );
 };
 
-export default Toolbar;
+export default SearchToolbar;

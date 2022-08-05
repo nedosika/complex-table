@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import styles from "./App.module.scss";
 
 import ComplexTable from "./components/ComplexTable";
-import ColumnFilterIcon from "./modules/Filtration/ColumnFilterIcon";
-import Toolbar from "./components/Toolbar";
 
 const columns = [
   { field: "id", headerName: "ID", width: 105, sortable: true },
@@ -40,22 +38,22 @@ const rows = [
     id: 2,
     lastName: "Lannister",
     firstName: "Cersei",
-    //fullName: "test",
-    //age: 33,
+    fullName: "test",
+    age: 33,
     //colspan: ["firstName", 3],
-    colspan: {
-      lastName: 3
-    }
+    // colspan: {
+    //   lastName: 3
+    // }
   },
   {
     id: 3,
     lastName: "Lannister",
     firstName: "Jaime",
-    //age: 45,
-    //fullName: "test",
-    colspan: {
-      firstName: 3
-    }
+    age: 45,
+    fullName: "test",
+    // colspan: {
+    //   firstName: 3
+    // }
   },
   {
     id: 4,
@@ -103,29 +101,11 @@ function App() {
         rows={rows}
         checkboxSelection
         getRowHeight={() => 52}
-        //getRowId={(row) => row.id}
-        //disableColumnMenu={false}
-        //disableColumnFilter={false}
-        components={
-          {
-            Toolbar
-          }
-        }
-        //:Todo
-        // pageSize={pageSize}
-        // onPageSizeChange={(newPage) => setPageSize(newPage)}
-        // pagination
-        // rowsPerPageOptions={[5]}
-        // page={page}
-        // onPageChange={(newPage) => setPage(newPage)}
-        // onMenuClose={() => {console.log('Close')}}
-        // onMenuOpen={() => {console.log('Open')}}
-        // hideFooter={false}
-        // hideFooterPagination={false}
-        // hideFooterSelectedRowCount={false}
-        // headerHeight={56}
-        // disableSelectionOnClick={false}
-        // isRowSelectable={(params: GridRowParams) => params.row.quantity > 50000}
+        // components={
+        //   {
+        //     Toolbar: SearchToolbar,
+        //   }
+        // }
       />
     </div>
   );

@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 import styles from "./CheckBox.module.scss";
 
-const CheckBox = ({isChecked, toggle}) => {
-    return (
-        <div className={styles.root} onClick={toggle}>
-            <span>
-                <input type="checkbox" defaultChecked={isChecked}/>
-            </span>
-        </div>
-    );
+const CheckBox = ({ isChecked }) => {
+  return (
+    <div className={styles.root}>
+      <span>
+        <input type="checkbox" checked={isChecked} readOnly={true} />
+      </span>
+    </div>
+  );
 };
 
 export default CheckBox;
