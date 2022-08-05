@@ -4,7 +4,7 @@ import React from "react";
 import EditIcon from "../Search/SearchToolbar/EditIcon";
 import DeleteIcon from "../Search/SearchToolbar/DeleteIcon";
 import Toolbar from "../../Table/Toolbar";
-import Button from "../Button";
+import Button from "../../Button";
 
 const SelectionToolbar = () => {
     return (

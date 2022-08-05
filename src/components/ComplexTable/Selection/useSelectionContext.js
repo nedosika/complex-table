@@ -7,7 +7,7 @@ export const useSelectionContext = () => useContext(SelectionContext);
 
 const SelectionProvider = ({ children }) => {
   const [selected, setSelected] = useState([]);
-  const {getRowId, rows} = useComplexTableContext();
+  const {rows, getRowId} = useComplexTableContext();
 
   const toggleSelected = (row) =>
     setSelected((prevState) =>

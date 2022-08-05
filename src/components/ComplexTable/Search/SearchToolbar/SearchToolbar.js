@@ -1,6 +1,6 @@
 import React from "react";
 import Toolbar from "../../../Table/Toolbar";
-import Button from "../../Button";
+import Button from "../../../Button";
 import DeleteIcon from "./DeleteIcon";
 import EditIcon from "./EditIcon";
 import SearchInput from "./SearchInput";

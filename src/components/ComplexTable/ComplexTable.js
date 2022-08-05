@@ -2,7 +2,7 @@ import React from "react";
 
 import AllProviders from "../AllProviders/AllProviders";
 import Table from "../Table";
-import Header from "../ComplexTable/Selection/Header";
+import Header from "../ComplexTable/Sorting/Header";
 import Main from "../Table/Main";
 import RowsList from "../ComplexTable/Selection/RowsList";
 import Footer from "../ComplexTable/Pagination/Footer";

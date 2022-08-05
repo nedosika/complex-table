@@ -6,7 +6,7 @@ const Sorting = (props) => {
     console.log('sorting')
     const {showedRows: rows, components: {Column}} = props;
 
-    const [sort, setSort] = useState({})
+    const [sort, setSort] = useState({});
 
     const toggle = (sortedField) => () =>
         setSort(({direction, field}) => ({

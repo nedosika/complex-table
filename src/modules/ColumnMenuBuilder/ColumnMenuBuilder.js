@@ -4,7 +4,7 @@ import ColumnMenu from "./ColumnMenu";
 import ColumnMenuItem from "./ColumnMenuItem";
 import useMenu from "../../components/ModalMenu/useMenu";
 import useFilter from "./useFilter";
-import Button from "../../components/ComplexTable/Button";
+import Button from "../../components/Button";
 import ColumnFilterIcon from "../Filtration/ColumnFilterIcon";
 
 const ColumnMenuBuilder = (props) => {

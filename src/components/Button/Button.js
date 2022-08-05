@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./Button.module.scss";
 import Tooltip from "@mui/material/Tooltip";
-import {useComplexTableContext} from "../useComplexTableContext";
-import {useSelectionContext} from "../Selection/useSelectionContext";
+import {useComplexTableContext} from "../ComplexTable/useComplexTableContext";
+import {useSelectionContext} from "../ComplexTable/Selection/useSelectionContext";
 
 const COLORS = {
   disable: "lightgrey",

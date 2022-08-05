@@ -11,20 +11,19 @@ import RowCounter from "../Table/Footer/RowCounter";
 import Footer from "../../components/ComplexTable/Pagination/Footer";
 import Table from "../Table";
 import Main from "../Table/Main";
-import Header from "../Table/Header";
+import Header from "./Sorting/Header";
 import RowsList from "../Table/Main/RowsList";
 import Toolbar from "../ComplexTable/Search/SearchToolbar";
-import useTableSearch from "./Search/useTableSearch";
 
-const TableContext = createContext({
+const ComplexTableContext = createContext({
   components: { Header, Main, Footer, Table, Row, RowsList, Toolbar, Column },
 });
 
-export const useComplexTableContext = () => useContext(TableContext);
+export const useComplexTableContext = () => useContext(ComplexTableContext);
 
 const ComplexTableProvider = ({ children, components, ...props }) => {
   return (
-    <TableContext.Provider
+    <ComplexTableContext.Provider
       value={{
         getRowId: (row) => row.id,
         getRowHeight: () => "auto",
@@ -49,7 +48,7 @@ const ComplexTableProvider = ({ children, components, ...props }) => {
       }}
     >
       {children}
-    </TableContext.Provider>
+    </ComplexTableContext.Provider>
   );
 };
 
