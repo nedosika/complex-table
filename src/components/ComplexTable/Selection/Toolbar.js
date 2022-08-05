@@ -12,18 +12,18 @@ const SelectionToolbar = () => {
             <Button
                 title="Edit"
                 icon={EditIcon}
-                hint={({ selectedRows }) =>
-                    selectedRows.length === 1 ? "Edit" : "Please select one row"
+                hint={({ selected }) =>
+                    selected.length === 1 ? "Edit" : "Please select one row"
                 }
                 disabled={({ selectedRows }) => selectedRows.length !== 1}
             />
             <Button
                 title="Delete"
                 icon={DeleteIcon}
-                hint={({ selectedRows }) =>
-                    selectedRows.length ? "Delete" : "Please select at least one rows"
+                hint={({ selected }) =>
+                    selected.length ? "Delete" : "Please select at least one rows"
                 }
-                disabled={({ selectedRows }) => !selectedRows.length}
+                disabled={({ selected }) => !selected.length}
             />
         </Toolbar>
     );

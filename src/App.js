@@ -101,11 +101,6 @@ function App() {
         rows={rows}
         checkboxSelection
         getRowHeight={() => 52}
-        // components={
-        //   {
-        //     Toolbar: SearchToolbar,
-        //   }
-        // }
       />
     </div>
   );
