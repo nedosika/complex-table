@@ -1,15 +1,15 @@
 import React from "react";
-import UseComplexTableContext from "../ComplexTable/useComplexTableContext";
-import SelectionProvider from "../ComplexTable/Selection/SelectionProvider";
-import SearchProvider from "../ComplexTable/Search/SearchProvider";
+import ComplexTableProvider from "../ComplexTable/useComplexTableContext";
+import PaginationProvider from "../ComplexTable/Pagination/usePaginationProvider";
+import SearchProvider from "../ComplexTable/Search/useSearchContext";
 
 const AllProviders = ({ children, ...props }) => {
   return (
-    <UseComplexTableContext {...props}>
-      <SelectionProvider>
-        <SearchProvider>{children}</SearchProvider>
-      </SelectionProvider>
-    </UseComplexTableContext>
+    <ComplexTableProvider {...props}>
+      <SearchProvider>
+        <PaginationProvider>{children}</PaginationProvider>
+      </SearchProvider>
+    </ComplexTableProvider>
   );
 };
 

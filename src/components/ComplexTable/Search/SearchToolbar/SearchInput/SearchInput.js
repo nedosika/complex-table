@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import styles from "./SearchInput.module.scss";
-import {useTableProps} from "../../../useComplexTableContext";
-import {useSearch} from "../../SearchProvider";
+import { useSearchContext } from "../../useSearchContext";
 
 const SearchInput = ({ label, placeholder = "" }) => {
-  const { rows, columns, setTableRows } = useTableProps();
-  //const {setSearchedRows} = useSearch();
-  const [searchValue, setSearchValue] = useState("");
+  console.log(useSearchContext())
+  const { searchRows, value, setValue } = useSearchContext();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setTableRows(rows.filter((row) =>
-        columns.some(({ field }) => String(row[field]).toLowerCase().includes(searchValue.toLowerCase()))
-      ))
+    searchRows();
   };
 
   return (
@@ -21,8 +17,8 @@ const SearchInput = ({ label, placeholder = "" }) => {
         <div className={styles.wrapper}>
           <input
             type="text"
-            defaultValue={searchValue}
-            onChange={(event) => setSearchValue(event.target.value)}
+            defaultValue={value}
+            onChange={(event) => setValue(event.target.value)}
             placeholder={placeholder}
           />
           <fieldset>

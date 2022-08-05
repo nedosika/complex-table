@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import {useTableProps} from "../useComplexTableContext";
+import {useComplexTableContext} from "../useComplexTableContext";
 
 const SelectionContext = createContext({});
 
@@ -7,7 +7,7 @@ export const useSelection = () => useContext(SelectionContext);
 
 const SelectionProvider = ({ children }) => {
   const [selected, setSelected] = useState([]);
-  const {getRowId, showedRows: rows} = useTableProps();
+  const {getRowId, showedRows: rows} = useComplexTableContext();
 
   const toggleSelected = (row) =>
     setSelected((prevState) =>

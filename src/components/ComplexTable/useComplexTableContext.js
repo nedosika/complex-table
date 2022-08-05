@@ -1,6 +1,5 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext } from "react";
 
-import Toolbar from "./Search/SearchToolbar";
 import Row from "../Table/Main/Row/TableRow";
 import Cell from "../Table/Main/Cell/TableCell";
 import Column from "../Table/Main/Column";
@@ -9,32 +8,32 @@ import ColumnMenu from "../../modules/ColumnMenuBuilder/ColumnMenu";
 import ColumnMenuIcon from "../../modules/ColumnMenuBuilder/ColumnMenuIcon";
 import ColumnResizeIcon from "../Table/Main/Column/ColumnResizeIcon";
 import RowCounter from "../Table/Footer/RowCounter";
-import Footer from "../Table/Footer";
-import Table from "../Table/Table";
+import Footer from "../../components/ComplexTable/Pagination/Footer";
+import Table from "../Table";
 import Main from "../Table/Main";
 import Header from "../Table/Header";
+import RowsList from "../Table/Main/RowsList";
+import Toolbar from "../ComplexTable/Search/SearchToolbar";
+import useTableSearch from "./Search/useTableSearch";
 
 const TableContext = createContext({
-  components: { Header, Main, Footer, Table, Row },
+  components: { Header, Main, Footer, Table, Row, RowsList, Toolbar, Column },
 });
 
 export const useComplexTableContext = () => useContext(TableContext);
 
-const UseComplexTableContext = ({ children, components, ...props }) => {
-  const [tableRows, setTableRows] = useState(props.rows);
-
+const ComplexTableProvider = ({ children, components, ...props }) => {
   return (
     <TableContext.Provider
       value={{
         getRowId: (row) => row.id,
         getRowHeight: () => "auto",
-        tableRows,
-        setTableRows,
         components: {
-          Table,
-          Main,
           Header,
+          Main,
           Footer,
+          Table,
+          RowsList,
           Toolbar,
           Row,
           Cell,
@@ -54,4 +53,4 @@ const UseComplexTableContext = ({ children, components, ...props }) => {
   );
 };
 
-export default UseComplexTableContext;
+export default ComplexTableProvider;

@@ -1,5 +1,5 @@
 import React from "react";
-import { useTableProps } from "../TableProvider";
+import { useComplexTableContext } from "../../ComplexTable/useComplexTableContext";
 import ColumnTitle from "../Main/Column/ColumnTitle";
 import ColumnResizeIcon from "../Main/Column/ColumnResizeIcon";
 
@@ -7,7 +7,7 @@ const Header = () => {
   const {
     columns,
     components: { Toolbar, Column },
-  } = useTableProps();
+  } = useComplexTableContext();
 
   return (
     <thead>

@@ -1,22 +1,29 @@
 import React from "react";
 
-import UseComplexTableContext, {useComplexTableContext} from "./useComplexTableContext";
+import { useComplexTableContext } from "./useComplexTableContext";
+import AllProviders from "../AllProviders/AllProviders";
+import Table from "../Table";
+import Header from "../Table/Header";
+import Main from "../Table/Main";
+import RowsList from "../Table/Main/RowsList";
+import Footer from "../ComplexTable/Pagination/Footer";
 
 const ComplexTable = ({ components, ...props }) => {
-  const { Main, Table, RowsList, Header } = {
-    ...useComplexTableContext().components,
-    ...components,
-  };
+  // const { components: defaultComponents } = useComplexTableContext();
+  // const {
+  //   components: { Table, Header, Main, Footer, RowsList },
+  // } = { components: { ...defaultComponents, ...components } };
 
   return (
-    <UseComplexTableContext components={components} {...props}>
+    <AllProviders {...props}>
       <Table>
-        <Header/>
+        <Header />
         <Main>
           <RowsList />
         </Main>
+        <Footer />
       </Table>
-    </UseComplexTableContext>
+    </AllProviders>
   );
 };
 

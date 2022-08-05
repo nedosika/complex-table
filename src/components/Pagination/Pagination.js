@@ -10,7 +10,7 @@ const Pagination = ({
   fromRow,
   rowCount,
   changeRowCount,
-  rowsCount,
+  rowsCount
 }) => {
   const { isOpen, anchorEl, toggleMenu } = useMenu();
   const toRow =
@@ -30,7 +30,7 @@ const Pagination = ({
         <ModalMenu
           isOpen={isOpen}
           onClose={toggleMenu}
-          items={[1, 5, 10]}
+          items={[2, 5, 10]}
           anchorEl={anchorEl}
           onColumnClick={changeRowCount}
           getKey={(item) => item}
@@ -48,7 +48,7 @@ const Pagination = ({
           <PaginationButton
             title="Go to next page"
             onClick={onNext}
-            disabled={fromRow === toRow}
+            disabled={toRow === rowsCount}
           />
         </div>
       </div>

@@ -2,7 +2,7 @@ import React from "react";
 import { useTableProps } from "../../Table/TableProvider";
 import CheckBox from "../../CheckBox";
 import { useSelection } from "./SelectionProvider";
-import {useSearch} from "../Search/SearchProvider";
+import {useSearch} from "../Search/useSearchContext";
 
 const RowsList = () => {
   const {
@@ -14,7 +14,7 @@ const RowsList = () => {
   } = useTableProps();
   const { toggleSelected, getIsSelected, selectOne } = useSelection();
 
-  // const {searchedRows} = useSearch();
+  // const {searchedRows} = useTableSearch();
 
   const handleSelect = (row) => (event) => {
     event.stopPropagation();

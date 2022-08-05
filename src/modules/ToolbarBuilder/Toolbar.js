@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "../../components/Button";
+import Button from "../../components/ComplexTable/Button";
 import ModalMenu from "../../components/ModalMenu";
 import ColumnMenuItem from "../ColumnMenuBuilder/ColumnMenuItem";
 import useMenu from "../../components/ModalMenu/useMenu";
