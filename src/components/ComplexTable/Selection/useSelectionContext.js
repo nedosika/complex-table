@@ -3,11 +3,11 @@ import {useComplexTableContext} from "../useComplexTableContext";
 
 const SelectionContext = createContext({});
 
-export const useSelection = () => useContext(SelectionContext);
+export const useSelectionContext = () => useContext(SelectionContext);
 
 const SelectionProvider = ({ children }) => {
   const [selected, setSelected] = useState([]);
-  const {getRowId, showedRows: rows} = useComplexTableContext();
+  const {getRowId, rows} = useComplexTableContext();
 
   const toggleSelected = (row) =>
     setSelected((prevState) =>

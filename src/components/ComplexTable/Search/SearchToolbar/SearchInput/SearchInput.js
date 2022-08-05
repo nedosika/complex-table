@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React  from "react";
 import styles from "./SearchInput.module.scss";
 import { useSearchContext } from "../../useSearchContext";
 
 const SearchInput = ({ label, placeholder = "" }) => {
-  console.log(useSearchContext())
   const { searchRows, value, setValue } = useSearchContext();
 
   const handleSubmit = (event) => {

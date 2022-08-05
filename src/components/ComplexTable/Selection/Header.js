@@ -1,16 +1,16 @@
 import React from "react";
 import CheckBox from "../../CheckBox";
-import { useTableProps } from "../useComplexTableContext";
-import { useSelection } from "./SelectionProvider";
 import ColumnTitle from "../../Table/Main/Column/ColumnTitle";
 import ColumnResizeIcon from "../../Table/Main/Column/ColumnResizeIcon";
+import {useComplexTableContext} from "../useComplexTableContext";
+import {useSelectionContext} from "./useSelectionContext";
 
 const SelectionHeader = () => {
   const {
     components: { Column, Toolbar },
     columns,
-  } = useTableProps();
-  const { selected, toggleSelectedAll } = useSelection();
+  } = useComplexTableContext();
+  const { selected, toggleSelectedAll } = useSelectionContext();
 
   return (
     <thead>

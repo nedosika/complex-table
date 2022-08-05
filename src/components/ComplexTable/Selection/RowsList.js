@@ -1,20 +1,18 @@
 import React from "react";
-import { useTableProps } from "../../Table/TableProvider";
 import CheckBox from "../../CheckBox";
-import { useSelection } from "./SelectionProvider";
-import {useSearch} from "../Search/useSearchContext";
+import { useSelectionContext } from "./useSelectionContext";
+import { useComplexTableContext } from "../useComplexTableContext";
+import {usePaginationContext} from "../Pagination/usePaginationProvider";
 
 const RowsList = () => {
   const {
     components: { Row, Cell },
     columns,
-    rows,
     getRowId,
     getRowHeight,
-  } = useTableProps();
-  const { toggleSelected, getIsSelected, selectOne } = useSelection();
-
-  // const {searchedRows} = useTableSearch();
+  } = useComplexTableContext();
+  const { toggleSelected, getIsSelected, selectOne } = useSelectionContext();
+  const { rows } = usePaginationContext();
 
   const handleSelect = (row) => (event) => {
     event.stopPropagation();

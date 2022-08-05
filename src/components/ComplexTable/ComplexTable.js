@@ -1,11 +1,10 @@
 import React from "react";
 
-import { useComplexTableContext } from "./useComplexTableContext";
 import AllProviders from "../AllProviders/AllProviders";
 import Table from "../Table";
-import Header from "../Table/Header";
+import Header from "../ComplexTable/Selection/Header";
 import Main from "../Table/Main";
-import RowsList from "../Table/Main/RowsList";
+import RowsList from "../ComplexTable/Selection/RowsList";
 import Footer from "../ComplexTable/Pagination/Footer";
 
 const ComplexTable = ({ components, ...props }) => {
