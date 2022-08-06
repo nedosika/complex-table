@@ -1,22 +1,21 @@
 import { useState } from "react";
 
 const useTableSearch = ({ rows, columns }) => {
-  const [searchedValue, setSearchedValue] = useState("");
-  const [value, setValue] = useState("");
+  const [searchValue, setSearchedValue] = useState("");
 
-  const searchRows = () => {
+  const search = (value) => {
     setSearchedValue(value)
   };
 
   return {
-    searchRows,
     rows: rows.filter((row) =>
       columns.some(({ field }) =>
-        String(row[field]).toLowerCase().includes(searchedValue.toLowerCase())
+        String(row[field]).toLowerCase().includes(searchValue.toLowerCase())
       )
     ),
-    value,
-    setValue,
+    searchActions:{
+      search,
+    }
   };
 };
 

@@ -12,7 +12,9 @@ const useSorting = (rows) => {
     }));
 
   return {
-    toggle,
+    sortingActions: {
+      toggle,
+    },
     sort,
     rows:
       sort.direction === SORT_DIRECTIONS.UP

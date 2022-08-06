@@ -1,10 +1,9 @@
 import React from 'react';
-import {useComplexTableContext} from "../useComplexTableContext";
-import {useSelectionContext} from "./useSelectionContext";
+import {useTableContext} from "../../Table/useTableContext";
+import Footer from "../../Table/Footer";
 
 const SelectionFooter = (props) => {
-    const {columns, components: {Footer, RowCounter}} = useComplexTableContext();
-    const {selected} = useSelectionContext();
+    const {columns, components: {RowCounter}, selected} = useTableContext();
 
     return (
         <Footer colSpan={columns.length + 1} {...props}>

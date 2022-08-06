@@ -1,23 +1,25 @@
 import React from "react";
 
-import AllProviders from "../AllProviders/AllProviders";
-// import Table from "../Table";
-// import Header from "../ComplexTable/Sorting/Header";
-// import Main from "../Table/Main";
-// import RowsList from "../ComplexTable/Selection/RowsList";
-// import Footer from "../ComplexTable/Pagination/Footer";
 import DefaultTable from "../Table/DefaultTable";
+import TableProvider from "../Table/useTableContext";
+import Sorting from "./Sorting/Sorting";
+import Selection from "./Selection/Selection";
+import Pagination from "./Pagination/Pagination";
+import Searching from "./Search/Searching";
 
 const ComplexTable = ({ components, ...props }) => {
-  // const { components: defaultComponents } = useComplexTableContext();
-  // const {
-  //   components: { Table, Header, Main, Footer, RowsList },
-  // } = { components: { ...defaultComponents, ...components } };
-
   return (
-    <AllProviders {...props}>
-        <DefaultTable/>
-    </AllProviders>
+    <TableProvider value={props}>
+      <Selection>
+        <Sorting>
+          <Searching>
+            <Pagination>
+              <DefaultTable {...props}/>
+            </Pagination>
+          </Searching>
+        </Sorting>
+      </Selection>
+    </TableProvider>
   );
 };
 

@@ -1,9 +1,9 @@
 import React from "react";
-import Toolbar from "../../../Table/Toolbar";
 import Button from "../../../Button";
 import DeleteIcon from "./DeleteIcon";
 import EditIcon from "./EditIcon";
 import SearchInput from "./SearchInput";
+import Toolbar from "../../../Table/Toolbar";
 
 const SearchToolbar = () => {
   return (
@@ -12,7 +12,7 @@ const SearchToolbar = () => {
         title="Edit"
         icon={EditIcon}
         hint={({ selected }) =>
-            selected.length === 1 ? "Edit" : "Please select one row"
+          selected.length === 1 ? "Edit" : "Please select one row"
         }
         disabled={({ selected }) => selected.length !== 1}
       />
@@ -20,11 +20,11 @@ const SearchToolbar = () => {
         title="Delete"
         icon={DeleteIcon}
         hint={({ selected }) =>
-            selected.length ? "Delete" : "Please select at least one rows"
+          selected.length ? "Delete" : "Please select at least one rows"
         }
         disabled={({ selected }) => !selected.length}
       />
-      <SearchInput label="Search" placeholder="Please type to search..."/>
+      <SearchInput label="Search" placeholder="Please type to search..." />
     </Toolbar>
   );
 };

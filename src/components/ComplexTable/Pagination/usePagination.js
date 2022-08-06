@@ -20,12 +20,14 @@ const usePagination = (rows) => {
     rows: [...rows].splice(fromRow - 1, rowCount),
     rowCount,
     rowsCount,
-    nextPage,
-    prevPage,
     currentPage,
     pagesCount,
-    changeRowCount,
     fromRow,
+    paginationActions: {
+      changeRowCount,
+      nextPage,
+      prevPage
+    }
   };
 };
 

@@ -8,20 +8,16 @@ import Toolbar from "./Toolbar";
 import Column from "./Main/Column";
 import ColumnTitle from "./Main/Column/ColumnTitle";
 import ColumnResizeIcon from "./Main/Column/ColumnResizeIcon";
-import {useComplexTableContext} from "../ComplexTable/useComplexTableContext";
 import Row from "./Main/Row";
 import Cell from "./Main/Cell";
+import RowCounter from "./Footer/RowCounter";
 
 const TableContext = createContext({});
 
 export const useTableContext = () => useContext(TableContext);
 
-const TableProvider = ({children}) => {
-    console.log(useComplexTableContext())
-    const {rows, columns}  = useComplexTableContext()
-
+const TableProvider = ({children, value}) => {
     return <TableContext.Provider value={{
-        rows, columns,
         getRowId: (row) => row.id,
         getRowHeight: () => "auto",
         components: {
@@ -38,8 +34,9 @@ const TableProvider = ({children}) => {
           // ColumnMenu,
           // ColumnMenuIcon,
           ColumnResizeIcon,
-          // RowCounter,
+          RowCounter,
         },
+        ...value
     }}>
         {children}
     </TableContext.Provider>

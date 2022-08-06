@@ -1,25 +1,19 @@
 import React from "react";
-import { useComplexTableContext } from "../useComplexTableContext";
 import Footer from "../../Table/Footer";
 import Pagination from "../../Pagination";
-import { usePaginationContext } from "./usePaginationProvider";
-import {useSelectionContext} from "../Selection/useSelectionContext";
+import { useTableContext } from "../../Table/useTableContext";
 
 const PaginationFooter = (props) => {
   const {
     columns,
-    components: { RowCounter },
-  } = useComplexTableContext();
-  const {
-    nextPage,
-    prevPage,
     fromRow,
     rowCount,
-    changeRowCount,
     currentPage,
     rowsCount,
-  } = usePaginationContext();
-  const {selected} = useSelectionContext();
+      selected,
+    paginationActions: { nextPage, prevPage, changeRowCount },
+    components: { RowCounter },
+  } = useTableContext();
 
   return (
     <Footer colSpan={columns.length + 1} {...props}>

@@ -1,16 +1,16 @@
 import React from "react";
-import CheckBox from "../../CheckBox";
-import ColumnTitle from "../../Table/Main/Column/ColumnTitle";
-import ColumnResizeIcon from "../../Table/Main/Column/ColumnResizeIcon";
-import {useComplexTableContext} from "../useComplexTableContext";
-import {useSelectionContext} from "./useSelectionContext";
+import CheckBox from "./CheckBox";
+import { useTableContext } from "../../Table/useTableContext";
 
 const SelectionHeader = () => {
   const {
-    components: { Column, Toolbar },
+    components: { Column, Toolbar, ColumnTitle, ColumnResizeIcon, CheckBox },
     columns,
-  } = useComplexTableContext();
-  const { selected, toggleSelectedAll } = useSelectionContext();
+    selectionActions: { toggleSelectedAll },
+    selected,
+  } = useTableContext();
+
+  console.log(useTableContext());
 
   return (
     <thead>
@@ -20,16 +20,16 @@ const SelectionHeader = () => {
         </th>
       </tr>
       <tr>
-          <Column
-              style={{ width: 20, cursor: "pointer" }}
-              onClick={toggleSelectedAll}
-          >
-              <CheckBox isChecked={selected.length} />
-          </Column>
+        <Column
+          style={{ width: 20, cursor: "pointer" }}
+          onClick={toggleSelectedAll}
+        >
+          <CheckBox isChecked={selected.length} />
+        </Column>
         {columns.map(({ headerName, field }) => (
-          <Column key={field} >
-              <ColumnTitle text={headerName} />
-              <ColumnResizeIcon />
+          <Column key={field}>
+            <ColumnTitle text={headerName} />
+            <ColumnResizeIcon />
           </Column>
         ))}
       </tr>

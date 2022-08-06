@@ -1,18 +1,16 @@
 import React from "react";
-import CheckBox from "../../CheckBox";
-import { useSelectionContext } from "./useSelectionContext";
-import { useComplexTableContext } from "../useComplexTableContext";
-import {usePaginationContext} from "../Pagination/usePaginationProvider";
+import CheckBox from "./CheckBox";
+import { useTableContext } from "../../Table/useTableContext";
 
 const RowsList = () => {
   const {
     components: { Row, Cell },
+    rows,
     columns,
     getRowId,
     getRowHeight,
-  } = useComplexTableContext();
-  const { toggleSelected, getIsSelected, selectOne } = useSelectionContext();
-  const { rows } = usePaginationContext();
+    selectionActions: { toggleSelected, getIsSelected, selectOne },
+  } = useTableContext();
 
   const handleSelect = (row) => (event) => {
     event.stopPropagation();

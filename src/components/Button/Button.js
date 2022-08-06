@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./Button.module.scss";
 import Tooltip from "@mui/material/Tooltip";
-import { useComplexTableContext } from "../ComplexTable/useComplexTableContext";
-import { useSelectionContext } from "../ComplexTable/Selection/useSelectionContext";
+import {useTableContext} from "../Table/useTableContext";
 
 const COLORS = {
   disable: "lightgrey",
@@ -17,8 +16,7 @@ const Button = ({
   disabled = false,
   sx,
 }) => {
-  const { rows } = useComplexTableContext();
-  const { selected } = useSelectionContext();
+  const { rows, selected } = useTableContext();
 
   const isDisabled =
     typeof disabled === "boolean" ? disabled : disabled({ selected, rows });

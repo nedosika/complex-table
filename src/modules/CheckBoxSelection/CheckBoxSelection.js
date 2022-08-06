@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import CheckBox from "../../components/CheckBox";
+import CheckBox from "../../components/ComplexTable/Selection/CheckBox";
 
 const CheckBoxSelection = (props) => {
   console.log("checkbox");

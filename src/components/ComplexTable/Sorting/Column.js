@@ -1,13 +1,12 @@
 import React from 'react';
 import Button from "../../../modules/Sorting/Button";
 import {SORT_DIRECTIONS} from "../../../helpers";
-import {useSortingContext} from "./useSortingContext";
 import Column from "../../Table/Main/Column";
+import {useTableContext} from "../../Table/useTableContext";
 
 const SortColumn = (props) => {
     const {column, children} = props;
-    const {toggle, sort} = useSortingContext();
-    console.log(column)
+    const {sortingActions: {toggle}, sort} = useTableContext();
 
     return (
         column?.sortable
