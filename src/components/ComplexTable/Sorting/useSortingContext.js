@@ -1,6 +1,6 @@
 import React, {createContext, useContext} from "react";
-import {useComplexTableContext} from "../useComplexTableContext";
 import useSorting from "./useSorting";
+import {useComplexTableContext} from "../useComplexTableContext";
 
 const SortingContext = createContext({});
 
@@ -8,6 +8,8 @@ export const useSortingContext = () => useContext(SortingContext);
 
 const SortingProvider = ({children}) => {
     const {rows} = useComplexTableContext();
+
+    console.log(useComplexTableContext())
 
     return <SortingContext.Provider value={useSorting(rows)}>
         {children}

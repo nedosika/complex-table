@@ -1,13 +1,15 @@
 import React from "react";
-import { useComplexTableContext } from "../../ComplexTable/useComplexTableContext";
 import ColumnTitle from "../Main/Column/ColumnTitle";
 import ColumnResizeIcon from "../Main/Column/ColumnResizeIcon";
+import {useTableContext} from "../useTableContext";
 
 const Header = () => {
   const {
     columns,
     components: { Toolbar, Column },
-  } = useComplexTableContext();
+  } = useTableContext();
+
+    console.log(useTableContext())
 
   return (
     <thead>

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./TableCell.module.scss";
 
-const TableCell = ({ children, ...props }) => {
+const Cell = ({ children, ...props }) => {
   return (
     <td className={styles.root} {...props}>
       {children}
@@ -9,4 +9,4 @@ const TableCell = ({ children, ...props }) => {
   );
 };
 
-export default TableCell;
+export default Cell;

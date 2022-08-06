@@ -9,6 +9,8 @@ export const usePaginationContext = () => useContext(PaginationContext);
 const PaginationProvider = ({children}) => {
     const {rows} = useSearchContext();
 
+    console.log(useSearchContext())
+
     return <PaginationContext.Provider value={usePagination(rows)}>
         {children}
     </PaginationContext.Provider>

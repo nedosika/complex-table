@@ -1,14 +1,13 @@
 import React from "react";
-import { useComplexTableContext } from "../../../ComplexTable/useComplexTableContext";
-import { usePaginationContext } from "../../../ComplexTable/Pagination/usePaginationProvider";
+import {useTableContext} from "../../useTableContext";
 
 const RowsList = () => {
   const {
     components: { Row, Cell },
     columns,
+      rows,
     getRowId,
-  } = useComplexTableContext();
-  const { rows } = usePaginationContext();
+  } = useTableContext();
 
   return rows.map((row) => (
     <Row row={row} key={getRowId(row)}>

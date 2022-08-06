@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./TableRow.module.scss";
 
-const TableRow = ({ row, children, ...props }) => {
+const Row = ({ row, children, ...props }) => {
   return (
     <tr className={styles.root} {...props}>
       {children}
@@ -9,4 +9,4 @@ const TableRow = ({ row, children, ...props }) => {
   );
 };
 
-export default TableRow;
+export default Row;
