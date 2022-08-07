@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../../Button";
+import SelectionButton from "../../Selection/SelectionButton";
 import DeleteIcon from "./DeleteIcon";
 import EditIcon from "./EditIcon";
 import SearchInput from "./SearchInput";
@@ -8,7 +8,7 @@ import Toolbar from "../../../Table/Header/Toolbar";
 const SearchToolbar = (props) => {
   return (
     <Toolbar {...props}>
-      <Button
+      <SelectionButton
         title="Edit"
         icon={EditIcon}
         hint={({ selected }) =>
@@ -16,7 +16,7 @@ const SearchToolbar = (props) => {
         }
         disabled={({ selected }) => selected.length !== 1}
       />
-      <Button
+      <SelectionButton
         title="Delete"
         icon={DeleteIcon}
         hint={({ selected }) =>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "../../components/Button";
+import SelectionButton from "../../components/ComplexTable/Selection/SelectionButton";
 import ModalMenu from "../../components/ModalMenu";
 import ColumnMenuItem from "../ColumnMenuBuilder/ColumnMenuItem";
 import useMenu from "../../components/ModalMenu/useMenu";
@@ -26,8 +26,8 @@ const Toolbar = (props) => {
   const GridToolbar = () => {
     return (
       <Toolbar>
-        <Button onClick={toggleMenu}>Columns</Button>
-        <Button>Density</Button>
+        <SelectionButton onClick={toggleMenu}>Columns</SelectionButton>
+        <SelectionButton>Density</SelectionButton>
         <ModalMenu
           anchorEl={anchorEl}
           isOpen={isOpen}

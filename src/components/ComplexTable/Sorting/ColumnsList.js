@@ -1,7 +1,7 @@
 import React from 'react';
 import CheckBox from "../Selection/CheckBox";
 import ColumnTitle from "../../Table/Main/Column/ColumnTitle";
-import Button from "../../../modules/Sorting/Button";
+import SortingButton from "./SortingButton";
 import {SORT_DIRECTIONS} from "../../../helpers";
 import ColumnResizeIcon from "../../Table/Main/Column/ColumnResizeIcon";
 import {useTableContext} from "../../Table/useTableContext";
@@ -31,7 +31,7 @@ const ColumnsList = () => {
                     style={{ cursor: "pointer" }}
                 >
                     <ColumnTitle text={headerName} />
-                    <Button
+                    <SortingButton
                         direction={
                             sort?.field === field ? sort?.direction : SORT_DIRECTIONS.NONE
                         }

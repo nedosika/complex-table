@@ -3,12 +3,12 @@ import React from "react";
 import EditIcon from "../Search/SearchToolbar/EditIcon";
 import DeleteIcon from "../Search/SearchToolbar/DeleteIcon";
 import Toolbar from "../../Table/Header/Toolbar";
-import Button from "../../Button";
+import SelectionButton from "./SelectionButton";
 
 const SelectionToolbar = (props) => {
   return (
     <Toolbar {...props}>
-      <Button
+      <SelectionButton
         title="Edit"
         icon={EditIcon}
         hint={({ selected }) =>
@@ -16,7 +16,7 @@ const SelectionToolbar = (props) => {
         }
         disabled={({ selectedRows }) => selectedRows.length !== 1}
       />
-      <Button
+      <SelectionButton
         title="Delete"
         icon={DeleteIcon}
         hint={({ selected }) =>

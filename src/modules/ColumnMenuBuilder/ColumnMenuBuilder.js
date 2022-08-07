@@ -4,7 +4,7 @@ import ColumnMenu from "./ColumnMenu";
 import ColumnMenuItem from "./ColumnMenuItem";
 import useMenu from "../../components/ModalMenu/useMenu";
 import useFilter from "./useFilter";
-import Button from "../../components/Button";
+import SelectionButton from "../../components/ComplexTable/Selection/SelectionButton";
 import ColumnFilterIcon from "../Filtration/ColumnFilterIcon";
 
 const ColumnMenuBuilder = (props) => {
@@ -62,8 +62,8 @@ const ColumnMenuBuilder = (props) => {
         )}
       >
         <div>
-          <Button onClick={applyFilter}>APPLY</Button>
-          <Button onClick={clearFilter}>CLEAR</Button>
+          <SelectionButton onClick={applyFilter}>APPLY</SelectionButton>
+          <SelectionButton onClick={clearFilter}>CLEAR</SelectionButton>
         </div>
       </ColumnMenu>
     </Table>

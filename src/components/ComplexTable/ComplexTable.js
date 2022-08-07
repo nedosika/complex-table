@@ -6,6 +6,7 @@ import Sorting from "./Sorting/Sorting";
 import Selection from "./Selection/Selection";
 import Pagination from "./Pagination/Pagination";
 import Searching from "./Search/Searching";
+import Filtration from "./Filtration/Filtration";
 
 const ComplexTable = ({ components, ...props }) => {
   return (
@@ -14,7 +15,9 @@ const ComplexTable = ({ components, ...props }) => {
         <Sorting>
           <Searching>
             <Pagination>
-              <DefaultTable {...props}/>
+              <Filtration>
+                <DefaultTable {...props}/>
+              </Filtration>
             </Pagination>
           </Searching>
         </Sorting>
