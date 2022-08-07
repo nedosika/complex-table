@@ -3,11 +3,11 @@ import Button from "../../../Button";
 import DeleteIcon from "./DeleteIcon";
 import EditIcon from "./EditIcon";
 import SearchInput from "./SearchInput";
-import Toolbar from "../../../Table/Toolbar";
+import Toolbar from "../../../Table/Header/Toolbar";
 
-const SearchToolbar = () => {
+const SearchToolbar = (props) => {
   return (
-    <Toolbar>
+    <Toolbar {...props}>
       <Button
         title="Edit"
         icon={EditIcon}

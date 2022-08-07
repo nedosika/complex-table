@@ -10,8 +10,6 @@ const SelectionHeader = () => {
     selected,
   } = useTableContext();
 
-  console.log(useTableContext());
-
   return (
     <thead>
       <tr>

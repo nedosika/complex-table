@@ -1,10 +1,11 @@
 import React from "react";
 import TableProvider, { useTableContext } from "../../Table/useTableContext";
 import useSelection from "./useSelection";
-import Header from "./Header";
+import ColumnsList from "./ColumnsList";
 import CheckBox from "./CheckBox";
 import RowsList from "./RowsList";
 import Footer from "./Footer";
+import Toolbar from "./Toolbar";
 
 const Selection = ({ children }) => {
   const { rows, getRowId, components } = useTableContext();
@@ -16,10 +17,11 @@ const Selection = ({ children }) => {
         ...useSelection({ rows, getRowId }),
         components: {
           ...components,
-          Header,
+          ColumnsList,
           CheckBox,
           RowsList,
           Footer,
+            Toolbar
         },
       }}
     >

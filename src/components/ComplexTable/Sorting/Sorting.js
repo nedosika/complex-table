@@ -1,7 +1,7 @@
 import React from "react";
 import useSorting from "./useSorting";
 import TableProvider, { useTableContext } from "../../Table/useTableContext";
-import Header from "./Header";
+import ColumnsList from "./ColumnsList";
 
 const Sorting = ({ children }) => {
   const { rows, components } = useTableContext();
@@ -13,7 +13,7 @@ const Sorting = ({ children }) => {
         ...useSorting(rows),
         components: {
           ...components,
-          Header,
+          ColumnsList,
         },
       }}
     >
