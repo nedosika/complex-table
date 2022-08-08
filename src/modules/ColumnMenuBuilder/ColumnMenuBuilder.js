@@ -2,7 +2,7 @@ import React from "react";
 
 import ColumnMenu from "./ColumnMenu";
 import ColumnMenuItem from "./ColumnMenuItem";
-import useMenu from "../../components/ModalMenu/useMenu";
+import useMenu from "../../components/Menu/useMenu";
 import useFilter from "./useFilter";
 import SelectionButton from "../../components/ComplexTable/Selection/SelectionButton";
 import ColumnFilterIcon from "../Filtration/ColumnFilterIcon";

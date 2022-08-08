@@ -4,25 +4,25 @@ import DefaultTable from "../Table/DefaultTable";
 import TableProvider from "../Table/useTableContext";
 import Sorting from "./Sorting/Sorting";
 import Selection from "./Selection/Selection";
-import Pagination from "./Pagination/Pagination";
+import Pagination from "./Pagination/PaginationInjector";
 import Searching from "./Search/Searching";
 import Filtration from "./Filtration/Filtration";
 
 const ComplexTable = ({ components, ...props }) => {
   return (
-    <TableProvider value={props}>
-      <Selection>
-        <Sorting>
-          <Searching>
-            <Pagination>
+      <TableProvider value={props}>
+        <Selection>
+          <Sorting>
+            <Searching>
               <Filtration>
-                <DefaultTable {...props}/>
+                <Pagination>
+                  <DefaultTable {...props} />
+                </Pagination>
               </Filtration>
-            </Pagination>
-          </Searching>
-        </Sorting>
-      </Selection>
-    </TableProvider>
+            </Searching>
+          </Sorting>
+        </Selection>
+      </TableProvider>
   );
 };
 

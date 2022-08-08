@@ -101,6 +101,9 @@ function App() {
         rows={rows}
         checkboxSelection
         getRowHeight={() => 52}
+        pageSize={5}
+        rowsPerPageOptions={[2,5,10]}
+        page={0}
       />
     </div>
   );

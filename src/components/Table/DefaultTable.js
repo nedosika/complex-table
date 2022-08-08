@@ -9,16 +9,16 @@ const DefaultTable = (props) => {
     Object.assign(components, props.components);
 
   return (
-    <Table>
-      <Header>
-        <Toolbar colSpan={columns.length} />
-        <ColumnsList />
-      </Header>
-      <Main>
-        <RowsList />
-      </Main>
-      <Footer />
-    </Table>
+      <Table>
+        <Header>
+          <Toolbar colSpan={columns.length} />
+          <ColumnsList />
+        </Header>
+        <Main>
+          <RowsList />
+        </Main>
+        <Footer />
+      </Table>
   );
 };
 

@@ -5,7 +5,7 @@ import menuIcon from "./menu.svg"
 const ColumnMenuIcon = ({icon, onClick}) => {
     return (
         <div className={styles.root} onClick={onClick}>
-            <button type="button" title="Menu">
+            <button type="button" title="MenuView">
                 <img src={icon ? icon : menuIcon} alt='menuIcon'/>
                 <span/>
             </button>

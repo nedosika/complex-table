@@ -1,6 +1,6 @@
 import React from "react";
 import ComplexTableProvider from "../ComplexTable/useComplexTableContext";
-import PaginationProvider from "../ComplexTable/Pagination/Pagination";
+import PaginationProvider from "../ComplexTable/Pagination/PaginationInjector";
 import SearchProvider from "../ComplexTable/Search/Searching";
 import SelectionProvider from "../ComplexTable/Selection/Selection";
 import SortingProvider from "../ComplexTable/Sorting/Sorting";

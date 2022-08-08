@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import SelectionButton from "../../components/ComplexTable/Selection/SelectionButton";
-import ModalMenu from "../../components/ModalMenu";
+import MenuView from "../../components/Menu";
 import ColumnMenuItem from "../ColumnMenuBuilder/ColumnMenuItem";
-import useMenu from "../../components/ModalMenu/useMenu";
+import useMenu from "../../components/Menu/useMenu";
 
 const Toolbar = (props) => {
   console.log("toolbar");
@@ -28,7 +28,7 @@ const Toolbar = (props) => {
       <Toolbar>
         <SelectionButton onClick={toggleMenu}>Columns</SelectionButton>
         <SelectionButton>Density</SelectionButton>
-        <ModalMenu
+        <MenuView
           anchorEl={anchorEl}
           isOpen={isOpen}
           items={columns}

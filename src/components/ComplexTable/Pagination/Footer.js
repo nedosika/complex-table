@@ -6,12 +6,7 @@ import { useTableContext } from "../../Table/useTableContext";
 const PaginationFooter = (props) => {
   const {
     columns,
-    fromRow,
-    rowCount,
-    currentPage,
-    rowsCount,
-      selected,
-    paginationActions: { nextPage, prevPage, changeRowCount },
+    selected,
     components: { RowCounter },
   } = useTableContext();
 
@@ -20,15 +15,7 @@ const PaginationFooter = (props) => {
       <RowCounter>
         {selected.length} row{selected.length > 1 && "s"} selected
       </RowCounter>
-      <Pagination
-        onNext={nextPage}
-        onPrev={prevPage}
-        fromRow={fromRow}
-        rowCount={rowCount}
-        rowsCount={rowsCount}
-        changeRowCount={changeRowCount}
-        currentPage={currentPage}
-      />
+      <Pagination/>
     </Footer>
   );
 };
