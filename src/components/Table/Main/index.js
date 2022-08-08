@@ -1,1 +1,1 @@
-export {default} from "./TableMain";
+export {default} from "./Main";

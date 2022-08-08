@@ -1,11 +1,12 @@
 import React from "react";
 import {createPortal} from "react-dom";
+import styles from "./Portal.module.css"
 
-const Portal = ({ children, className, inset}) => {
+const Portal = ({ children, inset}) => {
     const container = document.createElement('div');
 
     React.useEffect(() => {
-        container.classList.add(className);
+        container.classList.add(styles.root);
         container.style.inset = inset;
         document.body.appendChild(container);
         return () => {

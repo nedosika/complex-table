@@ -1,24 +1,34 @@
 import { useState } from "react";
 
-const usePagination = (rows) => {
-  const [rowCount, setRowCount] = useState(2);
-  const [currentPage, setCurrentPage] = useState(1);
+const usePagination = ({rows, page, pageSize}) => {
+  const [rowCount, setRowCount] = useState(pageSize);
+  const [currentPage, setCurrentPage] = useState(page);
   const pagesCount = Math.ceil(rows.length / rowCount);
   const rowsCount = rows.length;
-  const fromRow = currentPage * rowCount - rowCount + 1;
+  const fromRow = (currentPage + 1) * rowCount - rowCount;
 
-  const nextPage = () =>
-    currentPage < rowsCount / rowCount && setCurrentPage((prevState) => prevState + 1);
+  const onNext = () => setCurrentPage((prevState) => prevState + 1);
 
-  const prevPage = () =>
-    currentPage > 1 && setCurrentPage((prevState) => prevState - 1);
+  const onPrev = () => setCurrentPage((prevState) => prevState - 1);
 
-  const changeRowCount = (rowCount, event) => {
-    setCurrentPage(1)
+  const changeRowCount = (rowCount) => {
+    setCurrentPage(page);
     setRowCount(rowCount);
-  }
+  };
 
-  return { rowCount, rowsCount, nextPage, prevPage, currentPage, pagesCount, changeRowCount, fromRow};
+  return {
+    rows: [...rows].splice(fromRow, rowCount),
+    rowCount,
+    rowsCount,
+    currentPage,
+    pagesCount,
+    fromRow,
+    paginationActions: {
+      changeRowCount,
+      onNext,
+      onPrev
+    }
+  };
 };
 
 export default usePagination;
