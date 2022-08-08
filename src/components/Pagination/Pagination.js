@@ -20,12 +20,9 @@ const Pagination = () => {
   return (
     <div className={styles.root}>
       <div className={styles.wrapper}>
-        <Menu isOpen={isOpen} anchorEl={anchorEl}>
+        <Menu isOpen={isOpen} anchorEl={anchorEl} onClose={toggleMenu}>
           {rowsPerPageOptions.map((item) => (
-            <MenuItem key={item} onClick={() => {
-              changeRowCount(item);
-              toggleMenu()
-            }}>
+            <MenuItem key={item} onClick={() =>changeRowCount(item)}>
               {item}
             </MenuItem>
           ))}

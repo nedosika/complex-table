@@ -1,5 +1,6 @@
 import {useState} from "react";
 import {getUniq} from "../../../helpers";
+import useMenu from "../../Menu/useMenu";
 
 const useFilter = ({rows, columns}) => {
     const [activeField, setActiveField] = useState();
@@ -16,6 +17,12 @@ const useFilter = ({rows, columns}) => {
             })
         )
     ));
+    const { isOpen, anchorEl, toggleMenu } = useMenu();
+
+    const handleToggleMenu = (event, field) => {
+        toggleMenu(event);
+        updateActiveField(field);
+    };
 
     const updateActiveField = (field) => {
         setActiveField(field);
@@ -24,7 +31,8 @@ const useFilter = ({rows, columns}) => {
         })
     }
 
-    const toggleFilter = ([item], event) => {
+    const toggleFilter = (item) => (event) => {
+        console.log('w')
         event.stopPropagation();
         setFilter((prevState) => ({
                 ...prevState,
@@ -60,12 +68,16 @@ const useFilter = ({rows, columns}) => {
 
     return {
         rows: filtered,
+        filters,
         menuItems,
+        isOpen,
+        anchorEl,
         filtrationActions:{
             updateActiveField,
             applyFilter,
             clearFilter,
             toggleFilter,
+            toggleMenu: handleToggleMenu
         }
     }
 }

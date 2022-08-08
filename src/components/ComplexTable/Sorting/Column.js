@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from "../../../modules/Sorting/Button";
+import Button from "../../Button";
 import {SORT_DIRECTIONS} from "../../../helpers";
 import Column from "../../Table/Main/Column";
 import {useTableContext} from "../../Table/useTableContext";

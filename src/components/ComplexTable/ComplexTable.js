@@ -4,7 +4,7 @@ import DefaultTable from "../Table/DefaultTable";
 import TableProvider from "../Table/useTableContext";
 import Sorting from "./Sorting/Sorting";
 import Selection from "./Selection/Selection";
-import Pagination from "./Pagination/PaginationInjector";
+import Pagination from "./Pagination/Pagination";
 import Searching from "./Search/Searching";
 import Filtration from "./Filtration/Filtration";
 

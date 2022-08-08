@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import usePagination from "../../Pagination/usePagination";
 import PaginationProvider from "../../Pagination/usePaginationContext";
 
-const PaginationInjector = ({ children }) => {
+const Pagination = ({ children }) => {
   const { rows, page, pageSize, rowsPerPageOptions, components } =
     useTableContext();
   const { rows: paginationRows, ...value } = usePagination({
@@ -31,4 +31,4 @@ const PaginationInjector = ({ children }) => {
   );
 };
 
-export default PaginationInjector;
+export default Pagination;
