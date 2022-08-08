@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./TableFooter.module.scss";
 
-const TableFooter = ({ children, ...props }) => {
+const Footer = ({ children, ...props }) => {
   return (
     <tfoot>
       <tr>
@@ -13,4 +13,4 @@ const TableFooter = ({ children, ...props }) => {
   );
 };
 
-export default TableFooter;
+export default Footer;
