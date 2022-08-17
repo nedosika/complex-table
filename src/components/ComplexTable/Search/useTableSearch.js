@@ -1,5 +1,8 @@
 import { useState } from "react";
-import {SEARCHING_CONFIG} from "./Searching";
+
+export const SEARCHING_CONFIG = {
+  searchable: 'searchable'
+}
 
 const useTableSearch = ({ rows, columns }) => {
   const [searchValue, setSearchedValue] = useState("");

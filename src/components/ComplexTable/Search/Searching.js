@@ -3,10 +3,6 @@ import useTableSearch from "./useTableSearch";
 import TableProvider, { useTableContext } from "../../Table/useTableContext";
 import Toolbar from "./SearchToolbar";
 
-export const SEARCHING_CONFIG = {
-    searchable: 'searchable'
-}
-
 const Searching = ({ children }) => {
   const { columns, rows, components } = useTableContext();
 
