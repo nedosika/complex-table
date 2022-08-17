@@ -11,6 +11,7 @@ const columns = [
     headerName: "First name",
     width: 200,
     sortable: true,
+    searchable: true
   },
   {
     field: "lastName",
