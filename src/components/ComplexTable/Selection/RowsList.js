@@ -1,6 +1,7 @@
 import React from "react";
 import CheckBox from "./CheckBox";
 import { useTableContext } from "../../Table/useTableContext";
+import { useSelectionContext } from "./Selection";
 
 const RowsList = () => {
   const {
@@ -9,8 +10,10 @@ const RowsList = () => {
     columns,
     getRowId,
     getRowHeight,
-    selectionActions: { toggleSelected, getIsSelected, selectOne },
   } = useTableContext();
+  const {
+    selectionActions: { toggleSelected, getIsSelected, selectOne },
+  } = useSelectionContext();
 
   const handleSelect = (row) => (event) => {
     event.stopPropagation();

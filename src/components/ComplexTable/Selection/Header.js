@@ -1,14 +1,17 @@
 import React from "react";
 import CheckBox from "./CheckBox";
 import { useTableContext } from "../../Table/useTableContext";
+import { useSelectionContext } from "./Selection";
 
 const SelectionHeader = () => {
   const {
     components: { Column, Toolbar, ColumnTitle, ColumnResizeIcon, CheckBox },
     columns,
-    selectionActions: { toggleSelectedAll },
-    selected,
   } = useTableContext();
+  const {
+    selected,
+    selectionActions: { toggleSelectedAll },
+  } = useSelectionContext();
 
   return (
     <thead>

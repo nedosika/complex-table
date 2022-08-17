@@ -7,14 +7,14 @@ import PaginationProvider from "../../Pagination/usePaginationContext";
 const Pagination = ({ children }) => {
   const { rows, page, pageSize, rowsPerPageOptions, components } =
     useTableContext();
-  const { rows: paginationRows, ...value } = usePagination({
+  const { rows: paginationRows, ...pagination } = usePagination({
     rows,
     page,
     pageSize,
   });
 
   return (
-    <PaginationProvider value={{...value, rowsPerPageOptions}}>
+    <PaginationProvider value={{...pagination, rowsPerPageOptions}}>
       <TableProvider
         value={{
           ...useTableContext(),
