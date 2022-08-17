@@ -5,16 +5,16 @@ import SortingButton from "./SortingButton";
 import {SORT_DIRECTIONS} from "../../../helpers";
 import ColumnResizeIcon from "../../Table/Main/Column/ColumnResizeIcon";
 import {useTableContext} from "../../Table/useTableContext";
+import {useSortingContext} from "./Sorting";
 
 const ColumnsList = () => {
     const {
         components: { Column },
         columns,
-        sort,
-        sortingActions: { toggle },
         selected,
         selectionActions: { toggleSelectedAll },
     } = useTableContext();
+    const {sortingActions: { toggle }, sort} = useSortingContext();
 
     return (
         <tr>

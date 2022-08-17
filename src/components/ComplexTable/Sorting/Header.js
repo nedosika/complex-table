@@ -3,19 +3,23 @@ import CheckBox from "../Selection/CheckBox";
 import ColumnTitle from "../../Table/Main/Column/ColumnTitle";
 import ColumnResizeIcon from "../../Table/Main/Column/ColumnResizeIcon";
 import { SORT_DIRECTIONS } from "../../../helpers";
-import Button from "../../../modules/Sorting/Button";
+import Button from "./SortingButton";
 import Column from "../../Table/Main/Column";
 import { useTableContext } from "../../Table/useTableContext";
+import { useSortingContext } from "./Sorting";
+import { SORTING_CONFIG } from "./useSorting";
 
 const SelectionHeader = () => {
   const {
     components: { Column, Toolbar },
     columns,
-    sort,
-    sortingActions: { toggle },
     selected,
     selectionActions: { toggleSelectedAll },
   } = useTableContext();
+  const {
+    sortingActions: { toggle },
+    sort,
+  } = useSortingContext();
 
   return (
     <thead>
@@ -31,21 +35,27 @@ const SelectionHeader = () => {
         >
           <CheckBox isChecked={selected.length} />
         </Column>
-        {columns.map(({ headerName, field }) => (
-          <Column
-            key={field}
-            onClick={toggle(field)}
-            style={{ cursor: "pointer" }}
-          >
-            <ColumnTitle text={headerName} />
-            <Button
-              direction={
-                sort?.field === field ? sort?.direction : SORT_DIRECTIONS.NONE
-              }
-            />
-            <ColumnResizeIcon />
-          </Column>
-        ))}
+        {columns.map(
+          ({ headerName, field, [SORTING_CONFIG.sortable]: sortable }) => (
+            <Column
+              key={field}
+              onClick={toggle(field)}
+              style={sortable && { cursor: "pointer" }}
+            >
+              <ColumnTitle text={headerName} />
+              {sortable && (
+                <Button
+                  direction={
+                    sort?.field === field
+                      ? sort?.direction
+                      : SORT_DIRECTIONS.NONE
+                  }
+                />
+              )}
+              <ColumnResizeIcon />
+            </Column>
+          )
+        )}
       </tr>
     </thead>
   );
