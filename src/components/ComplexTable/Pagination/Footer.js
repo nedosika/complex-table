@@ -2,13 +2,16 @@ import React from "react";
 import Footer from "../../Table/Footer";
 import Pagination from "../../Pagination";
 import { useTableContext } from "../../Table/useTableContext";
+import {useSelectionContext} from "../Selection/Selection";
 
 const PaginationFooter = (props) => {
   const {
     columns,
-    selected,
     components: { RowCounter },
   } = useTableContext();
+    const {
+        selected,
+    } = useSelectionContext();
 
   return (
     <Footer colSpan={columns.length + 1} {...props}>
