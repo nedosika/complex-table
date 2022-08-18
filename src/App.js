@@ -3,14 +3,23 @@ import React, { useState } from "react";
 import styles from "./App.module.scss";
 
 import ComplexTable from "./components/ComplexTable";
+import {SEARCHING_CONFIG} from "./components/ComplexTable/Search/useTableSearch";
+import {SORTING_CONFIG} from "./components/ComplexTable/Sorting/useSorting";
 
 const columns = [
-  { field: "id", headerName: "ID", width: 105, sortable: true },
+  {
+    field: "id",
+    headerName: "ID",
+    width: 105,
+    [SORTING_CONFIG.sortable]: false,
+    [SEARCHING_CONFIG.searchable]: true,
+  },
   {
     field: "firstName",
     headerName: "First name",
     width: 200,
-    sortable: true,
+    [SORTING_CONFIG.sortable]: true,
+    [SEARCHING_CONFIG.searchable]: true,
   },
   {
     field: "lastName",
@@ -22,13 +31,13 @@ const columns = [
     headerName: "Age",
     type: "number",
     width: 110,
+    [SORTING_CONFIG.sortable]: true,
   },
   {
     field: "fullName",
     headerName: "Full name",
     description: "This column has a value getter and is not sortable.",
-    width: 160,
-    sortable: false,
+    width: 160
   },
 ];
 
@@ -60,7 +69,7 @@ const rows = [
     lastName: "Stark",
     firstName: "Arya",
     age: 16,
-    fullName: "test"
+    fullName: "test",
   },
   {
     id: 5,
@@ -74,7 +83,7 @@ const rows = [
     lastName: "Melisandre",
     firstName: "",
     age: 150,
-    fullName: "test"
+    fullName: "test",
   },
   {
     id: 7,
@@ -102,7 +111,7 @@ function App() {
         checkboxSelection
         getRowHeight={() => 52}
         pageSize={5}
-        rowsPerPageOptions={[2,5,10]}
+        rowsPerPageOptions={[2, 5, 10]}
         page={0}
       />
     </div>

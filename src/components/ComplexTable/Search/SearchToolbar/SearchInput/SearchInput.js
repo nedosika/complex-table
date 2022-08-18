@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styles from "./SearchInput.module.scss";
-import { useTableContext } from "../../../../Table/useTableContext";
+import {useSearchingContext} from "../../Searching";
 
 const SearchInput = ({ label, placeholder = "" }) => {
   const [value, setValue] = useState("");
   const {
     searchActions: { search },
-  } = useTableContext();
+  } = useSearchingContext();
 
   const handleSubmit = (event) => {
     event.preventDefault();

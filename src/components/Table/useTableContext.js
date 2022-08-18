@@ -31,7 +31,6 @@ const TableProvider = ({ children, value }) => {
           Main,
           RowsList,
           Footer,
-
           Row,
           Cell,
           Column,

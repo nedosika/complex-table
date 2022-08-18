@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Button.module.scss";
 import Tooltip from "@mui/material/Tooltip";
 import { useTableContext } from "../../../Table/useTableContext";
+import {useSelectionContext} from "../Selection";
 
 const COLORS = {
   disable: "lightgrey",
@@ -16,7 +17,8 @@ const SelectionButton = ({
   disabled = false,
   sx,
 }) => {
-  const { rows, selected } = useTableContext();
+  const { rows } = useTableContext();
+  const {selected} = useSelectionContext();
 
   const isDisabled =
     typeof disabled === "boolean" ? disabled : disabled({ selected, rows });
