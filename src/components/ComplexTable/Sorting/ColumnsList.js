@@ -27,10 +27,9 @@ const ColumnsList = () => {
             {columns.map(({ headerName, field }) => (
                 <Column
                     key={field}
-                    onClick={toggle(field)}
                     style={{ cursor: "pointer" }}
                 >
-                    <ColumnTitle text={headerName} />
+                    <ColumnTitle text={headerName} onClick={toggle(field)}/>
                     <SortingButton
                         direction={
                             sort?.field === field ? sort?.direction : SORT_DIRECTIONS.NONE

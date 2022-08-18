@@ -6,11 +6,11 @@ import {useTableContext} from "../../Table/useTableContext";
 
 const SortColumn = (props) => {
     const {column, children} = props;
-    const {sortingActions: {toggle}, sort} = useTableContext();
+    const {sort} = useTableContext();
 
     return (
         column?.sortable
-            ? <Column {...props} onClick={toggle(column.field)} style={{  cursor: 'pointer'}}>
+            ? <Column {...props} style={{  cursor: 'pointer'}}>
                 <Button direction={sort.field === column.field ? sort.direction : SORT_DIRECTIONS.NONE}/>
                 {children}
             </Column>

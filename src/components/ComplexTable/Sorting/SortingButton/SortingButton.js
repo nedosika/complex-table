@@ -2,8 +2,8 @@ import React from 'react';
 import styles from "./Button.module.scss";
 import {SORT_DIRECTIONS} from "../../../../helpers";
 
-const SortingButton = ({direction}) =>
-        <div className={styles.root}>
+const SortingButton = ({direction, onClick}) =>
+        <div className={styles.root} onClick={onClick}>
             <button type="button" title="SortedWrapper">
                 <svg focusable="false" viewBox="0 0 24 24" style={{opacity: direction !== SORT_DIRECTIONS.NONE && 1}}>
                     {

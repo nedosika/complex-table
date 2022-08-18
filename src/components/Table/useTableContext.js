@@ -36,7 +36,7 @@ const TableProvider = ({ children, value }) => {
           Column,
           ColumnTitle,
           // ColumnMenu,
-          // ColumnMenuIcon,
+          // MenuIcon,
           ColumnResizeIcon,
           RowCounter,
         },

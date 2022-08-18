@@ -2,7 +2,7 @@ import React from "react";
 import Modal from "../Modal";
 import styles from "./Menu.module.scss";
 
-const Menu = ({ children, isOpen, anchorEl, onClose }) => {
+const Menu = ({ children, isOpen, anchorEl, onClose, sx }) => {
   return (
     isOpen && (
       <Modal onClose={onClose}>
@@ -10,9 +10,10 @@ const Menu = ({ children, isOpen, anchorEl, onClose }) => {
           className={styles.root}
           style={{
             inset: `${anchorEl.y}px auto auto ${anchorEl.x}px`,
+              ...sx
           }}
         >
-          <ul>{children}</ul>
+          {children}
         </div>
       </Modal>
     )

@@ -1,7 +1,7 @@
 import React from "react";
 import { useTableContext } from "../../Table/useTableContext";
 import { useSelectionContext } from "../Selection/Selection";
-import ColumnMenuIcon from "../Filtration/ColumnMenuIcon";
+import ColumnMenuIcon from "../Filtration/FiltrationMenu/MenuIcon";
 import { useSortingContext } from "../Sorting/Sorting";
 import { useFiltrationContext } from "../Filtration/Filtration";
 import { SORTING_CONFIG } from "../Sorting/useSorting";
@@ -37,17 +37,18 @@ const ColumnsList = () => {
       </Column>
       {columns.map(
         ({ headerName, field, [SORTING_CONFIG.sortable]: sortable }) => (
-          <Column
-            key={field}
-            onClick={() => sortable && toggle(field)}
-            style={{ cursor: sortable ? "pointer" : "auto" }}
-          >
-            <ColumnTitle text={headerName} />
+          <Column key={field}>
+            <ColumnTitle
+              text={headerName}
+              onClick={() => sortable && toggle(field)}
+              style={{ cursor: sortable ? "pointer" : "auto" }}
+            />
             {sortable && (
               <Button
                 direction={
                   sort?.field === field ? sort?.direction : SORT_DIRECTIONS.NONE
                 }
+                onClick={() => sortable && toggle(field)}
               />
             )}
             <ColumnMenuIcon onClick={(event) => toggleMenu(event, field)} />
