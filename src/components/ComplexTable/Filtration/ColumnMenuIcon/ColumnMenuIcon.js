@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./ColumnMenuIcon.module.scss";
-import menuIcon from "./menu.svg"
+import menuIcon from "./filter.svg"
 
 const ColumnMenuIcon = ({icon, onClick}) => {
     return (
