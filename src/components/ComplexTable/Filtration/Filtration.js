@@ -2,7 +2,7 @@ import React, { createContext, useContext } from "react";
 import TableProvider, { useTableContext } from "../../Table/useTableContext";
 import useFilter from "./useFilter";
 import ColumnsList from "./ColumnsList";
-import FiltrationMenu from "./FiltrationMenu";
+import FiltrationMenu from "./FiltrationMenu/FiltrationMenu";
 
 const FiltrationContext = createContext({});
 

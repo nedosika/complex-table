@@ -2,7 +2,7 @@ import { useTableContext } from "../../Table/useTableContext";
 import ColumnTitle from "../../Table/Main/Column/ColumnTitle";
 import ColumnResizeIcon from "../../Table/Main/Column/ColumnResizeIcon";
 import React from "react";
-import ColumnMenuIcon from "./ColumnMenuIcon";
+import ColumnMenuIcon from "./FiltrationMenu/MenuIcon";
 import CheckBox from "../Selection/CheckBox";
 import { SORT_DIRECTIONS } from "../../../helpers";
 import { useFiltrationContext } from "./Filtration";
@@ -41,10 +41,9 @@ const ColumnsList = () => {
           ({ headerName, field, [SORTING_CONFIG.sortable]: sortable }) => (
             <Column
               key={field}
-              onClick={() => sortable && toggle(field)}
               style={{ cursor: sortable ? "pointer" : "auto" }}
             >
-              <ColumnTitle text={headerName} />
+              <ColumnTitle text={headerName} onClick={() => sortable && toggle(field)}/>
               {sortable && (
                 <Button
                   direction={
