@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import styles from "./App.module.scss";
 
 import ComplexTable from "./components/ComplexTable";
-import {SEARCHING_CONFIG} from "./components/ComplexTable/Search/useTableSearch";
-import {SORTING_CONFIG} from "./components/ComplexTable/Sorting/useSorting";
+import {SEARCHING_CONFIG} from "./components/ComplexTable/modules/Search/useTableSearch";
+import {SORTING_CONFIG} from "./components/ComplexTable/modules/Sorting/useSorting";
 
 const columns = [
   {
@@ -113,7 +113,16 @@ function App() {
         pageSize={5}
         rowsPerPageOptions={[2, 5, 10]}
         page={0}
-      />
+      >
+        {/*<Header>*/}
+        {/*  <Toolbar colSpan={columns.length} />*/}
+        {/*  <ColumnsList />*/}
+        {/*</Header>*/}
+        {/*<Main>*/}
+        {/*  <RowsList />*/}
+        {/*</Main>*/}
+        {/*<Footer />*/}
+      </ComplexTable>
     </div>
   );
 }
