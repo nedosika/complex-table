@@ -50,9 +50,9 @@ const rows = [
     fullName: "test",
     age: 33,
     //colspan: ["firstName", 3],
-    // colspan: {
-    //   lastName: 3
-    // }
+    colspan: {
+      lastName: 3
+    }
   },
   {
     id: 3,
