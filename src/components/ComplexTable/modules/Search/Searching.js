@@ -2,13 +2,16 @@ import React, { createContext, useContext } from "react";
 import useTableSearch from "./useTableSearch";
 import TableProvider, { useTableContext } from "../../../Table/useTableContext";
 import Toolbar from "./SearchToolbar";
+import { useRootContext } from "../../../Table/useRootContext";
 
 const SearchingContext = createContext({});
 
 export const useSearchingContext = () => useContext(SearchingContext);
 
 const Searching = ({ children }) => {
-  const { columns, rows, components } = useTableContext();
+  const { components: rootComponents } = useRootContext();
+  const { components, ...props } = useTableContext();
+  const { rows, columns } = props;
   const { rows: searchedRows, ...searching } = useTableSearch({
     rows,
     columns,
@@ -17,14 +20,9 @@ const Searching = ({ children }) => {
   return (
     <SearchingContext.Provider value={searching}>
       <TableProvider
-        value={{
-          ...useTableContext(),
-          rows: searchedRows,
-          components: {
-            ...components,
-            Toolbar,
-          },
-        }}
+        {...props}
+        rows={searchedRows}
+        components={{ ...components, Toolbar, ...rootComponents }}
       >
         {children}
       </TableProvider>
