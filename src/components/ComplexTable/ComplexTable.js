@@ -1,6 +1,6 @@
 import React from 'react';
 import AllProviders from "../AllProviders/AllProviders";
-import DefaultTable from "./DefaultTable";
+import DefaultTable from "../Table/DefaultTable";
 
 const ComplexTable = (props) => {
     return (

@@ -1,5 +1,5 @@
 import React from "react";
-import TableProvider, { useTableContext } from "../../useTableContext";
+import TableProvider, { useTableContext } from "../../../Table/useTableContext";
 import Footer from "./Footer";
 import usePagination from "../../../Pagination/usePagination";
 import PaginationProvider from "../../../Pagination/usePaginationContext";

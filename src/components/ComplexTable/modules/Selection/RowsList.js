@@ -1,6 +1,6 @@
 import React from "react";
 import CheckBox from "./CheckBox";
-import { useTableContext } from "../../useTableContext";
+import { useTableContext } from "../../../Table/useTableContext";
 import { useSelectionContext } from "./Selection";
 
 const RowsList = () => {

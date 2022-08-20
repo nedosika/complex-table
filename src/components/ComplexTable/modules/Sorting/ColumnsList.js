@@ -4,7 +4,7 @@ import ColumnTitle from "../../../Table/Main/Column/ColumnTitle";
 import SortingButton from "./SortingButton";
 import {SORT_DIRECTIONS} from "../../../../helpers";
 import ColumnResizeIcon from "../../../Table/Main/Column/ColumnResizeIcon";
-import {useTableContext} from "../../useTableContext";
+import {useTableContext} from "../../../Table/useTableContext";
 import {useSortingContext} from "./Sorting";
 
 const ColumnsList = () => {

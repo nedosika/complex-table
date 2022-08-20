@@ -5,19 +5,20 @@ import CheckBox from "./CheckBox";
 import RowsList from "./RowsList";
 import Footer from "./Footer";
 import Toolbar from "./Toolbar";
-import TableProvider, { useTableContext } from "../../useTableContext";
+import TableProvider, { useTableContext } from "../../../Table/useTableContext";
 
 const SelectionContext = createContext({});
 
 export const useSelectionContext = () => useContext(SelectionContext);
 
 const Selection = ({ children }) => {
-  const { rows, getRowId, components } = useTableContext();
+  const {components, ...props} = useTableContext();
+  const { rows, getRowId } = props;
 
   return (
     <SelectionContext.Provider value={useSelection({ rows, getRowId })}>
       <TableProvider
-        {...useTableContext()}
+        {...props}
         components={{
           ...components,
           ColumnsList,

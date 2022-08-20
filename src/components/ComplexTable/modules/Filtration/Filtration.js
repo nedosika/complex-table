@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from "react";
-import TableProvider, { useTableContext } from "../../useTableContext";
+import TableProvider, { useTableContext } from "../../../Table/useTableContext";
 import useFilter from "./useFilter";
 import ColumnsList from "./ColumnsList";
 import FiltrationMenu from "./FiltrationMenu/FiltrationMenu";

@@ -1,7 +1,8 @@
 import React from "react";
-import ComplexTableProvider from "../ComplexTable/useComplexTableContext";
+//import ComplexTableProvider from "../ComplexTable/useComplexTableContext";
 import Selection from "../ComplexTable/modules/Selection/Selection";
-import TableProvider from "../ComplexTable/useTableContext";
+import RootProvider from "../Table/useRootContext";
+import DefaultProvider from "../ComplexTable/useDefaultContext";
 // import ComplexTableProvider from "../ComplexTable/useComplexTableContext";
 // import PaginationProvider from "../ComplexTable/modules/Pagination/Pagination";
 // import SearchProvider from "../ComplexTable/modules/Search/Searching";
@@ -10,22 +11,23 @@ import TableProvider from "../ComplexTable/useTableContext";
 
 const AllProviders = ({ children, ...props }) => {
   return (
-    <TableProvider {...props}>
-      {/*<Selection>*/}
-      {/*  <ComplexTableProvider>*/}
-      {/*<Selection>*/}
-      {/*  <SelectionProvider>*/}
-      {/*    <SearchProvider>*/}
-      {/*      <PaginationProvider>*/}
-      {children}
-
-      {/*      </PaginationProvider>*/}
-      {/*    </SearchProvider>*/}
-      {/*  </SelectionProvider>*/}
-      {/*</Selection>*/}
-      {/*</ComplexTableProvider>*/}
-      {/*</Selection>*/}
-    </TableProvider>
+    <RootProvider {...props}>
+        <Selection>
+        {/*  <ComplexTableProvider>*/}
+        {/*<Selection>*/}
+        {/*  <SelectionProvider>*/}
+        {/*    <SearchProvider>*/}
+        {/*      <PaginationProvider>*/}
+        <DefaultProvider>
+            {children}
+        </DefaultProvider>
+        {/*      </PaginationProvider>*/}
+        {/*    </SearchProvider>*/}
+        {/*  </SelectionProvider>*/}
+        {/*</Selection>*/}
+        {/*</ComplexTableProvider>*/}
+        </Selection>
+    </RootProvider>
   );
 };
 

@@ -2,16 +2,16 @@ import React, { createContext, useContext } from "react";
 import Table from "../Table/Table";
 import Header from "../Table/Header";
 import Toolbar from "../Table/Header/Toolbar";
-import ColumnsList from "./ColumnsList";
+import ColumnsList from "../Table/ColumnsList";
 import Main from "../Table/Main";
-import RowsList from "./RowsList";
+import RowsList from "../Table/RowsList";
 import Footer from "../Table/Footer";
 import Row from "../Table/Main/Row";
 import Cell from "../Table/Main/Cell";
 import Column from "../Table/Main/Column";
 import ColumnTitle from "../Table/Main/Column/ColumnTitle";
 import ColumnResizeIcon from "../Table/Main/Column/ColumnResizeIcon";
-import TableProvider, { useTableContext } from "./useTableContext";
+import TableProvider, { useTableContext } from "../Table/useTableContext";
 // import RowCounter from "../Table/Footer/RowCounter";
 
 export const COMPLEX_TABLE_CONFIG = {
