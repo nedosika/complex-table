@@ -6,17 +6,19 @@ import RowsList from "./RowsList";
 import Footer from "./Footer";
 import Toolbar from "./Toolbar";
 import TableProvider, { useTableContext } from "../../../Table/useTableContext";
+import { useRootContext } from "../../../Table/useRootContext";
 
-export const SELECTION_CONFIG={
-    checkboxSelection: 'checkboxSelection'
-}
+export const SELECTION_CONFIG = {
+  checkboxSelection: "checkboxSelection",
+};
 
 const SelectionContext = createContext({});
 
 export const useSelectionContext = () => useContext(SelectionContext);
 
 const Selection = ({ children }) => {
-  const {components, ...props} = useTableContext();
+  const { components: rootComponents } = useRootContext();
+  const { components, ...props } = useTableContext();
   const { rows, getRowId } = props;
 
   return (
@@ -30,6 +32,7 @@ const Selection = ({ children }) => {
           RowsList,
           Footer,
           Toolbar,
+          ...rootComponents,
         }}
       >
         {children}

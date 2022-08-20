@@ -9,7 +9,9 @@ const SelectionFooter = (props) => {
     rows,
     columns,
     [SELECTION_CONFIG.checkboxSelection]: checkboxSelection,
+
   } = useTableContext();
+
   const { selected } = useSelectionContext();
 
   return (

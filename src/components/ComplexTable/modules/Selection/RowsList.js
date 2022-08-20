@@ -1,11 +1,10 @@
 import React from "react";
-import CheckBox from "./CheckBox";
 import { useTableContext } from "../../../Table/useTableContext";
 import { SELECTION_CONFIG, useSelectionContext } from "./Selection";
 
 const RowsList = () => {
   const {
-    components: { Row, Cell },
+    components: { Row, Cell, CheckBox },
     rows,
     columns,
     getRowId,

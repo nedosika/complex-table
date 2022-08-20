@@ -14,17 +14,13 @@ const AllProviders = ({ children, ...props }) => {
     <RootProvider {...props}>
         <Selection>
         {/*  <ComplexTableProvider>*/}
-        {/*<Selection>*/}
-        {/*  <SelectionProvider>*/}
         {/*    <SearchProvider>*/}
         {/*      <PaginationProvider>*/}
-        <DefaultProvider>
+        {/*<DefaultProvider>*/}
             {children}
-        </DefaultProvider>
+        {/*</DefaultProvider>*/}
         {/*      </PaginationProvider>*/}
         {/*    </SearchProvider>*/}
-        {/*  </SelectionProvider>*/}
-        {/*</Selection>*/}
         {/*</ComplexTableProvider>*/}
         </Selection>
     </RootProvider>

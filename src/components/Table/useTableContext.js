@@ -7,19 +7,14 @@ export const TABLE_CONFIG = {
   getRowHeight: "getRowHeight",
 };
 
-const defaultProps = {
-  [TABLE_CONFIG.getRowHeight]: () => "auto",
-  [TABLE_CONFIG.getRowId]: (row) => row.id,
-};
-
 const TableContext = createContext({});
 
 export const useTableContext = () => useContext(TableContext);
 
 const TableProvider = ({ children, ...props }) => {
-  const newProps = Object.assign(defaultProps, props);
+  //const newProps = Object.assign(defaultProps, props);
   return (
-    <TableContext.Provider value={newProps}>{children}</TableContext.Provider>
+    <TableContext.Provider value={props}>{children}</TableContext.Provider>
   );
 };
 
