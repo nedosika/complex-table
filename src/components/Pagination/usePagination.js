@@ -1,6 +1,13 @@
 import { useState } from "react";
+import { TABLE_CONFIG, useTableContext } from "../Table/useTableContext";
+import { PAGINATION_CONFIG } from "../ComplexTable/modules/Pagination/usePaginationContext";
 
-const usePagination = ({rows, page, pageSize}) => {
+const usePagination = () => {
+  const {
+    [TABLE_CONFIG.rows]: rows,
+    [PAGINATION_CONFIG.page]: page,
+    [PAGINATION_CONFIG.pageSize]: pageSize,
+  } = useTableContext();
   const [rowCount, setRowCount] = useState(pageSize);
   const [currentPage, setCurrentPage] = useState(page);
   const pagesCount = Math.ceil(rows.length / rowCount);
@@ -26,8 +33,8 @@ const usePagination = ({rows, page, pageSize}) => {
     paginationActions: {
       changeRowCount,
       onNext,
-      onPrev
-    }
+      onPrev,
+    },
   };
 };
 
