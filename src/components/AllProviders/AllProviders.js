@@ -5,6 +5,7 @@ import Pagination from "../ComplexTable/modules/Pagination/Pagination";
 import Searching from "../ComplexTable/modules/Search/Searching";
 import Sorting from "../ComplexTable/modules/Sorting/Sorting";
 import Filtration from "../ComplexTable/modules/Filtration/Filtration";
+import RowsActions from "../ComplexTable/modules/RowsActions/RowsActions";
 
 const AllProviders = ({ children, ...props }) => {
   return (
@@ -13,7 +14,9 @@ const AllProviders = ({ children, ...props }) => {
         <Searching>
           <Sorting>
             <Filtration>
-              <Pagination>{children}</Pagination>
+              <RowsActions>
+                <Pagination>{children}</Pagination>
+              </RowsActions>
             </Filtration>
           </Sorting>
         </Searching>
