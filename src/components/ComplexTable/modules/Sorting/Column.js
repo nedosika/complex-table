@@ -2,7 +2,7 @@ import React from 'react';
 import Button from "../../../Button";
 import {SORT_DIRECTIONS} from "../../../../helpers";
 import Column from "../../../Table/Main/Column";
-import {useTableContext} from "../../../Table/useTableContext";
+import {useTableContext} from "../../useTableContext";
 
 const SortColumn = (props) => {
     const {column, children} = props;

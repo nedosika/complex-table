@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../../../Table/Footer";
 import Pagination from "../../../Pagination";
-import { useTableContext } from "../../../Table/useTableContext";
+import { useTableContext } from "../../useTableContext";
 import {useSelectionContext} from "../Selection/Selection";
 
 const PaginationFooter = (props) => {

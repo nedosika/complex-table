@@ -1,7 +1,7 @@
 import React from "react";
 
-import DefaultTable from "../Table/DefaultTable";
-import TableProvider from "../Table/useTableContext";
+import DefaultTable from "./DefaultTable";
+import TableProvider from "./useTableContext";
 import Sorting from "./modules/Sorting/Sorting";
 import Selection from "./modules/Selection/Selection";
 import Pagination from "./modules/Pagination/Pagination";

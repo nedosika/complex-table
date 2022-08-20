@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from "react";
 import useTableSearch from "./useTableSearch";
-import TableProvider, { useTableContext } from "../../../Table/useTableContext";
+import TableProvider, { useTableContext } from "../../useTableContext";
 import Toolbar from "./SearchToolbar";
 
 const SearchingContext = createContext({});

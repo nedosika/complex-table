@@ -1,15 +1,12 @@
 import React from 'react';
-import Table from "../Table";
-import ComplexTableProvider from "./useComplexTableContext";
+import AllProviders from "../AllProviders/AllProviders";
+import DefaultTable from "./DefaultTable";
 
-const ComplexTable = ({children, ...props}) => {
-    console.log(props)
+const ComplexTable = (props) => {
     return (
-        <ComplexTableProvider {...props}>
-            <Table>
-                {children}
-            </Table>
-        </ComplexTableProvider>
+        <AllProviders {...props}>
+            <DefaultTable />
+        </AllProviders>
     );
 };
 

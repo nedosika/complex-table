@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Button.module.scss";
 import Tooltip from "@mui/material/Tooltip";
-import { useTableContext } from "../../../../Table/useTableContext";
+import { useTableContext } from "../../../useTableContext";
 import {useSelectionContext} from "../Selection";
 
 const COLORS = {

@@ -1,4 +1,4 @@
-import { useTableContext } from "../../../Table/useTableContext";
+import { useTableContext } from "../../useTableContext";
 import ColumnTitle from "../../../Table/Main/Column/ColumnTitle";
 import ColumnResizeIcon from "../../../Table/Main/Column/ColumnResizeIcon";
 import React from "react";

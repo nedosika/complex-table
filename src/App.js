@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styles from "./App.module.scss";
 
@@ -113,16 +113,11 @@ function App() {
         pageSize={5}
         rowsPerPageOptions={[2, 5, 10]}
         page={0}
-      >
-        {/*<Header>*/}
-        {/*  <Toolbar colSpan={columns.length} />*/}
-        {/*  <ColumnsList />*/}
-        {/*</Header>*/}
-        {/*<Main>*/}
-        {/*  <RowsList />*/}
-        {/*</Main>*/}
-        {/*<Footer />*/}
-      </ComplexTable>
+        components={{
+          //Table: () => 'table',
+          //Header: () => 'header'
+        }}
+      />
     </div>
   );
 }

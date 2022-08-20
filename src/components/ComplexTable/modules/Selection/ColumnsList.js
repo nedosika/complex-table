@@ -1,5 +1,5 @@
 import React from "react";
-import { useTableContext } from "../../../Table/useTableContext";
+import { useTableContext } from "../../useTableContext";
 import { useSelectionContext } from "./Selection";
 
 const ColumnsList = () => {

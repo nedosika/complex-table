@@ -1,17 +1,15 @@
 import React from 'react';
-import ColumnTitle from "../Main/Column/ColumnTitle";
-import ColumnResizeIcon from "../Main/Column/ColumnResizeIcon";
-import {useTableContext} from "../useTableContext";
+import Column from "../Table/Main/Column";
+import ColumnTitle from "../Table/Main/Column/ColumnTitle";
+import ColumnResizeIcon from "../Table/Main/Column/ColumnResizeIcon";
+import {useTableContext} from "./useTableContext";
 
 const ColumnsList = () => {
-    const {
-        columns,
-        components: { Column },
-    } = useTableContext();
+    const {columns} = useTableContext()
     return (
         <tr>
             {columns.map(({ headerName, field }) => (
-                <Column headerName={headerName} key={field}>
+                <Column key={field}>
                     <ColumnTitle text={headerName} />
                     <ColumnResizeIcon />
                 </Column>

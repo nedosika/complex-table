@@ -5,7 +5,7 @@ import ColumnResizeIcon from "../../../Table/Main/Column/ColumnResizeIcon";
 import { SORT_DIRECTIONS } from "../../../../helpers";
 import Button from "./SortingButton";
 import Column from "../../../Table/Main/Column";
-import { useTableContext } from "../../../Table/useTableContext";
+import { useTableContext } from "../../useTableContext";
 import { useSortingContext } from "./Sorting";
 import { SORTING_CONFIG } from "./useSorting";
 

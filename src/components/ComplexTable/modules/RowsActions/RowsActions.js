@@ -1,5 +1,5 @@
 import React, {createContext, useContext} from "react";
-import TableProvider, {useTableContext} from "../../../Table/useTableContext";
+import TableProvider, {useTableContext} from "../../useTableContext";
 import ColumnsList from "./ColumnsList";
 import RowsList from "./RowsList";
 
