@@ -1,7 +1,7 @@
 import React from "react";
 import CheckBox from "./CheckBox";
 import { useTableContext } from "../../../Table/useTableContext";
-import { useSelectionContext } from "./Selection";
+import { SELECTION_CONFIG, useSelectionContext } from "./Selection";
 
 const RowsList = () => {
   const {
@@ -10,6 +10,7 @@ const RowsList = () => {
     columns,
     getRowId,
     getRowHeight,
+    [SELECTION_CONFIG.checkboxSelection]: checkboxSelection,
   } = useTableContext();
   const {
     selectionActions: { toggleSelected, getIsSelected, selectOne },
@@ -30,9 +31,11 @@ const RowsList = () => {
       }}
       onClick={() => selectOne(row)}
     >
-      <Cell onClick={handleSelect(row)} style={{ cursor: "pointer" }}>
-        <CheckBox isChecked={getIsSelected(row)} />
-      </Cell>
+      {checkboxSelection && (
+        <Cell onClick={handleSelect(row)} style={{ cursor: "pointer" }}>
+          <CheckBox isChecked={getIsSelected(row)} />
+        </Cell>
+      )}
       {columns.map(({ field }) => (
         <Cell colSpan={row.colspan && row.colspan[field]} key={field}>
           {row[field]}

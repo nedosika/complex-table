@@ -7,6 +7,10 @@ import Footer from "./Footer";
 import Toolbar from "./Toolbar";
 import TableProvider, { useTableContext } from "../../../Table/useTableContext";
 
+export const SELECTION_CONFIG={
+    checkboxSelection: 'checkboxSelection'
+}
+
 const SelectionContext = createContext({});
 
 export const useSelectionContext = () => useContext(SelectionContext);

@@ -1,20 +1,30 @@
-import React from 'react';
-import {useTableContext} from "../../../Table/useTableContext";
+import React from "react";
+import { useTableContext } from "../../../Table/useTableContext";
 import Footer from "../../../Table/Footer";
-import {useSelectionContext} from "./Selection";
+import { SELECTION_CONFIG, useSelectionContext } from "./Selection";
 import RowCounter from "../../../Table/Footer/RowCounter";
 
 const SelectionFooter = (props) => {
-    const {columns } = useTableContext();
-    const {selected} = useSelectionContext();
+  const {
+    rows,
+    columns,
+    [SELECTION_CONFIG.checkboxSelection]: checkboxSelection,
+  } = useTableContext();
+  const { selected } = useSelectionContext();
 
-    return (
-        <Footer colSpan={columns.length + 1} {...props}>
-            <RowCounter>
-                {selected.length} row{selected.length > 1 && "s"} selected
-            </RowCounter>
-        </Footer>
-    );
-}
+  return (
+    <Footer colSpan={columns.length + 1} {...props}>
+      {checkboxSelection ? (
+        <RowCounter>
+          {selected.length} row{selected.length > 1 && "s"} selected
+        </RowCounter>
+      ) : (
+        <RowCounter>
+          {rows.length} row{rows.length > 1 && "s"}
+        </RowCounter>
+      )}
+    </Footer>
+  );
+};
 
 export default SelectionFooter;

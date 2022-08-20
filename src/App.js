@@ -108,7 +108,7 @@ function App() {
       <ComplexTable
         columns={columns}
         rows={rows}
-        checkboxSelection
+        checkboxSelection={false}
         getRowHeight={() => 52}
         pageSize={5}
         rowsPerPageOptions={[2, 5, 10]}
