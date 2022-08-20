@@ -1,10 +1,12 @@
 import { useState } from "react";
+import {useTableContext} from "../../../Table/useTableContext";
 
 export const SEARCHING_CONFIG = {
   searchable: 'searchable'
 }
 
-const useTableSearch = ({ rows, columns }) => {
+const useTableSearch = () => {
+  const { rows, columns } = useTableContext();
   const [searchValue, setSearchedValue] = useState("");
 
   const search = (value) => {

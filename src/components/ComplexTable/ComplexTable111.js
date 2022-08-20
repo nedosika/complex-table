@@ -5,7 +5,7 @@ import TableProvider from "../Table/useTableContext";
 import Sorting from "./modules/Sorting/Sorting";
 import UseSelectionContext from "./modules/Selection/useSelectionContext";
 import Pagination from "./modules/Pagination/Pagination";
-import Searching from "./modules/Search/Searching";
+import UseSearchingContext from "./modules/Search/useSearchingContext";
 import Filtration from "./modules/Filtration/Filtration";
 import RowsActions from "./modules/RowsActions/RowsActions";
 
@@ -14,7 +14,7 @@ const ComplexTable111 = ({ components, ...props }) => {
     <TableProvider value={props}>
       <UseSelectionContext>
         <Sorting>
-          <Searching>
+          <UseSearchingContext>
             <Filtration>
               <Pagination>
                 <RowsActions>
@@ -22,7 +22,7 @@ const ComplexTable111 = ({ components, ...props }) => {
                 </RowsActions>
               </Pagination>
             </Filtration>
-          </Searching>
+          </UseSearchingContext>
         </Sorting>
       </UseSelectionContext>
     </TableProvider>

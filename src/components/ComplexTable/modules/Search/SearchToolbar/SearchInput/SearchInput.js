@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./SearchInput.module.scss";
-import {useSearchingContext} from "../../Searching";
+import {useSearchingContext} from "../../useSearchingContext";
 
 const SearchInput = ({ label, placeholder = "" }) => {
   const [value, setValue] = useState("");

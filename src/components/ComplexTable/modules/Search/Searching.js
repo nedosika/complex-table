@@ -1,32 +1,31 @@
-import React, { createContext, useContext } from "react";
-import useTableSearch from "./useTableSearch";
-import TableProvider, { useTableContext } from "../../../Table/useTableContext";
-import Toolbar from "./SearchToolbar";
+import React from "react";
+import TableProvider, {
+  TABLE_CONFIG,
+  useTableContext,
+} from "../../../Table/useTableContext";
+import Toolbar from "./SearchToolbar/SearchToolbar";
 import { useRootContext } from "../../../Table/useRootContext";
-
-const SearchingContext = createContext({});
-
-export const useSearchingContext = () => useContext(SearchingContext);
+import useTableSearch from "./useTableSearch";
+import SearchingProvider from "./useSearchingContext";
 
 const Searching = ({ children }) => {
-  const { components: rootComponents } = useRootContext();
-  const { components, ...props } = useTableContext();
-  const { rows, columns } = props;
-  const { rows: searchedRows, ...searching } = useTableSearch({
-    rows,
-    columns,
-  });
+  const { [TABLE_CONFIG.components]: rootComponents, ...rootProps } =
+    useRootContext();
+  const { [TABLE_CONFIG.components]: components, ...props } = useTableContext();
+
+  const { rows: searchedRows, ...searching } = useTableSearch();
 
   return (
-    <SearchingContext.Provider value={searching}>
+    <SearchingProvider {...searching}>
       <TableProvider
         {...props}
+        {...rootProps}
         rows={searchedRows}
         components={{ ...components, Toolbar, ...rootComponents }}
       >
         {children}
       </TableProvider>
-    </SearchingContext.Provider>
+    </SearchingProvider>
   );
 };
 
