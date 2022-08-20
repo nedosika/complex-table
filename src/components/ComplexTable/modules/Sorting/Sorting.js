@@ -1,31 +1,34 @@
-import React, { createContext, useContext } from "react";
-import useSorting from "./useSorting";
-import TableProvider, { useTableContext } from "../../../Table/useTableContext";
+import React from "react";
+import TableProvider, {
+  TABLE_CONFIG,
+  useTableContext,
+} from "../../../Table/useTableContext";
 import ColumnsList from "./ColumnsList";
-
-const SortingContext = createContext({});
-
-export const useSortingContext = () => useContext(SortingContext);
+import useSorting from "./useSorting";
+import { useRootContext } from "../../../Table/useRootContext";
+import SortingProvider from "./useSortingContext";
 
 const Sorting = ({ children }) => {
-  const { rows, components } = useTableContext();
-  const { rows: sortedRows, ...sorting } = useSorting(rows);;
+  const { [TABLE_CONFIG.components]: rootComponents, ...rootProps } =
+    useRootContext();
+  const { [TABLE_CONFIG.components]: components, [TABLE_CONFIG.rows]: rows, ...props } = useTableContext();
+  const { rows: sortedRows, ...sorting } = useSorting({rows});
 
   return (
-    <SortingContext.Provider value={sorting}>
+    <SortingProvider {...sorting}>
       <TableProvider
-        value={{
-          ...useTableContext(),
-          rows: sortedRows,
-          components: {
-            ...components,
-            ColumnsList,
-          },
+        {...props}
+        {...rootProps}
+        rows={sortedRows}
+        components={{
+          ...components,
+          ColumnsList,
+          rootComponents,
         }}
       >
         {children}
       </TableProvider>
-    </SortingContext.Provider>
+    </SortingProvider>
   );
 };
 

@@ -4,7 +4,7 @@ export const SORTING_CONFIG={
   sortable: 'sortable'
 }
 
-const useSorting = (rows) => {
+const useSorting = ({rows}) => {
   const [sort, setSort] = useState({});
 
   const toggle = (sortedField) =>

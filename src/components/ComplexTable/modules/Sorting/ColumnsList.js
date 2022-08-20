@@ -1,45 +1,61 @@
-import React from 'react';
+import React from "react";
 import CheckBox from "../Selection/CheckBox";
-import ColumnTitle from "../../../Table/Main/Column/ColumnTitle";
-import SortingButton from "./SortingButton";
-import {SORT_DIRECTIONS} from "../../../../helpers";
-import ColumnResizeIcon from "../../../Table/Main/Column/ColumnResizeIcon";
-import {useTableContext} from "../../../Table/useTableContext";
-import {useSortingContext} from "./Sorting";
+import { TABLE_CONFIG, useTableContext } from "../../../Table/useTableContext";
+import { useSortingContext } from "./useSortingContext";
+import {
+  SELECTION_CONFIG,
+  useSelectionContext,
+} from "../Selection/useSelectionContext";
+import { SORTING_CONFIG } from "./useSorting";
+import Button from "./SortingButton/SortingButton";
+import { SORT_DIRECTIONS } from "../../../../helpers";
 
 const ColumnsList = () => {
-    const {
-        components: { Column },
-        columns,
-        selected,
-        selectionActions: { toggleSelectedAll },
-    } = useTableContext();
-    const {sortingActions: { toggle }, sort} = useSortingContext();
+  const {
+    components: { Column, ColumnResizeIcon, CheckBox, ColumnTitle },
+    [TABLE_CONFIG.columns]: columns,
+    [SELECTION_CONFIG.checkboxSelection]: checkboxSelection,
+  } = useTableContext();
+  const {
+    selectionActions: { toggleSelectedAll },
+    selected,
+  } = useSelectionContext();
+  const {
+    sortingActions: { toggle },
+    sort,
+  } = useSortingContext();
 
-    return (
-        <tr>
-            <Column
-                style={{ width: 20, cursor: "pointer" }}
-                onClick={toggleSelectedAll}
-            >
-                <CheckBox isChecked={selected.length} />
-            </Column>
-            {columns.map(({ headerName, field }) => (
-                <Column
-                    key={field}
-                    style={{ cursor: "pointer" }}
-                >
-                    <ColumnTitle text={headerName} onClick={toggle(field)}/>
-                    <SortingButton
-                        direction={
-                            sort?.field === field ? sort?.direction : SORT_DIRECTIONS.NONE
-                        }
-                    />
-                    <ColumnResizeIcon />
-                </Column>
-            ))}
-        </tr>
-    );
+  return (
+    <tr>
+      {checkboxSelection && (
+        <Column
+          style={{ width: 20, cursor: "pointer" }}
+          onClick={toggleSelectedAll}
+        >
+          <CheckBox isChecked={selected.length} />
+          <ColumnResizeIcon />
+        </Column>
+      )}
+      {columns.map(
+        ({ headerName, field, [SORTING_CONFIG.sortable]: sortable }) => (
+          <Column key={field} style={{ cursor: sortable ? "pointer" : "auto" }}>
+            <ColumnTitle
+              text={headerName}
+              onClick={() => sortable && toggle(field)}
+            />
+            {sortable && (
+              <Button
+                direction={
+                  sort?.field === field ? sort?.direction : SORT_DIRECTIONS.NONE
+                }
+              />
+            )}
+            <ColumnResizeIcon />
+          </Column>
+        )
+      )}
+    </tr>
+  );
 };
 
 export default ColumnsList;

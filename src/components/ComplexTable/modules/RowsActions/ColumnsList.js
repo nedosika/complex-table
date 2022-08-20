@@ -2,7 +2,7 @@ import React from "react";
 import { useTableContext } from "../../../Table/useTableContext";
 import { useSelectionContext } from "../Selection/useSelectionContext";
 import ColumnMenuIcon from "../Filtration/FiltrationMenu/MenuIcon";
-import { useSortingContext } from "../Sorting/Sorting";
+import { useSortingContext } from "../Sorting/useSortingContext";
 import { useFiltrationContext } from "../Filtration/Filtration";
 import { SORTING_CONFIG } from "../Sorting/useSorting";
 import ColumnTitle from "../../../Table/Main/Column/ColumnTitle";

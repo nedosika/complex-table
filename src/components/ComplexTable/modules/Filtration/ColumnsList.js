@@ -6,7 +6,7 @@ import ColumnMenuIcon from "./FiltrationMenu/MenuIcon";
 import CheckBox from "../Selection/CheckBox";
 import { SORT_DIRECTIONS } from "../../../../helpers";
 import { useFiltrationContext } from "./Filtration";
-import { useSortingContext } from "../Sorting/Sorting";
+import { useSortingContext } from "../Sorting/useSortingContext";
 import { SORTING_CONFIG } from "../Sorting/useSorting";
 import Button from "../Sorting/SortingButton/SortingButton";
 import { useSelectionContext } from "../Selection/useSelectionContext";
