@@ -2,9 +2,13 @@ import React from "react";
 import styles from "./Pagination.module.scss";
 import PaginationButton from "./PaginationButton";
 import useMenu from "../Menu/useMenu";
-import { usePaginationContext } from "./usePaginationContext";
+import {
+  PAGINATION_CONFIG,
+  usePaginationContext,
+} from "../ComplexTable/modules/Pagination/usePaginationContext";
 import Menu from "../Menu/Menu";
 import MenuItem from "../Menu/MenuItem";
+import { useTableContext } from "../Table/useTableContext";
 
 const Pagination = () => {
   const {
@@ -12,8 +16,9 @@ const Pagination = () => {
     fromRow,
     rowCount,
     rowsCount,
-    rowsPerPageOptions,
   } = usePaginationContext();
+  const { [PAGINATION_CONFIG.rowsPerPageOptions]: rowsPerPageOptions } =
+    useTableContext();
   const { isOpen, anchorEl, toggleMenu } = useMenu();
   const toRow = fromRow + rowCount;
 
@@ -22,7 +27,7 @@ const Pagination = () => {
       <div className={styles.wrapper}>
         <Menu isOpen={isOpen} anchorEl={anchorEl} onClose={toggleMenu}>
           {rowsPerPageOptions.map((item) => (
-            <MenuItem key={item} onClick={() =>changeRowCount(item)}>
+            <MenuItem key={item} onClick={() => changeRowCount(item)}>
               {item}
             </MenuItem>
           ))}

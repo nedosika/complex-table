@@ -118,6 +118,7 @@ function App() {
           //Header: () => 'header'
           //Row: () => 'row'
           //Footer: () => 'footer'
+          //Cell: ()=> 'cell'
         }}
       />
     </div>

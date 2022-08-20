@@ -9,7 +9,7 @@ import { useFiltrationContext } from "./Filtration";
 import { useSortingContext } from "../Sorting/Sorting";
 import { SORTING_CONFIG } from "../Sorting/useSorting";
 import Button from "../Sorting/SortingButton/SortingButton";
-import { useSelectionContext } from "../Selection/Selection";
+import { useSelectionContext } from "../Selection/useSelectionContext";
 
 const ColumnsList = () => {
   const {

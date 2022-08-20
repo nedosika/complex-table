@@ -5,6 +5,7 @@ export const TABLE_CONFIG = {
   columns: "columns",
   getRowId: "getRowId",
   getRowHeight: "getRowHeight",
+  components: 'components'
 };
 
 const TableContext = createContext({});
@@ -12,7 +13,6 @@ const TableContext = createContext({});
 export const useTableContext = () => useContext(TableContext);
 
 const TableProvider = ({ children, ...props }) => {
-  //const newProps = Object.assign(defaultProps, props);
   return (
     <TableContext.Provider value={props}>{children}</TableContext.Provider>
   );

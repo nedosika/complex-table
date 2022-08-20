@@ -1,6 +1,6 @@
 import React from "react";
 import { useTableContext } from "../../../Table/useTableContext";
-import { useSelectionContext } from "../Selection/Selection";
+import { useSelectionContext } from "../Selection/useSelectionContext";
 import ColumnMenuIcon from "../Filtration/FiltrationMenu/MenuIcon";
 import { useSortingContext } from "../Sorting/Sorting";
 import { useFiltrationContext } from "../Filtration/Filtration";

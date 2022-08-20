@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Button.module.scss";
 import Tooltip from "@mui/material/Tooltip";
 import { useTableContext } from "../../../../Table/useTableContext";
-import {useSelectionContext} from "../Selection";
+import {useSelectionContext} from "../useSelectionContext";
 
 const COLORS = {
   disable: "lightgrey",

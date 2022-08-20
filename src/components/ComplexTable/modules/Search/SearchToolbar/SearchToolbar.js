@@ -4,7 +4,7 @@ import DeleteIcon from "./DeleteIcon";
 import EditIcon from "./EditIcon";
 import SearchInput from "./SearchInput";
 import Toolbar from "../../../../Table/Header/Toolbar";
-import { SELECTION_CONFIG } from "../../Selection/Selection";
+import { SELECTION_CONFIG } from "../../Selection/useSelectionContext";
 import { useTableContext } from "../../../../Table/useTableContext";
 
 const SearchToolbar = (props) => {

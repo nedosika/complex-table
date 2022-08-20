@@ -1,7 +1,7 @@
 import React from "react";
 import CheckBox from "./CheckBox";
 import { useTableContext } from "../../../Table/useTableContext";
-import { useSelectionContext } from "./Selection";
+import { useSelectionContext } from "./useSelectionContext";
 
 const SelectionHeader = () => {
   const {

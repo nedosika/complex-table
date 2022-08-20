@@ -1,7 +1,7 @@
 import React from "react";
 import { useTableContext } from "../../../Table/useTableContext";
 import Footer from "../../../Table/Footer";
-import { SELECTION_CONFIG, useSelectionContext } from "./Selection";
+import { SELECTION_CONFIG, useSelectionContext } from "./useSelectionContext";
 import RowCounter from "../../../Table/Footer/RowCounter";
 
 const SelectionFooter = (props) => {

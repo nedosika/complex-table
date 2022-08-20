@@ -1,14 +1,14 @@
 import React from "react";
-import { useTableContext } from "../../../Table/useTableContext";
-import { SELECTION_CONFIG, useSelectionContext } from "./Selection";
+import { TABLE_CONFIG, useTableContext } from "../../../Table/useTableContext";
+import { SELECTION_CONFIG, useSelectionContext } from "./useSelectionContext";
 
 const RowsList = () => {
   const {
     components: { Row, Cell, CheckBox },
     rows,
     columns,
-    getRowId,
-    getRowHeight,
+    [TABLE_CONFIG.getRowId]: getRowId,
+    [TABLE_CONFIG.getRowHeight]: getRowHeight,
     [SELECTION_CONFIG.checkboxSelection]: checkboxSelection,
   } = useTableContext();
   const {

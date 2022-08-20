@@ -1,30 +1,26 @@
-import React, { createContext, useContext } from "react";
-import useSelection from "./useSelection";
+import React from "react";
+import SelectionProvider from "./useSelectionContext";
+import TableProvider, {
+  TABLE_CONFIG,
+  useTableContext,
+} from "../../../Table/useTableContext";
 import ColumnsList from "./ColumnsList";
 import CheckBox from "./CheckBox";
 import RowsList from "./RowsList";
 import Footer from "./Footer";
 import Toolbar from "./Toolbar";
-import TableProvider, { useTableContext } from "../../../Table/useTableContext";
 import { useRootContext } from "../../../Table/useRootContext";
 
-export const SELECTION_CONFIG = {
-  checkboxSelection: "checkboxSelection",
-};
-
-const SelectionContext = createContext({});
-
-export const useSelectionContext = () => useContext(SelectionContext);
-
 const Selection = ({ children }) => {
-  const { components: rootComponents } = useRootContext();
-  const { components, ...props } = useTableContext();
-  const { rows, getRowId } = props;
+  const { [TABLE_CONFIG.components]: rootComponents, ...rootProps } =
+    useRootContext();
+  const { [TABLE_CONFIG.components]: components, ...props } = useTableContext();
 
   return (
-    <SelectionContext.Provider value={useSelection({ rows, getRowId })}>
+    <SelectionProvider>
       <TableProvider
         {...props}
+        {...rootProps}
         components={{
           ...components,
           ColumnsList,
@@ -37,7 +33,7 @@ const Selection = ({ children }) => {
       >
         {children}
       </TableProvider>
-    </SelectionContext.Provider>
+    </SelectionProvider>
   );
 };
 

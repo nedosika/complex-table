@@ -1,6 +1,6 @@
 import React from "react";
 import { useTableContext } from "../../../Table/useTableContext";
-import { SELECTION_CONFIG, useSelectionContext } from "./Selection";
+import { SELECTION_CONFIG, useSelectionContext } from "./useSelectionContext";
 
 const ColumnsList = () => {
   const {

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useTableContext } from "../../../Table/useTableContext";
-import {useSelectionContext} from "../Selection/Selection";
+import {useSelectionContext} from "../Selection/useSelectionContext";
 import CheckBox from "../Selection/CheckBox";
 import SelectionButton from "../Selection/SelectionButton";
 import EditIcon from "../Search/SearchToolbar/EditIcon";

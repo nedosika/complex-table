@@ -3,7 +3,7 @@ import React from "react";
 import DefaultTable from "../Table/DefaultTable";
 import TableProvider from "../Table/useTableContext";
 import Sorting from "./modules/Sorting/Sorting";
-import Selection from "./modules/Selection/Selection";
+import UseSelectionContext from "./modules/Selection/useSelectionContext";
 import Pagination from "./modules/Pagination/Pagination";
 import Searching from "./modules/Search/Searching";
 import Filtration from "./modules/Filtration/Filtration";
@@ -12,7 +12,7 @@ import RowsActions from "./modules/RowsActions/RowsActions";
 const ComplexTable111 = ({ components, ...props }) => {
   return (
     <TableProvider value={props}>
-      <Selection>
+      <UseSelectionContext>
         <Sorting>
           <Searching>
             <Filtration>
@@ -24,7 +24,7 @@ const ComplexTable111 = ({ components, ...props }) => {
             </Filtration>
           </Searching>
         </Sorting>
-      </Selection>
+      </UseSelectionContext>
     </TableProvider>
   );
 };
