@@ -47,22 +47,22 @@ const rows = [
     id: 2,
     lastName: "Lannister",
     firstName: "Cersei",
-    fullName: "test",
-    age: 33,
+    // fullName: "test",
+    // age: 33,
     //colspan: ["firstName", 3],
-    // colspan: {
-    //   lastName: 3
-    // }
+    colspan: {
+      lastName: 3
+    }
   },
   {
     id: 3,
     lastName: "Lannister",
     firstName: "Jaime",
-    age: 45,
-    fullName: "test",
-    // colspan: {
-    //   firstName: 3
-    // }
+    // age: 45,
+    // fullName: "test",
+    colspan: {
+      firstName: 3
+    }
   },
   {
     id: 4,
