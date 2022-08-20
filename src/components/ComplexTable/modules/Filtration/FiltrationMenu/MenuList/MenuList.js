@@ -1,6 +1,6 @@
 import React from "react";
 import ColumnMenuItem from "../ColumnMenuItem";
-import { useFiltrationContext } from "../../Filtration";
+import { useFiltrationContext } from "../../useFiltrationContext";
 import styles from "./MenuList.module.scss";
 
 const MenuList = () => {

@@ -3,7 +3,7 @@ import { useTableContext } from "../../../Table/useTableContext";
 import { useSelectionContext } from "../Selection/useSelectionContext";
 import ColumnMenuIcon from "../Filtration/FiltrationMenu/MenuIcon";
 import { useSortingContext } from "../Sorting/useSortingContext";
-import { useFiltrationContext } from "../Filtration/Filtration";
+import { useFiltrationContext } from "../Filtration/useFiltrationContext";
 import { SORTING_CONFIG } from "../Sorting/useSorting";
 import ColumnTitle from "../../../Table/Main/Column/ColumnTitle";
 import Button from "../Sorting/SortingButton/SortingButton";

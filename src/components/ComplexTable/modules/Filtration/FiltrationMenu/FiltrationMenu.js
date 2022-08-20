@@ -2,7 +2,7 @@ import React from "react";
 import Menu from "../../../../Menu/Menu";
 import Divider from "../../../../Menu/Divider";
 import Button from "../../../../Button";
-import { useFiltrationContext } from "../Filtration";
+import { useFiltrationContext } from "../useFiltrationContext";
 import MenuList from "./MenuList/MenuList";
 
 const FiltrationMenu = () => {

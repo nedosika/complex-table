@@ -5,7 +5,7 @@ import React from "react";
 import ColumnMenuIcon from "./FiltrationMenu/MenuIcon";
 import CheckBox from "../Selection/CheckBox";
 import { SORT_DIRECTIONS } from "../../../../helpers";
-import { useFiltrationContext } from "./Filtration";
+import { useFiltrationContext } from "./useFiltrationContext";
 import { useSortingContext } from "../Sorting/useSortingContext";
 import { SORTING_CONFIG } from "../Sorting/useSorting";
 import Button from "../Sorting/SortingButton/SortingButton";
