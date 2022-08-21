@@ -1,8 +1,7 @@
 import React from "react";
-import styles from "./Button.module.scss";
-import Tooltip from "@mui/material/Tooltip";
 import { useTableContext } from "../../../../Table/useTableContext";
-import {useSelectionContext} from "../useSelectionContext";
+import { useSelectionContext } from "../useSelectionContext";
+import IconButton from "../../../../IconButton";
 
 const COLORS = {
   disable: "lightgrey",
@@ -18,26 +17,23 @@ const SelectionButton = ({
   sx,
 }) => {
   const { rows } = useTableContext();
-  const {selected} = useSelectionContext();
+  const { selected } = useSelectionContext();
 
   const isDisabled =
     typeof disabled === "boolean" ? disabled : disabled({ selected, rows });
   const color = isDisabled ? COLORS.disable : COLORS.primary;
+  const tooltipTitle =
+    typeof hint === "string" ? hint : hint({ selected, rows });
 
   return (
-    <Tooltip title={typeof hint === "string" ? hint : hint({ selected, rows })}>
-      <span>
-        <button
-          className={styles.root}
-          style={{ color, ...sx }}
-          onClick={onClick}
-          disabled={isDisabled}
-        >
-          <span>{Icon && <Icon color={color} />}</span>
-          <span className={styles.title}>{title}</span>
-        </button>
-      </span>
-    </Tooltip>
+    <IconButton
+      onClick={onClick}
+      disabled={isDisabled}
+      hint={tooltipTitle}
+      title={title}
+      style={{ color, ...sx }}
+      icon={Icon && <Icon color={color} />}
+    />
   );
 };
 

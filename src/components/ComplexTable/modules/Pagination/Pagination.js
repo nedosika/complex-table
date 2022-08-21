@@ -6,7 +6,7 @@ import TableProvider, {
 import Footer from "./Footer";
 import { useRootContext } from "../../../Table/useRootContext";
 import usePagination from "../../../Pagination/usePagination";
-import PaginationProvider, { PAGINATION_CONFIG } from "./usePaginationContext";
+import PaginationProvider from "./usePaginationContext";
 
 const Pagination = ({ children }) => {
   const { [TABLE_CONFIG.components]: rootComponents, ...rootProps } =

@@ -1,11 +1,17 @@
 import React from "react";
 
 import { useTableContext } from "../../../Table/useTableContext";
-import {SELECTION_CONFIG, useSelectionContext} from "../Selection/useSelectionContext";
+import {
+  SELECTION_CONFIG,
+  useSelectionContext,
+} from "../Selection/useSelectionContext";
 import CheckBox from "../Selection/CheckBox";
 import SelectionButton from "../Selection/SelectionButton";
 import EditIcon from "../Search/SearchToolbar/EditIcon";
 import DeleteIcon from "../Search/SearchToolbar/DeleteIcon";
+import IconButton from "../../../IconButton";
+import Icon from "../../../Icon";
+import { ICON_TYPE_NAMES } from "../../../Icon/Icon";
 
 const RowsList = () => {
   const {
@@ -36,9 +42,9 @@ const RowsList = () => {
       onClick={() => selectOne(row)}
     >
       {checkboxSelection && (
-          <Cell onClick={handleSelect(row)} style={{ cursor: "pointer" }}>
-            <CheckBox isChecked={getIsSelected(row)} />
-          </Cell>
+        <Cell onClick={handleSelect(row)} style={{ cursor: "pointer" }}>
+          <CheckBox isChecked={getIsSelected(row)} />
+        </Cell>
       )}
       {columns.map(
         ({ field }) =>
