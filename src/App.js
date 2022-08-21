@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styles from "./App.module.scss";
 
 import ComplexTable from "./components/ComplexTable";
-import {SEARCHING_CONFIG} from "./components/ComplexTable/Search/useTableSearch";
-import {SORTING_CONFIG} from "./components/ComplexTable/Sorting/useSorting";
+import { SEARCHING_CONFIG } from "./components/ComplexTable/modules/Search/useTableSearch";
+import { SORTING_CONFIG } from "./components/ComplexTable/modules/Sorting/useSorting";
+
+import TableRow from "./components/Table/Main/Row";
 
 const columns = [
   {
@@ -37,7 +39,7 @@ const columns = [
     field: "fullName",
     headerName: "Full name",
     description: "This column has a value getter and is not sortable.",
-    width: 160
+    width: 160,
   },
 ];
 
@@ -47,22 +49,22 @@ const rows = [
     id: 2,
     lastName: "Lannister",
     firstName: "Cersei",
-    fullName: "test",
-    age: 33,
+    // fullName: "test",
+    // age: 33,
     //colspan: ["firstName", 3],
-    // colspan: {
-    //   lastName: 3
-    // }
+    colspan: {
+      lastName: 3,
+    },
   },
   {
     id: 3,
     lastName: "Lannister",
     firstName: "Jaime",
-    age: 45,
-    fullName: "test",
-    // colspan: {
-    //   firstName: 3
-    // }
+    // age: 45,
+    // fullName: "test",
+    colspan: {
+      firstName: 3,
+    },
   },
   {
     id: 4,
@@ -108,11 +110,23 @@ function App() {
       <ComplexTable
         columns={columns}
         rows={rows}
-        checkboxSelection
+        checkboxSelection={true}
         getRowHeight={() => 52}
         pageSize={5}
         rowsPerPageOptions={[2, 5, 10]}
         page={0}
+        components={{
+          //Table: () => 'table',
+          //Header: () => 'header'
+          Row: (props) => (
+            <TableRow
+              {...props}
+              style={props.row.age > 10 ? { backgroundColor: "red" } : {}}
+            />
+          ),
+          //Footer: () => 'footer'
+          //Cell: (props)=> console.log(props)
+        }}
       />
     </div>
   );
