@@ -3,8 +3,10 @@ import React from "react";
 import styles from "./App.module.scss";
 
 import ComplexTable from "./components/ComplexTable";
-import {SEARCHING_CONFIG} from "./components/ComplexTable/modules/Search/useTableSearch";
-import {SORTING_CONFIG} from "./components/ComplexTable/modules/Sorting/useSorting";
+import { SEARCHING_CONFIG } from "./components/ComplexTable/modules/Search/useTableSearch";
+import { SORTING_CONFIG } from "./components/ComplexTable/modules/Sorting/useSorting";
+
+import TableRow from "./components/Table/Main/Row";
 
 const columns = [
   {
@@ -37,7 +39,7 @@ const columns = [
     field: "fullName",
     headerName: "Full name",
     description: "This column has a value getter and is not sortable.",
-    width: 160
+    width: 160,
   },
 ];
 
@@ -51,8 +53,8 @@ const rows = [
     // age: 33,
     //colspan: ["firstName", 3],
     colspan: {
-      lastName: 3
-    }
+      lastName: 3,
+    },
   },
   {
     id: 3,
@@ -61,8 +63,8 @@ const rows = [
     // age: 45,
     // fullName: "test",
     colspan: {
-      firstName: 3
-    }
+      firstName: 3,
+    },
   },
   {
     id: 4,
@@ -116,9 +118,14 @@ function App() {
         components={{
           //Table: () => 'table',
           //Header: () => 'header'
-          //Row: () => 'row'
+          Row: (props) => (
+            <TableRow
+              {...props}
+              style={props.row.age > 10 ? { backgroundColor: "red" } : {}}
+            />
+          ),
           //Footer: () => 'footer'
-          //Cell: ()=> 'cell'
+          //Cell: (props)=> console.log(props)
         }}
       />
     </div>

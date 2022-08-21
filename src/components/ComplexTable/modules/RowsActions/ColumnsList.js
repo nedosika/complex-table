@@ -1,6 +1,9 @@
 import React from "react";
 import { useTableContext } from "../../../Table/useTableContext";
-import { useSelectionContext } from "../Selection/useSelectionContext";
+import {
+  SELECTION_CONFIG,
+  useSelectionContext,
+} from "../Selection/useSelectionContext";
 import ColumnMenuIcon from "../Filtration/FiltrationMenu/MenuIcon";
 import { useSortingContext } from "../Sorting/useSortingContext";
 import { useFiltrationContext } from "../Filtration/useFiltrationContext";
@@ -14,6 +17,7 @@ const ColumnsList = () => {
   const {
     components: { Column, ColumnTitle, ColumnResizeIcon, CheckBox },
     columns,
+    [SELECTION_CONFIG.checkboxSelection]: checkboxSelection,
   } = useTableContext();
   const {
     selectionActions: { toggleSelectedAll },
@@ -29,12 +33,15 @@ const ColumnsList = () => {
 
   return (
     <tr>
-      <Column
-        style={{ width: 20, cursor: "pointer" }}
-        onClick={toggleSelectedAll}
-      >
-        <CheckBox isChecked={selected.length} />
-      </Column>
+      {checkboxSelection && (
+        <Column
+          style={{ width: 20, cursor: "pointer" }}
+          onClick={toggleSelectedAll}
+        >
+          <CheckBox isChecked={selected.length} />
+          <ColumnResizeIcon />
+        </Column>
+      )}
       {columns.map(
         ({ headerName, field, [SORTING_CONFIG.sortable]: sortable }) => (
           <Column key={field}>
