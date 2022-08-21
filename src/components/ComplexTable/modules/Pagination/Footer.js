@@ -15,7 +15,7 @@ const PaginationFooter = (props) => {
     } = useSelectionContext();
 
   return (
-    <Footer colSpan={columns.length + 1} {...props}>
+    <Footer colSpan={columns.length + 3} {...props}>
       <RowCounter>
         {selected.length} row{selected.length > 1 && "s"} selected
       </RowCounter>

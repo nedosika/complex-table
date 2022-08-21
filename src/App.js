@@ -7,6 +7,7 @@ import { SEARCHING_CONFIG } from "./components/ComplexTable/modules/Search/useTa
 import { SORTING_CONFIG } from "./components/ComplexTable/modules/Sorting/useSorting";
 
 import TableRow from "./components/Table/Main/Row";
+// import AccordionRow from "./components/ComplexTable/AccordionRow";
 
 const columns = [
   {
@@ -42,9 +43,28 @@ const columns = [
     width: 160,
   },
 ];
-
 const rows = [
-  { id: 1, lastName: "Snow", firstName: "Jon", age: 35, fullName: "test" },
+  {
+    id: 1,
+    lastName: "Snow",
+    firstName: "Jon",
+    age: 35,
+    fullName: "test",
+    accordion: [
+      {
+        lastName: "Lannister",
+        firstName: "Cersei",
+        fullName: "test",
+        age: 33,
+      },
+      {
+        lastName: "Lannister",
+        firstName: "Jaime",
+        age: 45,
+        fullName: "test",
+      },
+    ],
+  },
   {
     id: 2,
     lastName: "Lannister",
@@ -118,12 +138,13 @@ function App() {
         components={{
           //Table: () => 'table',
           //Header: () => 'header'
-          Row: (props) => (
-            <TableRow
-              {...props}
-              style={props.row.age > 10 ? { backgroundColor: "red" } : {}}
-            />
-          ),
+          // Row: (props) => (
+          //   <TableRow
+          //     {...props}
+          //     style={props.row.age > 10 ? { backgroundColor: "red" } : {}}
+          //   />
+          // ),
+          //Row: AccordionRow
           //Footer: () => 'footer'
           //Cell: (props)=> console.log(props)
         }}
