@@ -1,49 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styles from "./App.module.scss";
 
 import ComplexTable from "./components/ComplexTable";
-import { SEARCHING_CONFIG } from "./components/ComplexTable/modules/Search/useTableSearch";
-import { SORTING_CONFIG } from "./components/ComplexTable/modules/Sorting/useSorting";
 
-import TableRow from "./components/Table/Main/Row";
-// import AccordionRow from "./components/ComplexTable/AccordionRow";
+import SelectionButton from "./components/ComplexTable/modules/Selection/SelectionButton";
+import EditIcon from "./components/ComplexTable/modules/Search/SearchToolbar/EditIcon";
+import DeleteIcon from "./components/ComplexTable/modules/Search/SearchToolbar/DeleteIcon";
 
-const columns = [
-  {
-    field: "id",
-    headerName: "ID",
-    width: 105,
-    [SORTING_CONFIG.sortable]: false,
-    [SEARCHING_CONFIG.searchable]: true,
-  },
-  {
-    field: "firstName",
-    headerName: "First name",
-    width: 200,
-    [SORTING_CONFIG.sortable]: true,
-    [SEARCHING_CONFIG.searchable]: true,
-  },
-  {
-    field: "lastName",
-    headerName: "Last name",
-    width: 150,
-  },
-  {
-    field: "age",
-    headerName: "Age",
-    type: "number",
-    width: 110,
-    [SORTING_CONFIG.sortable]: true,
-  },
-  {
-    field: "fullName",
-    headerName: "Full name",
-    description: "This column has a value getter and is not sortable.",
-    width: 160,
-  },
-];
-const rows = [
+const initialRows = [
   {
     id: 1,
     lastName: "Snow",
@@ -127,6 +92,69 @@ const rows = [
 ];
 
 function App() {
+  const [rows, setRows] = useState(initialRows);
+  const handleDeleteRow = (id) => () => {
+    setRows((prevRows) => prevRows.filter((row) => row.id !== id));
+  };
+  const columns = [
+    {
+      field: "id",
+      headerName: "ID",
+      width: 105,
+      sortable: false,
+      searchable: true,
+    },
+    {
+      field: "firstName",
+      headerName: "First name",
+      width: 200,
+      sortable: true,
+      searchable: true,
+    },
+    {
+      field: "lastName",
+      headerName: "Last name",
+      width: 150,
+    },
+    {
+      field: "age",
+      headerName: "Age",
+      type: "number",
+      width: 110,
+      sortable: true,
+    },
+    {
+      field: "fullName",
+      headerName: "Full name",
+      description: "This column has a value getter and is not sortable.",
+      width: 160,
+    },
+    {
+      field: "actions",
+      headerName: "Actions",
+      type: "actions",
+      description: "This column has a value getter and is not sortable.",
+      width: 160,
+      getActions: (id) => {
+        return [
+          <SelectionButton
+            title="Edit"
+            icon={EditIcon}
+            hint={"Edit"}
+            key="edit"
+          />,
+          <SelectionButton
+            title="Delete"
+            icon={DeleteIcon}
+            hint={"Delete"}
+            onClick={handleDeleteRow(id)}
+            key="delete"
+          />,
+        ];
+      },
+    },
+  ];
+
   return (
     <div className={styles.root}>
       <ComplexTable

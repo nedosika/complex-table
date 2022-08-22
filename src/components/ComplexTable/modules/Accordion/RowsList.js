@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, {Fragment, useState} from "react";
 
 import { useTableContext } from "../../../Table/useTableContext";
 import { useSelectionContext } from "../Selection/useSelectionContext";
 import AccordionCell from "./AccordionCell";
 import SelectionCell from "../Selection/SelectionCell";
-import RowsActionsCell from "../RowsActions/RowsActionsCell";
 import CellList from "../RowsActions/CellList";
 import AccordionMoreRowsList from "./AccordionMoreRowsList";
 
@@ -26,32 +25,28 @@ const RowsList = () => {
   };
 
   return rows.map((row) => (
-    <>
+    <Fragment key={getRowId(row)}>
       <Row
         row={row}
-        key={getRowId(row)}
         style={{
           backgroundColor: getIsSelected(row) && "rgba(25, 118, 210, 0.08)",
           height: getRowHeight(row),
         }}
         onClick={() => selectOne(row)}
       >
-        <SelectionCell row={row} key="selectionCell" />
+        <SelectionCell row={row} />
         <AccordionCell
           isShow={row.accordion}
           isMore={isMore}
           toggle={handleToggleAccordion}
-          key="accordionCell"
         />
         <CellList row={row} />
-        <RowsActionsCell key="rowsActionsCell" />
       </Row>
       <AccordionMoreRowsList
         isShow={isMore && row.accordion}
         row={row}
-        key="accordion"
       />
-    </>
+    </Fragment>
   ));
 };
 
