@@ -18,7 +18,6 @@ const AccordionMoreRowsList = ({ isShow, row }) => {
         {columns.map(({ field }) => (
           <Cell key={field}>{row[field]}</Cell>
         ))}
-        <Cell />
       </Row>
     ))
   );
