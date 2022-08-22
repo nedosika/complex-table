@@ -93,9 +93,13 @@ const initialRows = [
 
 function App() {
   const [rows, setRows] = useState(initialRows);
-  const handleDeleteRow = (id) => () => {
+  const handleDeleteRow = (id) => (event) => {
+    event.stopPropagation();
     setRows((prevRows) => prevRows.filter((row) => row.id !== id));
   };
+  const handleDeleteRows = (rows) =>
+    setRows((prevRows) => prevRows.filter((row) => !rows.includes(row.id)));
+
   const columns = [
     {
       field: "id",
@@ -165,6 +169,7 @@ function App() {
         pageSize={5}
         rowsPerPageOptions={[2, 5, 10]}
         page={0}
+        onDeleteRows={handleDeleteRows}
         components={
           {
             //Table: () => 'table',
