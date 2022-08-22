@@ -4,9 +4,10 @@ import styles from "./App.module.scss";
 
 import ComplexTable from "./components/ComplexTable";
 
-import SelectionButton from "./components/ComplexTable/modules/Selection/SelectionButton";
 import EditIcon from "./components/ComplexTable/modules/Search/SearchToolbar/EditIcon";
 import DeleteIcon from "./components/ComplexTable/modules/Search/SearchToolbar/DeleteIcon";
+import IconButton from "./components/IconButton";
+import {COLORS} from "./components/ComplexTable/modules/Selection/SelectionButton/SelectionButton";
 
 const initialRows = [
   {
@@ -94,6 +95,7 @@ const initialRows = [
 function App() {
   const [rows, setRows] = useState(initialRows);
   const handleDeleteRow = (id) => (event) => {
+    //event.preventDefault();
     event.stopPropagation();
     setRows((prevRows) => prevRows.filter((row) => row.id !== id));
   };
@@ -141,15 +143,14 @@ function App() {
       width: 160,
       getActions: (id) => {
         return [
-          <SelectionButton
+          <IconButton
             title="Edit"
-            icon={EditIcon}
+            icon={<EditIcon color={COLORS.primary}/>}
             hint={"Edit"}
-            key="edit"
           />,
-          <SelectionButton
+          <IconButton
             title="Delete"
-            icon={DeleteIcon}
+            icon={<DeleteIcon color={COLORS.primary}/>}
             hint={"Delete"}
             onClick={handleDeleteRow(id)}
             key="delete"

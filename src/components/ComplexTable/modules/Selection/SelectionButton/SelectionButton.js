@@ -4,7 +4,7 @@ import { useSelectionContext } from "../useSelectionContext";
 import IconButton from "../../../../IconButton";
 import { SELECTION_ATTRIBUTES } from "../useSelection";
 
-const COLORS = {
+export const COLORS = {
   disable: "lightgrey",
   primary: "rgb(25, 118, 210)",
 };
