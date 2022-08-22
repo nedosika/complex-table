@@ -53,15 +53,22 @@ const RowsList = () => {
             <CheckBox isChecked={getIsSelected(row)} />
           </Cell>
         )}
-        <Cell
-          style={{ cursor: "pointer" }}
-          onClick={handleToggleAccordion}
-        >
+        <Cell style={{ cursor: "pointer" }} onClick={handleToggleAccordion}>
           {row.accordion &&
             (isMore ? (
-              <Icon type={[ICON_TYPE_NAMES.expandLess]} />
+              <Icon
+                type={[ICON_TYPE_NAMES.expandLess]}
+                width={30}
+                height={30}
+                color="grey"
+              />
             ) : (
-              <Icon type={[ICON_TYPE_NAMES.expandMore]} />
+              <Icon
+                type={[ICON_TYPE_NAMES.expandMore]}
+                width={30}
+                height={30}
+                color="grey"
+              />
             ))}
         </Cell>
         {columns.map(
@@ -77,7 +84,8 @@ const RowsList = () => {
           <SelectionButton title="Delete" icon={DeleteIcon} hint={"Delete"} />
         </Cell>
       </Row>
-      {isMore && row.accordion &&
+      {isMore &&
+        row.accordion &&
         row.accordion.map((row) => (
           <Row>
             {checkboxSelection && <Cell />}

@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Icon.module.css";
 
 export const ICON_TYPE_NAMES = {
   edit: "edit",
@@ -28,16 +29,18 @@ const Icon = ({
   type = ICON_TYPE_NAMES.edit,
 }) => {
   return (
-    <svg
-      fill={color}
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox={viewBox}
-      width={width}
-      height={height}
-      style={{ ...sx }}
-    >
-      <path d={ICON_TYPES[type]} />
-    </svg>
+    <div className={styles.root}>
+      <svg
+        fill={color}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox={viewBox}
+        width={width}
+        height={height}
+        style={{ ...sx }}
+      >
+        <path d={ICON_TYPES[type]} />
+      </svg>
+    </div>
   );
 };
 
