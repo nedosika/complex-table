@@ -1,24 +1,19 @@
 import React from "react";
 import { TABLE_CONFIG, useTableContext } from "../../../Table/useTableContext";
-import { SELECTION_CONFIG, useSelectionContext } from "./useSelectionContext";
+import { useSelectionContext } from "./useSelectionContext";
+import SelectionCell from "./SelectionCell";
 
 const RowsList = () => {
   const {
-    components: { Row, Cell, CheckBox },
+    components: { Row, Cell },
     rows,
     columns,
     [TABLE_CONFIG.getRowId]: getRowId,
     [TABLE_CONFIG.getRowHeight]: getRowHeight,
-    [SELECTION_CONFIG.checkboxSelection]: checkboxSelection,
   } = useTableContext();
   const {
-    selectionActions: { toggleSelected, getIsSelected, selectOne },
+    selectionActions: { getIsSelected, selectOne },
   } = useSelectionContext();
-
-  const handleSelect = (row) => (event) => {
-    event.stopPropagation();
-    toggleSelected(row);
-  };
 
   return rows.map((row) => (
     <Row
@@ -30,11 +25,7 @@ const RowsList = () => {
       }}
       onClick={() => selectOne(row)}
     >
-      {checkboxSelection && (
-        <Cell onClick={handleSelect(row)} style={{ cursor: "pointer" }}>
-          <CheckBox isChecked={getIsSelected(row)} />
-        </Cell>
-      )}
+      <SelectionCell row={row} />
       {columns.map(({ field }) => (
         <Cell colSpan={row.colspan && row.colspan[field]} key={field}>
           {row[field]}

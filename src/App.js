@@ -52,12 +52,14 @@ const rows = [
     fullName: "test",
     accordion: [
       {
+        id: 1,
         lastName: "Lannister",
         firstName: "Cersei",
         fullName: "test",
         age: 33,
       },
       {
+        id: 2,
         lastName: "Lannister",
         firstName: "Jaime",
         age: 45,
@@ -135,19 +137,21 @@ function App() {
         pageSize={5}
         rowsPerPageOptions={[2, 5, 10]}
         page={0}
-        components={{
-          //Table: () => 'table',
-          //Header: () => 'header'
-          // Row: (props) => (
-          //   <TableRow
-          //     {...props}
-          //     style={props.row.age > 10 ? { backgroundColor: "red" } : {}}
-          //   />
-          // ),
-          //Row: AccordionRow
-          //Footer: () => 'footer'
-          //Cell: (props)=> console.log(props)
-        }}
+        components={
+          {
+            //Table: () => 'table',
+            //Header: () => 'header'
+            // Row: (props) => (
+            //   <TableRow
+            //     {...props}
+            //     style={props.row.age > 10 ? { backgroundColor: "red" } : {}}
+            //   />
+            // ),
+            //Row: AccordionRow
+            //Footer: () => 'footer'
+            //Cell: (props)=> console.log(props)
+          }
+        }
       />
     </div>
   );
