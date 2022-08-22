@@ -1,35 +1,45 @@
-import {useState} from "react";
+import { useState } from "react";
 
-const useSelection = ({rows, getRowId}) => {
-    const [selected, setSelected] = useState([]);
+export const SELECTION_ATTRIBUTES = {
+  selectionActions: {
+    toggleSelected: "toggleSelected",
+    getIsSelected: "getIsSelected",
+    toggleSelectedAll: "toggleSelectedAll",
+    selectOne: "selectOne",
+  },
+  selected: "selected",
+};
 
-    const toggleSelected = (row) =>
-        setSelected((prevState) =>
-            prevState.includes(getRowId(row))
-                ? prevState.filter((checkedId) => checkedId !== getRowId(row))
-                : [...prevState, getRowId(row)]
-        );
+const useSelection = ({ rows, getRowId }) => {
+  const [selected, setSelected] = useState([]);
 
-    const getIsSelected = (row) => {
-        return selected.includes(getRowId(row));
-    };
+  const toggleSelected = (row) =>
+    setSelected((prevState) =>
+      prevState.includes(getRowId(row))
+        ? prevState.filter((checkedId) => checkedId !== getRowId(row))
+        : [...prevState, getRowId(row)]
+    );
 
-    const toggleSelectedAll = () =>
-        selected.length ? setSelected([]) : setSelected(rows.map(getRowId));
+  const getIsSelected = (row) => {
+    return selected.includes(getRowId(row));
+  };
 
-    const selectOne = (row) => {
-        setSelected([getRowId(row)]);
-    };
+  const toggleSelectedAll = () =>
+    selected.length ? setSelected([]) : setSelected(rows.map(getRowId));
 
-    return {
-        selectionActions: {
-            toggleSelected,
-            getIsSelected,
-            toggleSelectedAll,
-            selectOne
-        },
-        selected
-    }
-}
+  const selectOne = (row) => {
+    setSelected([getRowId(row)]);
+  };
+
+  return {
+    selectionActions: {
+      toggleSelected,
+      getIsSelected,
+      toggleSelectedAll,
+      selectOne,
+    },
+    selected,
+  };
+};
 
 export default useSelection;

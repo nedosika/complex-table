@@ -9,9 +9,6 @@ import CheckBox from "../Selection/CheckBox";
 import SelectionButton from "../Selection/SelectionButton";
 import EditIcon from "../Search/SearchToolbar/EditIcon";
 import DeleteIcon from "../Search/SearchToolbar/DeleteIcon";
-import IconButton from "../../../IconButton";
-import Icon from "../../../Icon";
-import { ICON_TYPE_NAMES } from "../../../Icon/Icon";
 
 const RowsList = () => {
   const {

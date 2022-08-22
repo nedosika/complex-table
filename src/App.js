@@ -1,49 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styles from "./App.module.scss";
 
 import ComplexTable from "./components/ComplexTable";
-import { SEARCHING_CONFIG } from "./components/ComplexTable/modules/Search/useTableSearch";
-import { SORTING_CONFIG } from "./components/ComplexTable/modules/Sorting/useSorting";
 
-import TableRow from "./components/Table/Main/Row";
-// import AccordionRow from "./components/ComplexTable/AccordionRow";
+import EditIcon from "./components/ComplexTable/modules/Search/SearchToolbar/EditIcon";
+import DeleteIcon from "./components/ComplexTable/modules/Search/SearchToolbar/DeleteIcon";
+import IconButton from "./components/IconButton";
+import {COLORS} from "./components/ComplexTable/modules/Selection/SelectionButton/SelectionButton";
 
-const columns = [
-  {
-    field: "id",
-    headerName: "ID",
-    width: 105,
-    [SORTING_CONFIG.sortable]: false,
-    [SEARCHING_CONFIG.searchable]: true,
-  },
-  {
-    field: "firstName",
-    headerName: "First name",
-    width: 200,
-    [SORTING_CONFIG.sortable]: true,
-    [SEARCHING_CONFIG.searchable]: true,
-  },
-  {
-    field: "lastName",
-    headerName: "Last name",
-    width: 150,
-  },
-  {
-    field: "age",
-    headerName: "Age",
-    type: "number",
-    width: 110,
-    [SORTING_CONFIG.sortable]: true,
-  },
-  {
-    field: "fullName",
-    headerName: "Full name",
-    description: "This column has a value getter and is not sortable.",
-    width: 160,
-  },
-];
-const rows = [
+const initialRows = [
   {
     id: 1,
     lastName: "Snow",
@@ -52,12 +18,14 @@ const rows = [
     fullName: "test",
     accordion: [
       {
+        id: 1,
         lastName: "Lannister",
         firstName: "Cersei",
         fullName: "test",
         age: 33,
       },
       {
+        id: 2,
         lastName: "Lannister",
         firstName: "Jaime",
         age: 45,
@@ -125,6 +93,73 @@ const rows = [
 ];
 
 function App() {
+  const [rows, setRows] = useState(initialRows);
+  const handleDeleteRow = (id) => (event) => {
+    //event.preventDefault();
+    event.stopPropagation();
+    setRows((prevRows) => prevRows.filter((row) => row.id !== id));
+  };
+  const handleDeleteRows = (rows) =>
+    setRows((prevRows) => prevRows.filter((row) => !rows.includes(row.id)));
+
+  const columns = [
+    {
+      field: "id",
+      headerName: "ID",
+      width: 105,
+      sortable: false,
+      searchable: true,
+    },
+    {
+      field: "firstName",
+      headerName: "First name",
+      width: 200,
+      sortable: true,
+      searchable: true,
+    },
+    {
+      field: "lastName",
+      headerName: "Last name",
+      width: 150,
+    },
+    {
+      field: "age",
+      headerName: "Age",
+      type: "number",
+      width: 110,
+      sortable: true,
+    },
+    {
+      field: "fullName",
+      headerName: "Full name",
+      description: "This column has a value getter and is not sortable.",
+      width: 160,
+    },
+    {
+      field: "actions",
+      headerName: "Actions",
+      type: "actions",
+      description: "This column has a value getter and is not sortable.",
+      width: 160,
+      getActions: (id) => {
+        return [
+          <IconButton
+            title="Edit"
+            icon={<EditIcon color={COLORS.primary}/>}
+            hint={"Edit"}
+          />,
+          <IconButton
+            title="Delete"
+            icon={<DeleteIcon color={COLORS.primary}/>}
+            hint={"Delete"}
+            onClick={handleDeleteRow(id)}
+            key="delete"
+          />,
+        ];
+      },
+    },
+  ];
+
   return (
     <div className={styles.root}>
       <ComplexTable
@@ -135,19 +170,22 @@ function App() {
         pageSize={5}
         rowsPerPageOptions={[2, 5, 10]}
         page={0}
-        components={{
-          //Table: () => 'table',
-          //Header: () => 'header'
-          // Row: (props) => (
-          //   <TableRow
-          //     {...props}
-          //     style={props.row.age > 10 ? { backgroundColor: "red" } : {}}
-          //   />
-          // ),
-          //Row: AccordionRow
-          //Footer: () => 'footer'
-          //Cell: (props)=> console.log(props)
-        }}
+        onDeleteRows={handleDeleteRows}
+        components={
+          {
+            //Table: () => 'table',
+            //Header: () => 'header'
+            // Row: (props) => (
+            //   <TableRow
+            //     {...props}
+            //     style={props.row.age > 10 ? { backgroundColor: "red" } : {}}
+            //   />
+            // ),
+            //Row: AccordionRow
+            //Footer: () => 'footer'
+            //Cell: (props)=> console.log(props)
+          }
+        }
       />
     </div>
   );

@@ -21,6 +21,24 @@ export const COMPLEX_TABLE_CONFIG = {
   getRowHeight: "getRowHeight",
 };
 
+export const COLUMN_TYPES = {
+    actions: 'actions',
+    number: 'number',
+    date: 'date',
+    string: 'string'
+}
+
+export const COLUMN_FIELDS = {
+    field: 'field',
+    type: 'type',
+    headerName: 'headerName',
+    width: 'width',
+    description: 'description',
+    sortable: 'sortable',
+    searchable: 'searchable',
+    getActions: 'getActions'
+}
+
 const ComplexTableContext = createContext({});
 
 export const useComplexTableContext = () => useContext(ComplexTableContext);
