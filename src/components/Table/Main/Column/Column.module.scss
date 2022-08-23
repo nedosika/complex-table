@@ -4,6 +4,10 @@
   box-sizing: border-box;
   padding: 10px;
 
+  position: sticky;
+  top: 49px;
+  background: #fff;
+
   .wrapper {
     display: flex;
     align-items: center;

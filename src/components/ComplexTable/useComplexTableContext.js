@@ -17,27 +17,30 @@ import TableProvider, { useTableContext } from "../Table/useTableContext";
 export const COMPLEX_TABLE_CONFIG = {
   rows: "rows",
   columns: "columns",
+  components: "components",
   getRowId: "getRowId",
   getRowHeight: "getRowHeight",
+  onRowsScrollEnd: "onRowsScrollEnd",
 };
 
 export const COLUMN_TYPES = {
-    actions: 'actions',
-    number: 'number',
-    date: 'date',
-    string: 'string'
-}
+  actions: "actions",
+  number: "number",
+  date: "date",
+  string: "string",
+  selection: "selection",
+};
 
 export const COLUMN_FIELDS = {
-    field: 'field',
-    type: 'type',
-    headerName: 'headerName',
-    width: 'width',
-    description: 'description',
-    sortable: 'sortable',
-    searchable: 'searchable',
-    getActions: 'getActions'
-}
+  field: "field",
+  type: "type",
+  headerName: "headerName",
+  width: "width",
+  description: "description",
+  sortable: "sortable",
+  searchable: "searchable",
+  getActions: "getActions",
+};
 
 const ComplexTableContext = createContext({});
 
@@ -51,7 +54,7 @@ const ComplexTableProvider = ({ children }) => {
       value={{
         [COMPLEX_TABLE_CONFIG.getRowHeight]: () => "auto",
         [COMPLEX_TABLE_CONFIG.getRowId]: (row) => row.id,
-        components: {
+        [COMPLEX_TABLE_CONFIG.components]: {
           Table,
           Header,
           Toolbar,
@@ -63,10 +66,7 @@ const ComplexTableProvider = ({ children }) => {
           Cell,
           Column,
           ColumnTitle,
-          // // ColumnMenu,
-          // // MenuIcon,
           ColumnResizeIcon,
-          // RowCounter,
           ...components,
         },
         ...props,

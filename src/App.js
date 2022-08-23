@@ -95,7 +95,6 @@ const initialRows = [
 function App() {
   const [rows, setRows] = useState(initialRows);
   const handleDeleteRow = (id) => (event) => {
-    //event.preventDefault();
     event.stopPropagation();
     setRows((prevRows) => prevRows.filter((row) => row.id !== id));
   };
