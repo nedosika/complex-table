@@ -15,26 +15,20 @@ const SelectionButton = ({
   hint = "",
   disabled = false,
   sx,
+  onClick,
 }) => {
-  const { rows, onDeleteRows } = useTableContext();
-  const {
-    selected,
-    selectionActions: { toggleSelectedAll },
-  } = useSelectionContext();
+  const { rows } = useTableContext();
+  const { selected } = useSelectionContext();
 
   const isDisabled =
     typeof disabled === "boolean" ? disabled : disabled({ selected, rows });
   const color = isDisabled ? COLORS.disable : COLORS.primary;
   const tooltipTitle =
     typeof hint === "string" ? hint : hint({ selected, rows });
-  const handleDelete = () => {
-    toggleSelectedAll();
-    onDeleteRows(selected);
-  };
 
   return (
     <IconButton
-      onClick={handleDelete}
+      onClick={onClick}
       disabled={isDisabled}
       hint={tooltipTitle}
       title={title}
