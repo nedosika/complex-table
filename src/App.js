@@ -147,6 +147,7 @@ function App() {
             title="Edit"
             icon={<EditIcon color={COLORS.primary}/>}
             hint={"Edit"}
+            key='edit'
           />,
           <IconButton
             title="Delete"
