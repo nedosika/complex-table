@@ -8,6 +8,7 @@ import EditIcon from "./components/ComplexTable/modules/Search/SearchToolbar/Edi
 import DeleteIcon from "./components/ComplexTable/modules/Search/SearchToolbar/DeleteIcon";
 import IconButton from "./components/IconButton";
 import { COLORS } from "./components/ComplexTable/modules/Selection/SelectionButton/SelectionButton";
+import Row from "./components/Table/Main/Row";
 
 const initialRows = [
   {
@@ -102,7 +103,7 @@ function App() {
     setRows((prevRows) => prevRows.filter((row) => !rows.includes(row.id)));
 
   const fetchRows = () => {
-    setTimeout(() => addRows(initialRows), 3000)
+    setTimeout(() => addRows(initialRows), 3000);
   };
 
   const addRows = (rows) => setRows((prevRows) => [...prevRows, ...rows]);
@@ -178,21 +179,20 @@ function App() {
         page={0}
         onDeleteRows={handleDeleteRows}
         onRowsScrollEnd={fetchRows}
-        components={
-          {
-            //Table: () => 'table',
-            //Header: () => 'header'
-            // Row: (props) => (
-            //   <TableRow
-            //     {...props}
-            //     style={props.row.age > 10 ? { backgroundColor: "red" } : {}}
-            //   />
-            // ),
-            //Row: AccordionRow
-            //Footer: () => 'footer'
-            //Cell: (props)=> console.log(props)
-          }
-        }
+        components={{
+          //Table: () => 'table',
+          //Header: () => 'header'
+          Row: React.forwardRef((props, ref) => (
+            <Row
+              {...props}
+              ref={ref}
+              style={props.row?.age > 10 ? { backgroundColor: "red" } : {}}
+            />
+          )),
+          //Row: AccordionRow
+          //Footer: () => 'footer'
+          //Cell: (props)=> console.log(props)
+        }}
       />
     </div>
   );
