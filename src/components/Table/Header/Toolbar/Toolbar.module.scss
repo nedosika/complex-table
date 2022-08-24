@@ -1,5 +1,15 @@
 .root{
-  display: flex;
-  align-items: center;
-  padding: 10px 10px 0px;
+  .content{
+    display: flex;
+    align-items: center;
+    padding: 10px 10px 0px;
+  }
+
+  th {
+    position: sticky;
+    top: 0;
+    //inset-block-start: 0;
+    background: #fff;
+    border-top: 1px solid rgb(224, 224, 224);
+  }
 }

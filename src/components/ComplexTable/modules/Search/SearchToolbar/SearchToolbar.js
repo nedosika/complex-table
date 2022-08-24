@@ -22,7 +22,7 @@ const SearchToolbar = (props) => {
         toggleSelectedAll();
     };
   return (
-    <Toolbar {...props} colspan={columns.length + 1}>
+    <Toolbar {...props} colspan={columns.length + 2}>
       {checkboxSelection && (
         <SelectionButton
           title="Edit"

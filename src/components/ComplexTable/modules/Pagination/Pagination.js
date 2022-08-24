@@ -11,18 +11,24 @@ import PaginationProvider from "./usePaginationContext";
 const Pagination = ({ children }) => {
   const { [TABLE_CONFIG.components]: rootComponents, ...rootProps } =
     useRootContext();
-  const { [TABLE_CONFIG.components]: components, ...props } = useTableContext();
-  const { rows: paginationRows, ...pagination } = usePagination();
+  const {
+    [TABLE_CONFIG.components]: components,
+    rows,
+    ...props
+  } = useTableContext();
+  const { rows: paginationRows, ...paginationProps } = usePagination();
 
   return (
-    <PaginationProvider {...pagination}>
+    <PaginationProvider {...paginationProps}>
       <TableProvider
         {...props}
         {...rootProps}
-        rows={paginationRows}
+        rows={rootProps[TABLE_CONFIG.pagination] ? paginationRows : rows}
         components={{
           ...components,
-          Footer,
+          Footer: rootProps[TABLE_CONFIG.pagination]
+            ? Footer
+            : components.Footer,
           ...rootComponents,
         }}
       >

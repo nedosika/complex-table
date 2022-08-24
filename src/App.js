@@ -7,7 +7,7 @@ import ComplexTable from "./components/ComplexTable";
 import EditIcon from "./components/ComplexTable/modules/Search/SearchToolbar/EditIcon";
 import DeleteIcon from "./components/ComplexTable/modules/Search/SearchToolbar/DeleteIcon";
 import IconButton from "./components/IconButton";
-import {COLORS} from "./components/ComplexTable/modules/Selection/SelectionButton/SelectionButton";
+import { COLORS } from "./components/ComplexTable/modules/Selection/SelectionButton/SelectionButton";
 
 const initialRows = [
   {
@@ -95,12 +95,17 @@ const initialRows = [
 function App() {
   const [rows, setRows] = useState(initialRows);
   const handleDeleteRow = (id) => (event) => {
-    //event.preventDefault();
     event.stopPropagation();
     setRows((prevRows) => prevRows.filter((row) => row.id !== id));
   };
   const handleDeleteRows = (rows) =>
     setRows((prevRows) => prevRows.filter((row) => !rows.includes(row.id)));
+
+  const fetchRows = () => {
+    setTimeout(() => addRows(initialRows), 3000)
+  };
+
+  const addRows = (rows) => setRows((prevRows) => [...prevRows, ...rows]);
 
   const columns = [
     {
@@ -145,13 +150,13 @@ function App() {
         return [
           <IconButton
             title="Edit"
-            icon={<EditIcon color={COLORS.primary}/>}
+            icon={<EditIcon color={COLORS.primary} />}
             hint={"Edit"}
-            key='edit'
+            key="edit"
           />,
           <IconButton
             title="Delete"
-            icon={<DeleteIcon color={COLORS.primary}/>}
+            icon={<DeleteIcon color={COLORS.primary} />}
             hint={"Delete"}
             onClick={handleDeleteRow(id)}
             key="delete"
@@ -172,6 +177,7 @@ function App() {
         rowsPerPageOptions={[2, 5, 10]}
         page={0}
         onDeleteRows={handleDeleteRows}
+        onRowsScrollEnd={fetchRows}
         components={
           {
             //Table: () => 'table',

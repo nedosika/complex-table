@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./TableRow.module.scss";
 
-const Row = ({ row, children, ...props }) => {
+const Row = React.forwardRef(({ row, children, ...props }, ref) => {
   return (
-    <tr className={styles.root} {...props}>
+    <tr className={styles.root} {...props} ref={ref}>
       {children}
     </tr>
   );
-};
+});
 
 export default Row;
