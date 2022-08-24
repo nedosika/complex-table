@@ -1,6 +1,5 @@
 import React from "react";
-import { useTableContext } from "../../../Table/useTableContext";
-import { COLUMN_FIELDS, COLUMN_TYPES } from "../../useComplexTableContext";
+import {COLUMN_FIELDS, COLUMN_TYPES, useTableContext} from "../../../Table/useTableContext";
 
 const CellList = ({ row }) => {
   const {
