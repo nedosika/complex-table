@@ -32,15 +32,19 @@ const RowsList = () => {
   };
 
   const observer = useRef();
-  const lastElementRef = useCallback((row) => (node) => {
-    if (observer.current) observer.current.disconnect();
-    observer.current = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        tableProps[TABLE_CONFIG.onRowsScrollEnd](row);
-      }
-    });
-    if (node) observer.current.observe(node);
-  }, []);
+  const lastElementRef = useCallback(
+    (row) => (node) => {
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          tableProps[TABLE_CONFIG.onRowsScrollEnd] &&
+            tableProps[TABLE_CONFIG.onRowsScrollEnd](row);
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    []
+  );
 
   return tableProps[TABLE_CONFIG.rows].map((row, index) => (
     <Fragment key={tableProps[TABLE_CONFIG.getRowId](row)}>
