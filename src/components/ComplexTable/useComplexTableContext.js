@@ -21,6 +21,8 @@ export const COMPLEX_TABLE_CONFIG = {
   getRowId: "getRowId",
   getRowHeight: "getRowHeight",
   onRowsScrollEnd: "onRowsScrollEnd",
+  pagination: 'pagination',
+  checkboxSelection: 'checkboxSelection'
 };
 
 export const COLUMN_TYPES = {

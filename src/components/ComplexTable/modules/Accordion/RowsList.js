@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from "react";
+import React, { Fragment, useCallback, useRef, useState } from "react";
 
 import { useTableContext } from "../../../Table/useTableContext";
 import { useSelectionContext } from "../Selection/useSelectionContext";
@@ -23,10 +23,22 @@ const RowsList = () => {
     event.stopPropagation();
     setIsMore((isMore) => !isMore);
   };
+  const observer = useRef();
+  const lastElementRef = useCallback((node) => {
+    if (observer.current) observer.current.disconnect();
+    observer.current = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        console.log("inter");
+        //setPageNum((prev) => prev + 1);
+      }
+    });
+    if (node) observer.current.observe(node);
+  }, []);
 
-  return rows.map((row) => (
+  return rows.map((row, index) => (
     <Fragment key={getRowId(row)}>
       <Row
+        ref={rows.length === index + 1 ? lastElementRef : undefined}
         row={row}
         style={{
           backgroundColor: getIsSelected(row) && "rgba(25, 118, 210, 0.08)",
@@ -42,10 +54,7 @@ const RowsList = () => {
         />
         <CellList row={row} />
       </Row>
-      <AccordionMoreRowsList
-        isShow={isMore && row.accordion}
-        row={row}
-      />
+      <AccordionMoreRowsList isShow={isMore && row.accordion} row={row} />
     </Fragment>
   ));
 };

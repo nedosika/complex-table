@@ -171,6 +171,7 @@ function App() {
         rowsPerPageOptions={[2, 5, 10]}
         page={0}
         onDeleteRows={handleDeleteRows}
+        onRowsScrollEnd={(params) => console.log(params, 'end')}
         components={
           {
             //Table: () => 'table',
