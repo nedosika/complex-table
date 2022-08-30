@@ -103,7 +103,7 @@ function App() {
     setRows((prevRows) => prevRows.filter((row) => !rows.includes(row.id)));
 
   const fetchRows = () => {
-    setTimeout(() => addRows(initialRows), 3000);
+    setTimeout(() => addRows(initialRows.map((row) => ({...row, id: Math.random()}))), 3000);
   };
 
   const addRows = (rows) => setRows((prevRows) => [...prevRows, ...rows]);
@@ -179,6 +179,7 @@ function App() {
         page={0}
         onDeleteRows={handleDeleteRows}
         onRowsScrollEnd={fetchRows}
+        //pagination - comment for infinite scroll
         components={{
           //Table: () => 'table',
           //Header: () => 'header'
@@ -189,9 +190,6 @@ function App() {
               style={props.row?.age > 10 ? { backgroundColor: "red" } : {}}
             />
           )),
-          //Row: AccordionRow
-          //Footer: () => 'footer'
-          //Cell: (props)=> console.log(props)
         }}
       />
     </div>

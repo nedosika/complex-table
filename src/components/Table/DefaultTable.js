@@ -1,10 +1,13 @@
 import React from "react";
-import { useTableContext } from "./useTableContext";
+import { TABLE_CONFIG, useTableContext } from "./useTableContext";
+import { useRootContext } from "./useRootContext";
 
 const DefaultTable = () => {
-  const {
-    components: { Table, Header, Main, RowsList, Footer, Toolbar, ColumnsList },
-  } = useTableContext();
+  const { [TABLE_CONFIG.components]: rootComponents } = useRootContext();
+  const { components } = useTableContext();
+
+  const { Table, Header, Main, RowsList, Footer, Toolbar, ColumnsList } =
+    Object.assign(components, rootComponents);
 
   return (
     <Table>
