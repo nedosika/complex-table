@@ -1,7 +1,6 @@
 import React, {
   Fragment,
   useCallback,
-  useEffect,
   useRef,
   useState,
 } from "react";
@@ -18,7 +17,7 @@ import CellList from "../RowsActions/CellList";
 import AccordionMoreRowsList from "./AccordionMoreRowsList";
 
 const RowsList = () => {
-  const tableProps = useTableContext();
+  const {loading: isLoading, ...tableProps} = useTableContext();
   const {
     selectionActions: { getIsSelected, selectOne },
   } = useSelectionContext();
@@ -42,8 +41,7 @@ const RowsList = () => {
         }
       });
       if (node) observer.current.observe(node);
-    },
-    []
+    }, []
   );
 
   return tableProps[TABLE_CONFIG.rows].map((row, index) => (

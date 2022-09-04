@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import styles from "./App.module.scss";
 
@@ -95,6 +95,7 @@ const initialRows = [
 
 function App() {
   const [rows, setRows] = useState(initialRows);
+  const [isLoading, setIsLoading] = useState(false);
   const handleDeleteRow = (id) => (event) => {
     event.stopPropagation();
     setRows((prevRows) => prevRows.filter((row) => row.id !== id));
@@ -103,8 +104,24 @@ function App() {
     setRows((prevRows) => prevRows.filter((row) => !rows.includes(row.id)));
 
   const fetchRows = () => {
-    setTimeout(() => addRows(initialRows.map((row) => ({...row, id: Math.random()}))), 3000);
+    setIsLoading(true)
   };
+
+  useEffect(() => {
+    isLoading &&
+      setTimeout(() => {
+        addRows(initialRows.map((row) => ({ ...row, id: Math.random() })));
+        setIsLoading(false);
+      }, 3000);
+  }, [isLoading]);
+
+  // const fetchRows = useCallback(() => {
+  //   setIsLoading(true);
+  //   setTimeout(() => {
+  //     addRows(initialRows.map((row) => ({ ...row, id: Math.random() })));
+  //     setIsLoading(false);
+  //   }, 3000);
+  // }, [isLoading, rows]);
 
   const addRows = (rows) => setRows((prevRows) => [...prevRows, ...rows]);
 
@@ -179,18 +196,21 @@ function App() {
         page={0}
         onDeleteRows={handleDeleteRows}
         onRowsScrollEnd={fetchRows}
-        //pagination - comment for infinite scroll
-        components={{
-          //Table: () => 'table',
-          //Header: () => 'header'
-          Row: React.forwardRef((props, ref) => (
-            <Row
-              {...props}
-              ref={ref}
-              style={props.row?.age > 10 ? { backgroundColor: "red" } : {}}
-            />
-          )),
-        }}
+        loading={isLoading}
+        //pagination
+        components={
+          {
+            //Table: () => 'table',
+            //Header: () => 'header'
+            // Row: React.forwardRef((props, ref) => (
+            //   <Row
+            //     {...props}
+            //     ref={ref}
+            //     style={props.row?.age > 10 ? { backgroundColor: "red" } : {}}
+            //   />
+            // )),
+          }
+        }
       />
     </div>
   );
