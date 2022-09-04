@@ -16,7 +16,7 @@ const CellList = ({ row }) => {
     }) => {
       if (type === COLUMN_TYPES.actions)
         return <Cell key={field}>{getActions(getRowId(row))}</Cell>;
-      if (row[field] === undefined) return;
+      if (row[field] === undefined) return null;
 
       return (
         <Cell colSpan={row.colspan && row.colspan[field]} key={field}>
