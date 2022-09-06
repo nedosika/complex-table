@@ -9,7 +9,6 @@ const ActionsRowsFooter = (props) => {
     rows,
     columns,
     [SELECTION_CONFIG.checkboxSelection]: checkboxSelection,
-    loading
   } = useTableContext();
 
   const { selected } = useSelectionContext();
@@ -18,7 +17,7 @@ const ActionsRowsFooter = (props) => {
     <Footer colSpan={columns.length + 2} {...props}>
       {checkboxSelection ? (
         <RowCounter>
-          {loading && 'Loading...'} {selected.length} row{selected.length > 1 && "s"} selected
+          {selected.length} row{selected.length > 1 && "s"} selected
         </RowCounter>
       ) : (
         <RowCounter>

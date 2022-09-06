@@ -7,6 +7,7 @@ import Sorting from "../modules/Sorting/Sorting";
 import Filtration from "../modules/Filtration/Filtration";
 import RowsActions from "../modules/RowsActions/RowsActions";
 import Accordion from "../modules/Accordion/Accordion";
+import InfiniteScroll from "../modules/InfiniteScroll/InfiniteScroll";
 
 const AllProviders = ({ children, ...props }) => {
   return (
@@ -17,7 +18,11 @@ const AllProviders = ({ children, ...props }) => {
             <Filtration>
               <RowsActions>
                 <Accordion>
-                  <Pagination>{children}</Pagination>
+                  <Pagination>
+                    <InfiniteScroll>
+                      {children}
+                    </InfiniteScroll>
+                  </Pagination>
                 </Accordion>
               </RowsActions>
             </Filtration>

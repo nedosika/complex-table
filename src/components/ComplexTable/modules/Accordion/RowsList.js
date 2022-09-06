@@ -30,28 +30,9 @@ const RowsList = () => {
     setIsMore((isMore) => !isMore);
   };
 
-  const observer = useRef();
-  const lastElementRef = useCallback(
-    (row) => (node) => {
-      if (observer.current) observer.current.disconnect();
-      observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          tableProps[TABLE_CONFIG.onRowsScrollEnd] &&
-            tableProps[TABLE_CONFIG.onRowsScrollEnd](row);
-        }
-      });
-      if (node) observer.current.observe(node);
-    }, []
-  );
-
-  return tableProps[TABLE_CONFIG.rows].map((row, index) => (
+  return tableProps[TABLE_CONFIG.rows].map((row) => (
     <Fragment key={tableProps[TABLE_CONFIG.getRowId](row)}>
       <Row
-        ref={
-          tableProps[TABLE_CONFIG.rows].length === index + 1
-            ? lastElementRef(row)
-            : undefined
-        }
         row={row}
         style={{
           backgroundColor: getIsSelected(row) && "rgba(25, 118, 210, 0.08)",
