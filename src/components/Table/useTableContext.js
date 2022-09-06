@@ -8,7 +8,8 @@ export const TABLE_CONFIG = {
   getRowHeight: "getRowHeight",
   onRowsScrollEnd: "onRowsScrollEnd",
   pagination: 'pagination',
-  checkboxSelection: 'checkboxSelection'
+  checkboxSelection: 'checkboxSelection',
+  loading: 'loading'
 };
 
 export const TABLE_COMPONENTS = {
